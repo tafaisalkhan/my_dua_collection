@@ -1,0 +1,1962 @@
+{
+  "version": 3,
+  "defaultLocale": "en",
+  "supportedLocales": [
+    "ar",
+    "en"
+  ],
+  "translationSchema": "Add another language by adding its ISO language code inside each translations object.",
+  "sourceAttribution": "Hisnul Muslim dataset prepared by Sehal Hussain for Kitably; source references retained per entry.",
+  "duas": [
+    {
+      "id": "famous-morning-01",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ، لَا إِلَهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِيْ هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ، وَأَعُوْذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ، رَبِّ أَعُوْذُ بِكَ مِنَ الْكَسَلِ، وَسُوءِ الْكِبَرِ، رَبِّ أَعُوْذُ بِكَ مِنْ عَذَابٍ فِيْ النَّارِ وَعَذَابٍ فِيْ الْقَبْرِ",
+      "transliteration": "Asbahna wa-asbahal-mulku lillah walhamdu lillah la ilaha illal-lah, wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer, rabbi as-aluka khayra ma fee hatha-alyawmi, wakhayra ma baAAdaho, wa-aAAoothu bika min sharri hatha-alyawmi, washarri ma baAAdaho, rabbi aAAoothu bika minal-kasal, wasoo-il kibar, rabbi aAAoothu bika min AAathabin fin-nar, waAAathabin fil-qabr.",
+      "translations": {
+        "en": "We have reached the morning and at this very time unto Allah belongs all sovereignty, and all praise is for Allah. None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent. My Lord, I ask You for the good of this day and the good of what follows it and I take refuge in You from the evil of this day and the evil of what follows it. My Lord, I take refuge in You from laziness and senility. My Lord, I take refuge in You from torment in the Fire and punishment in the grave."
+      },
+      "reference": "Abu Dawud: 5071",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-morning-02",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ الْمَصِيرُ",
+      "transliteration": "Allahumma bika aṣbaḥna wa bika amsaina wa bika naḥya wa bika namutu wa ilaikal-maṣeer",
+      "translations": {
+        "en": "O Allah, by your leave we have reached the morning and by Your leave we have reached the evening, by Your leave we live and die and to You is our return."
+      },
+      "reference": "At-Tirmidhi: 3391",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-morning-03",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَّا إِلَهَ إِلَّا أَنْتَ،  خَلَقْتَنِي وَأَنَا عَبْدُكَ،  وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ،  أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ،  أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ،  وَأَبُوءُ بِذَنْبِي فَاغْفِر لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+      "transliteration": "Allahumma anta rabbee la ilaha illa ant, khalaqtanee wa-ana AAabduk, wa-ana AAala AAahdika wawaAAdika mas-tataAAt, aAAoothu bika min sharri ma sanaAAt, aboo-o laka biniAAmatika AAalay, wa-aboo-o bithanbee, faghfir lee fa-innahu la yaghfiruth-thunooba illa ant.",
+      "translations": {
+        "en": "O Allah, You are my Lord, none has the right to be worshipped except You, You created me and I am Your servant and I abide to Your covenant and promise as best I can, I take refuge in You from the evil of which I have committed. I acknowledge Your favour upon me and I acknowledge my sin, so forgive me, for verily none can forgive sin except You."
+      },
+      "reference": "Sahih Al-Bukhari: 6306",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-morning-04",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "اللَّهُمَّ أَصْبَحْنَا نُشْهِدُكَ وَنُشْهِدُ حَمَلَةَ عَرْشِكَ وَمَلاَئِكَتَكَ وَجَمِيعَ خَلْقِكَ بِأَنَّكَ اللّٰه لاَ إِلَهَ إِلاَّ أَنْتَ وَحْدَكَ لاَ شَرِيكَ لَكَ وَأَنَّ مُحَمَّدًا عَبْدُكَ وَرَسُولُكَ",
+      "transliteration": "Allahumma aṣbaḥna nush-hiduka wa nush-hidu ḥamalata arshika wa mala’ikataka wa jami`a khalqika bi-annaka Allah, la ilaha illa anta, waḥdaka la sharika laka, wa anna Muḥammadan abduka wa rasuluk",
+      "translations": {
+        "en": "O Allah we have reached morning, calling You to witness, and calling the carriers of Your Throne to witness, and Your angels, and all of Your creation, that You are Allah, none has the right to be worshipped but You, Alone, without partner, and that Muhammad (S.A.W.) is Your slave and Your Messenger."
+      },
+      "reference": "At-Tirmidhi: 3501",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-morning-05",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ",
+      "transliteration": "Allahumma ma asbaha bee min niAAmatin, faminka wahdaka la shareeka lak, falakal-hamdu walakash-shukr.",
+      "translations": {
+        "en": "O Allah! whatever favour has come to me, is from You alone, without partner, so for You is all praise and unto You all thanks."
+      },
+      "reference": "Abu Dawud: 5073",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-morning-06",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي لاَ إِلَهَ إِلاَّ أَنْتَ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ لاَ إِلَهَ إِلاَّ أَنْتَ",
+      "transliteration": "Allahumma AAafinee fee badanee, allahumma AAafinee fee samAAee, allahumma AAafinee fee basaree, la ilaha illa anta. Allahumma innee aAAoothu bika minal-kufri, walfaqri, Allahumma innee aAAoothu bika min AAathabil-qabri, la ilaha illa anta.",
+      "translations": {
+        "en": "O Allah, grant my body health, O Allah, grant my hearing health, O Allah, grant my sight health. None has the right to be worshipped except You. O Allah, I take refuge with You from disbelief and poverty, and I take refuge with You from the punishment of the grave. None has the right to be worshipped except You."
+      },
+      "reference": "Abu Dawud: 5090",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-morning-07",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "حَسۡبِیَ اللّٰہُ  لَاۤ اِلٰہَ اِلَّا ہُوَ   ؕ عَلَیۡہِ تَوَکَّلۡتُ وَ ہُوَ رَبُّ الۡعَرۡشِ الۡعَظِیۡمِ",
+      "transliteration": "Hasbiyal-lahu la ilaha illa huwa, AAalayhi tawakkalt, wahuwa rabbul-AAarshil-Aaatheem",
+      "translations": {
+        "en": "Allah is Sufficient for me, none has the right to be worshipped except Him, upon Him I rely and He is Lord of the exalted throne."
+      },
+      "reference": "Surah Taubah 9:129",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-morning-08",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَاىَ وَأَهْلِي وَمَالِي اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي وَاحْفَظْنِي مِنْ بَيْنِ يَدَىَّ وَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي وَمِنْ فَوْقِي وَأَعُوذُ بِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+      "transliteration": "Allahumma inni as’alukal-’afwa wal-’afiyah fid-dunya wal-akhirah. Allahumma inni as’alukal-’afwa wal-’afiyah fi dini wa dunyaya wa ahli wa mali. Allahum-mastur ‘awrati, wa amin raw’ati wahfazni min bayni yadayya, wa min khalfi, wa ‘an yamini wa ‘an shimali, wa min fawqi, wa ‘audhu bika an ughtala min tahti",
+      "translations": {
+        "en": "O Allah, I ask You for forgiveness and well-being in this world and in the Hereafter. O Allah, I ask You for forgiveness and well-being in my religious and my worldly affairs. O Allah, conceal my faults, calm my fears, and protect me from before me and behind me, from my right and my left, and from above me, and I seek refuge in You from being taken unaware from beneath me."
+      },
+      "reference": "Ibn Majah: 3871",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-morning-09",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "اللَّهُمَّ فَاطِرَ السَّمَوَاتِ وَالأَرْضِ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ لاَ إِلَهَ إِلاَّ أَنْتَ رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ الشَّيْطَانِ وَشَرَكِهِ وَأَنْ أَقْتَرِفَ عَلَى نَفْسِي سُوءًا أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ",
+      "transliteration": "Allaahumma faatiras-samaawaati wal’ardhi, Aalimal-ghaybi wash-shahaadati, laa ‘ilaaha ‘illaa ‘Anta, rabba kulli shai’in wa malīkahu, ‘a’oothu bika min sharri nafsee, wa min sharrish-shaytaani wa sharakihi, wa ‘an ‘aqtarifa ‘alaa nafsee soo’an, ‘aw ‘ajurrahu ‘ilaa Muslimin",
+      "translations": {
+        "en": "O Allah, Creator of the heavens and the earth, Knower of the unseen and the seen, there is none worthy of worship except You, Lord of everything and its Owner, I seek refuge in You from the evil of my soul and from the evil of Shaitan and his Shirk, or that I should do some evil to myself or bring it upon a Muslim."
+      },
+      "reference": "At-Tirmidhi: 3529",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-morning-10",
+      "category": "Morning",
+      "title": {
+        "en": "Morning Remembrance"
+      },
+      "arabic": "بِسْمِ اللّٰهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+      "transliteration": "Bismil-lahil-lathee la yadurru maAAas-mihi shay-on fil-ardi wala fis-sama-i wahuwas-sameeAAul-AAaleem.",
+      "translations": {
+        "en": "In the name of Allah with whose name nothing is harmed on earth nor in the heavens and He is The All-Seeing, The All-Knowing.(three times)"
+      },
+      "reference": "Abu Dawud: 5088",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-01",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ لاَ إِلَهَ إِلاَّ اللّٰهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
+      "transliteration": "Amsayna wa-amsal-mulku lillah walhamdu lillah la ilaha illal-lah, wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer, rabbi as-aluka khayra ma fee hathihil-laylah, wakhayra ma baAAdaha, wa-aAAoothu bika min sharri hathihil-laylah, washarri ma baAAdaha, rabbi aAAoothu bika minal-kasal, wasoo-il kibar, rabbi aAAoothu bika min AAathabin fin-nar, waAAathabin fil-qabr.",
+      "translations": {
+        "en": "We have reached the evening and at this very time unto Allah belongs all sovereignty, and all praise is for Allah. None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent. My Lord, I ask You for the good of this night and the good of what follows it and I take refuge in You from the evil of this night and the evil of what follows it. My Lord, I take refuge in You from laziness and senility. My Lord, I take refuge in You from torment in the Fire and punishment in the grave."
+      },
+      "reference": "Sahih Muslim: 2723 (b)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-02",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ",
+      "transliteration": "Allahumma bika amsaina wa bika aṣbaḥna wa bika naḥya wa bika namutu wa ilaikan-nushur",
+      "translations": {
+        "en": "O Allah, by You we enter the evening, and by You we enter the morning, and by You we live, and by You we die, and to You is the Resurrection."
+      },
+      "reference": "At-Tirmidhi: 3391",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-03",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَّا إِلَهَ إِلَّا أَنْتَ،  خَلَقْتَنِي وَأَنَا عَبْدُكَ،  وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ،  أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ،  أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ،  وَأَبُوءُ بِذَنْبِي فَاغْفِر لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+      "transliteration": "Allahumma anta rabbee la ilaha illa ant, khalaqtanee wa-ana AAabduk, wa-ana AAala AAahdika wawaAAdika mas-tataAAt, aAAoothu bika min sharri ma sanaAAt, aboo-o laka biniAAmatika AAalay, wa-aboo-o bithanbee, faghfir lee fa-innahu la yaghfiruth-thunooba illa ant.",
+      "translations": {
+        "en": "O Allah, You are my Lord, none has the right to be worshipped except You, You created me and I am Your servant and I abide to Your covenant and promise as best I can, I take refuge in You from the evil of which I have committed. I acknowledge Your favour upon me and I acknowledge my sin, so forgive me, for verily none can forgive sin except You."
+      },
+      "reference": "Sahih Al-Bukhari: 6306",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-04",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "اللَّهُمَّ أَمْسَيْنَا نُشْهِدُكَ وَنُشْهِدُ حَمَلَةَ عَرْشِكَ وَمَلاَئِكَتَكَ وَجَمِيعَ خَلْقِكَ بِأَنَّكَ اللّٰه لاَ إِلَهَ إِلاَّ أَنْتَ وَحْدَكَ لاَ شَرِيكَ لَكَ وَأَنَّ مُحَمَّدًا عَبْدُكَ وَرَسُولُكَ",
+      "transliteration": "Allahumma amsaina nush-hiduka wa nush-hidu ḥamalata arshika wa mala’ikataka wa jami`a khalqika bi-annaka Allah, la ilaha illa anta, waḥdaka la sharika laka, wa anna Muḥammadan abduka wa rasuluk",
+      "translations": {
+        "en": "O Allah we have reached evening, calling You to witness, and calling the carriers of Your Throne to witness, and Your angels, and all of Your creation, that You are Allah, none has the right to be worshipped but You, Alone, without partner, and that Muhammad (S.A.W.) is Your slave and Your Messenger."
+      },
+      "reference": "At-Tirmidhi: 3501",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-05",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "اللَّهُمَّ مَا أَمْسَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لَا شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ",
+      "transliteration": "Allahumma ma amsa bee min niAAmatin, aw bi-ahadin min khalqik, faminka wahdaka la shareeka lak, falakal-hamdu walakash-shukr.",
+      "translations": {
+        "en": "O Allah, what blessing I or any of Your creation have risen upon, is from You alone, without partner, so for You is all praise and unto You all thanks."
+      },
+      "reference": "Abu Dawud: 5073",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-06",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي لاَ إِلَهَ إِلاَّ أَنْتَ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ لاَ إِلَهَ إِلاَّ أَنْتَ",
+      "transliteration": "Allahumma AAafinee fee badanee, allahumma AAafinee fee samAAee, allahumma AAafinee fee basaree, la ilaha illa anta. Allahumma innee aAAoothu bika minal-kufri, walfaqri, Allahumma innee aAAoothu bika min AAathabil-qabri, la ilaha illa anta.",
+      "translations": {
+        "en": "O Allah, grant my body health, O Allah, grant my hearing health, O Allah, grant my sight health. None has the right to be worshipped except You. O Allah, I take refuge with You from disbelief and poverty, and I take refuge with You from the punishment of the grave. None has the right to be worshipped except You."
+      },
+      "reference": "Abu Dawud: 5090",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-07",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "حَسۡبِیَ اللّٰہُ  لَاۤ اِلٰہَ اِلَّا ہُوَ   ؕ عَلَیۡہِ تَوَکَّلۡتُ وَ ہُوَ رَبُّ الۡعَرۡشِ الۡعَظِیۡمِ",
+      "transliteration": "Hasbiyal-lahu la ilaha illa huwa, AAalayhi tawakkalt, wahuwa rabbul-AAarshil-Aaatheem",
+      "translations": {
+        "en": "Allah is Sufficient for me, none has the right to be worshipped except Him, upon Him I rely and He is Lord of the exalted throne."
+      },
+      "reference": "Surah Taubah 9:129",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-08",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "أَعُوذُ بِكَلِمَاتِ اللّٰهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ. (ثلاثاً إِذا أمسى)",
+      "transliteration": "aAAoothu bikalimatil-lahit-tammati min sharri ma khalaq.",
+      "translations": {
+        "en": "I take refuge in Allah’s perfect words from the evil He has created. (three times in the evening)"
+      },
+      "reference": "At-Tirmidhi: 3604 (b)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-09",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَاىَ وَأَهْلِي وَمَالِي اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي وَاحْفَظْنِي مِنْ بَيْنِ يَدَىَّ وَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي وَمِنْ فَوْقِي وَأَعُوذُ بِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+      "transliteration": "Allahumma inni as’alukal-’afwa wal-’afiyah fid-dunya wal-akhirah. Allahumma inni as’alukal-’afwa wal-’afiyah fi dini wa dunyaya wa ahli wa mali. Allahum-mastur ‘awrati, wa amin raw’ati wahfazni min bayni yadayya, wa min khalfi, wa ‘an yamini wa ‘an shimali, wa min fawqi, wa ‘audhu bika an ughtala min tahti",
+      "translations": {
+        "en": "O Allah, I ask You for forgiveness and well-being in this world and in the Hereafter. O Allah, I ask You for forgiveness and well-being in my religious and my worldly affairs. O Allah, conceal my faults, calm my fears, and protect me from before me and behind me, from my right and my left, and from above me, and I seek refuge in You from being taken unaware from beneath me."
+      },
+      "reference": "Ibn Majah: 3871",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-evening-10",
+      "category": "Evening",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "اللَّهُمَّ فَاطِرَ السَّمَوَاتِ وَالأَرْضِ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ لاَ إِلَهَ إِلاَّ أَنْتَ رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ الشَّيْطَانِ وَشَرَكِهِ وَأَنْ أَقْتَرِفَ عَلَى نَفْسِي سُوءًا أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ",
+      "transliteration": "Allaahumma faatiras-samaawaati wal’ardhi, Aalimal-ghaybi wash-shahaadati, laa ‘ilaaha ‘illaa ‘Anta, rabba kulli shai’in wa malīkahu, ‘a’oothu bika min sharri nafsee, wa min sharrish-shaytaani wa sharakihi, wa ‘an ‘aqtarifa ‘alaa nafsee soo’an, ‘aw ‘ajurrahu ‘ilaa Muslimin",
+      "translations": {
+        "en": "O Allah, Creator of the heavens and the earth, Knower of the unseen and the seen, there is none worthy of worship except You, Lord of everything and its Owner, I seek refuge in You from the evil of my soul and from the evil of Shaitan and his Shirk, or that I should do some evil to myself or bring it upon a Muslim."
+      },
+      "reference": "At-Tirmidhi: 3529",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-night-01",
+      "category": "Night",
+      "title": {
+        "en": "Before Sleeping"
+      },
+      "arabic": "بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، فَإِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا، بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ",
+      "transliteration": "Bismika rabbee wadaAAtu janbee wabika arfaAAuh, fa-in amsakta nafsee farhamha, wa-in arsaltaha fahfathha bima tahfathu bihi AAibadakas-saliheen.",
+      "translations": {
+        "en": "In Your name my Lord, I lie down and in Your name I rise, so if You should take my soul then have mercy upon it, and if You should return my soul then protect it in the manner You do so with Your righteous servants."
+      },
+      "reference": "At-Tirmidhi: 3401",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-night-02",
+      "category": "Night",
+      "title": {
+        "en": "Before Sleeping"
+      },
+      "arabic": "اللّٰہُمَّ خَلَقْتَ نَفْسِي وَأَنْتَ تَوَفَّاهَا لَكَ مَمَاتُهَا وَمَحْيَاهَا، إِنْ أَحْيَيْتَهَا فَاحْفَظْهَا، وَإِنْ أَمَتَّهَا فَاغْفِرْ لَهَا. اللّٰہُمَّ إِنِّي أَسْأَلُكَ العَافِيَةَ",
+      "transliteration": "Allahumma khalaqta nafsee wa-anta tawaffaha laka mamatuha wamahyaha in ahyaytaha fahfathha, wa-in amattaha faghfir laha. Allahumma innee as-alukal-AAafiyah.",
+      "translations": {
+        "en": "O Allah, You have created my soul and it is for You to take it in death. Its death and its life are in Your Hand. If You cause it to live then protect it and if You cause it to die then forgive it. O Allah, I ask you to keep me safe and sound."
+      },
+      "reference": "Sahih Muslim: 2712",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-night-03",
+      "category": "Night",
+      "title": {
+        "en": "Before Sleeping"
+      },
+      "arabic": "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+      "transliteration": "Allahumma qinee AAathabaka yawma tabAAathu AAibadak.",
+      "translations": {
+        "en": "O Allah, protect me from Your punishment on the day Your servants are resurrected."
+      },
+      "reference": "Abu Dawud: 5045",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-night-04",
+      "category": "Night",
+      "title": {
+        "en": "Before Sleeping"
+      },
+      "arabic": "بِاسْـمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+      "transliteration": "Bismikal-lahumma amootu wa-ahya.",
+      "translations": {
+        "en": "In Your name O Allah, I live and die."
+      },
+      "reference": "Sahih Al-Bukhari: 6324",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-night-05",
+      "category": "Night",
+      "title": {
+        "en": "When you wake up"
+      },
+      "arabic": "اَلۡحَمۡدُ لِلّٰہِ الَّذِیۡ أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+      "transliteration": "Alhamdu lillahil-lathee ahyana baAAda ma amatana wa-ilayhin-nushoor.",
+      "translations": {
+        "en": "All praise is for Allah who gave us life after having taken it from us and unto Him is the resurrection."
+      },
+      "reference": "Sahih Al-Bukhari: 6312",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-night-06",
+      "category": "Night",
+      "title": {
+        "en": "When you wake up"
+      },
+      "arabic": "اَلۡحَمۡدُ لِلّٰہِ الَّذِیۡ عَافَانِي فِي جَسَدِي، وَرَدَّ عَلَيَّ رُوحِي، وَأَذِنَ لِي بِذِكْرِهِ",
+      "transliteration": "Alhamdu lillahil-lathee AAafanee fee jasadee waradda AAalayya roohee wa-athina lee bithikrih.",
+      "translations": {
+        "en": "All praise is for Allah who restored to me my health and returned my soul and has allowed me to remember Him."
+      },
+      "reference": "At-Tirmidhi: 3401",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-night-07",
+      "category": "Night",
+      "title": {
+        "en": "When you wake up"
+      },
+      "arabic": "لَا إِلَهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ ، سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ ، وَلَا إِلَهَ إِلَّا اللّٰهُ وَاللّٰہُ اَکۡبَرُ ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ  رَبِّ اغْفِرْ لِي",
+      "transliteration": "La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shay-in qadeer, subhanal-lah, walhamdu lillah, wala ilaha illal-lah wallahu akbar, wala hawla wala quwwata illa billahil-AAaliyyil AAatheem. Rabbigh-fir lee",
+      "translations": {
+        "en": "None has the right to be worshipped but Allah alone, with no partner or associate. His is the dominion and all praise is to Him, and He is Able to do all things. Glory is to Allah, praise is to Allah, none has the right to be worshiped but Allah, Allah is the Most Great, and there is no power and no strength except with Allah, the Most High, the Most Supreme. O Lord, forgive me."
+      },
+      "reference": "Ibn Majah: 3878",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-night-08",
+      "category": "Night",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ لاَ إِلَهَ إِلاَّ اللّٰهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
+      "transliteration": "Amsayna wa-amsal-mulku lillah walhamdu lillah la ilaha illal-lah, wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer, rabbi as-aluka khayra ma fee hathihil-laylah, wakhayra ma baAAdaha, wa-aAAoothu bika min sharri hathihil-laylah, washarri ma baAAdaha, rabbi aAAoothu bika minal-kasal, wasoo-il kibar, rabbi aAAoothu bika min AAathabin fin-nar, waAAathabin fil-qabr.",
+      "translations": {
+        "en": "We have reached the evening and at this very time unto Allah belongs all sovereignty, and all praise is for Allah. None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent. My Lord, I ask You for the good of this night and the good of what follows it and I take refuge in You from the evil of this night and the evil of what follows it. My Lord, I take refuge in You from laziness and senility. My Lord, I take refuge in You from torment in the Fire and punishment in the grave."
+      },
+      "reference": "Sahih Muslim: 2723 (b)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-night-09",
+      "category": "Night",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ",
+      "transliteration": "Allahumma bika amsaina wa bika aṣbaḥna wa bika naḥya wa bika namutu wa ilaikan-nushur",
+      "translations": {
+        "en": "O Allah, by You we enter the evening, and by You we enter the morning, and by You we live, and by You we die, and to You is the Resurrection."
+      },
+      "reference": "At-Tirmidhi: 3391",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-night-10",
+      "category": "Night",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَّا إِلَهَ إِلَّا أَنْتَ،  خَلَقْتَنِي وَأَنَا عَبْدُكَ،  وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ،  أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ،  أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ،  وَأَبُوءُ بِذَنْبِي فَاغْفِر لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+      "transliteration": "Allahumma anta rabbee la ilaha illa ant, khalaqtanee wa-ana AAabduk, wa-ana AAala AAahdika wawaAAdika mas-tataAAt, aAAoothu bika min sharri ma sanaAAt, aboo-o laka biniAAmatika AAalay, wa-aboo-o bithanbee, faghfir lee fa-innahu la yaghfiruth-thunooba illa ant.",
+      "translations": {
+        "en": "O Allah, You are my Lord, none has the right to be worshipped except You, You created me and I am Your servant and I abide to Your covenant and promise as best I can, I take refuge in You from the evil of which I have committed. I acknowledge Your favour upon me and I acknowledge my sin, so forgive me, for verily none can forgive sin except You."
+      },
+      "reference": "Sahih Al-Bukhari: 6306",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-before-sleep-01",
+      "category": "Before Sleep",
+      "title": {
+        "en": "Before Sleeping"
+      },
+      "arabic": "بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، فَإِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا، بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ",
+      "transliteration": "Bismika rabbee wadaAAtu janbee wabika arfaAAuh, fa-in amsakta nafsee farhamha, wa-in arsaltaha fahfathha bima tahfathu bihi AAibadakas-saliheen.",
+      "translations": {
+        "en": "In Your name my Lord, I lie down and in Your name I rise, so if You should take my soul then have mercy upon it, and if You should return my soul then protect it in the manner You do so with Your righteous servants."
+      },
+      "reference": "At-Tirmidhi: 3401",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-before-sleep-02",
+      "category": "Before Sleep",
+      "title": {
+        "en": "Before Sleeping"
+      },
+      "arabic": "اللّٰہُمَّ خَلَقْتَ نَفْسِي وَأَنْتَ تَوَفَّاهَا لَكَ مَمَاتُهَا وَمَحْيَاهَا، إِنْ أَحْيَيْتَهَا فَاحْفَظْهَا، وَإِنْ أَمَتَّهَا فَاغْفِرْ لَهَا. اللّٰہُمَّ إِنِّي أَسْأَلُكَ العَافِيَةَ",
+      "transliteration": "Allahumma khalaqta nafsee wa-anta tawaffaha laka mamatuha wamahyaha in ahyaytaha fahfathha, wa-in amattaha faghfir laha. Allahumma innee as-alukal-AAafiyah.",
+      "translations": {
+        "en": "O Allah, You have created my soul and it is for You to take it in death. Its death and its life are in Your Hand. If You cause it to live then protect it and if You cause it to die then forgive it. O Allah, I ask you to keep me safe and sound."
+      },
+      "reference": "Sahih Muslim: 2712",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-before-sleep-03",
+      "category": "Before Sleep",
+      "title": {
+        "en": "Before Sleeping"
+      },
+      "arabic": "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+      "transliteration": "Allahumma qinee AAathabaka yawma tabAAathu AAibadak.",
+      "translations": {
+        "en": "O Allah, protect me from Your punishment on the day Your servants are resurrected."
+      },
+      "reference": "Abu Dawud: 5045",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-before-sleep-04",
+      "category": "Before Sleep",
+      "title": {
+        "en": "Before Sleeping"
+      },
+      "arabic": "بِاسْـمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+      "transliteration": "Bismikal-lahumma amootu wa-ahya.",
+      "translations": {
+        "en": "In Your name O Allah, I live and die."
+      },
+      "reference": "Sahih Al-Bukhari: 6324",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-before-sleep-05",
+      "category": "Before Sleep",
+      "title": {
+        "en": "When you wake up"
+      },
+      "arabic": "اَلۡحَمۡدُ لِلّٰہِ الَّذِیۡ أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+      "transliteration": "Alhamdu lillahil-lathee ahyana baAAda ma amatana wa-ilayhin-nushoor.",
+      "translations": {
+        "en": "All praise is for Allah who gave us life after having taken it from us and unto Him is the resurrection."
+      },
+      "reference": "Sahih Al-Bukhari: 6312",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-before-sleep-06",
+      "category": "Before Sleep",
+      "title": {
+        "en": "When you wake up"
+      },
+      "arabic": "اَلۡحَمۡدُ لِلّٰہِ الَّذِیۡ عَافَانِي فِي جَسَدِي، وَرَدَّ عَلَيَّ رُوحِي، وَأَذِنَ لِي بِذِكْرِهِ",
+      "transliteration": "Alhamdu lillahil-lathee AAafanee fee jasadee waradda AAalayya roohee wa-athina lee bithikrih.",
+      "translations": {
+        "en": "All praise is for Allah who restored to me my health and returned my soul and has allowed me to remember Him."
+      },
+      "reference": "At-Tirmidhi: 3401",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-before-sleep-07",
+      "category": "Before Sleep",
+      "title": {
+        "en": "When you wake up"
+      },
+      "arabic": "لَا إِلَهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ ، سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ ، وَلَا إِلَهَ إِلَّا اللّٰهُ وَاللّٰہُ اَکۡبَرُ ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ  رَبِّ اغْفِرْ لِي",
+      "transliteration": "La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shay-in qadeer, subhanal-lah, walhamdu lillah, wala ilaha illal-lah wallahu akbar, wala hawla wala quwwata illa billahil-AAaliyyil AAatheem. Rabbigh-fir lee",
+      "translations": {
+        "en": "None has the right to be worshipped but Allah alone, with no partner or associate. His is the dominion and all praise is to Him, and He is Able to do all things. Glory is to Allah, praise is to Allah, none has the right to be worshiped but Allah, Allah is the Most Great, and there is no power and no strength except with Allah, the Most High, the Most Supreme. O Lord, forgive me."
+      },
+      "reference": "Ibn Majah: 3878",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Waking & Sleeping"
+    },
+    {
+      "id": "famous-before-sleep-08",
+      "category": "Before Sleep",
+      "title": {
+        "en": "When night approaches during Travel"
+      },
+      "arabic": "يَا أَرْضُ رَبِّي وَرَبُّكِ اللّٰهُ أَعُوذُ بِاللّٰهِ مِنْ شَرِّكِ وَشَرِّ مَا فِيكِ وَشَرِّ مَا خُلِقَ فِيكِ وَمِنْ شَرِّ مَا يَدِبُّ عَلَيْكِ وَأَعُوذُ بِاللّٰهِ مِنْ أَسَدٍ وَأَسْوَدَ وَمِنَ الْحَيَّةِ وَالْعَقْرَبِ وَمِنْ سَاكِنِ الْبَلَدِ وَمِنْ وَالِدٍ وَمَا وَلَدَ",
+      "transliteration": "Ya Ardh! Rabbi wa Rabbukillah, audhu billah min sharraki wa sharri ma fiki, wa sharri ma khuliqa fiki, wa min sharri ma yadibbu alaik, wa audhu billahi min asadin wa aswada wa minal-hayati wal-aqrabi, wa min sakinil-balad, wa min walidin wama walad",
+      "translations": {
+        "en": "O earth, my Lord and your Lord is Allah; I seek refuge in Allah from your evil, the evil of what you contain, the evil of what has been created in you, and the evil of what creeps upon you; I seek refuge in Allah from lions, from large black snakes, from other snakes, from scorpions, from the evil of jinn which inhabit a settlement, and from a parent and his offspring."
+      },
+      "reference": "Abu Dawud: 2603",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-before-sleep-09",
+      "category": "Before Sleep",
+      "title": {
+        "en": "Before sleeping at night during travel"
+      },
+      "arabic": "أَعُوذُ بِكَلِمَاتِ اللّٰهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+      "transliteration": "A’oothu bikalimaatil-laahit-taammaati min sharri maa khalaqa",
+      "translations": {
+        "en": "I seek refuge in the Perfect Words of Allah from the evil of what He has created."
+      },
+      "reference": "Sahih Muslim: 2708 (a)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-before-sleep-10",
+      "category": "Before Sleep",
+      "title": {
+        "en": "Evening Remembrance"
+      },
+      "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ لاَ إِلَهَ إِلاَّ اللّٰهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
+      "transliteration": "Amsayna wa-amsal-mulku lillah walhamdu lillah la ilaha illal-lah, wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer, rabbi as-aluka khayra ma fee hathihil-laylah, wakhayra ma baAAdaha, wa-aAAoothu bika min sharri hathihil-laylah, washarri ma baAAdaha, rabbi aAAoothu bika minal-kasal, wasoo-il kibar, rabbi aAAoothu bika min AAathabin fin-nar, waAAathabin fil-qabr.",
+      "translations": {
+        "en": "We have reached the evening and at this very time unto Allah belongs all sovereignty, and all praise is for Allah. None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent. My Lord, I ask You for the good of this night and the good of what follows it and I take refuge in You from the evil of this night and the evil of what follows it. My Lord, I take refuge in You from laziness and senility. My Lord, I take refuge in You from torment in the Fire and punishment in the grave."
+      },
+      "reference": "Sahih Muslim: 2723 (b)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Morning & Evening"
+    },
+    {
+      "id": "famous-after-prayer-01",
+      "category": "After Prayer",
+      "title": {
+        "en": "During Athan"
+      },
+      "arabic": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ",
+      "transliteration": "Laa hawla wa laa quwwata ‘illaa billaah",
+      "translations": {
+        "en": "There is no might and no power except by Allah."
+      },
+      "reference": "Sahih Al-Bukhari: 613",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Adhan & Iqamah"
+    },
+    {
+      "id": "famous-after-prayer-02",
+      "category": "After Prayer",
+      "title": {
+        "en": "After Listening Athan"
+      },
+      "arabic": "اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلاَةِ الْقَائِمَةِ، آتِ مُحَمَّدَا  ۣ الْوَسِيلَةَ وَالْفَضِيلَةَ، وَابْعَثْهُ مَقَامًا مَحْمُودَا  ۣ  الَّذِي وَعَدْتَهُ",
+      "transliteration": "Allaahumma Rabba haathid - da’watit - taammati wassalaatil-qaa’imati, ‘aati Muhammadanil-waseelata walfadheelata, wab ‘ath-hu maqaamam-mahmoodanil-lathee wa’adtahu.",
+      "translations": {
+        "en": "O Allah, Lord of this perfect call and established prayer. Grant Muhammad the intercession and favor, and raise him to the honored station You have promised him."
+      },
+      "reference": "Sahih Al-Bukhari: 614",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Adhan & Iqamah"
+    },
+    {
+      "id": "famous-after-prayer-03",
+      "category": "After Prayer",
+      "title": {
+        "en": "After Fajr Prayer"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْماً نَافِعاً،  وَرِزْقاً طَيِّباً،  وَعَمَلاً مُتَقَبَّلاً",
+      "transliteration": "Allaahumma ‘innee ‘as’aluka ‘ilman naafi’an, wa rizqan tayyiban, wa ‘amalan mutaqabbalan",
+      "translations": {
+        "en": "O Allah, I ask You for knowledge that is of benefit, a good provision, and deeds that will be accepted."
+      },
+      "reference": "Ibn Majah: 925",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "After Prayer"
+    },
+    {
+      "id": "famous-after-prayer-04",
+      "category": "After Prayer",
+      "title": {
+        "en": "After Salah (Prayer) Tasbeeh"
+      },
+      "arabic": "سُبْحَانَ اللّٰہِ  (33 times) الۡحَمۡدُ لِلّٰہ  (33 times) اَللّٰہُ اَکۡبَر  (34 times)",
+      "transliteration": "Subhana-Allah (33 times) Alhamdulillah (33 times) Allahu Akbar (34 times)",
+      "translations": {
+        "en": "Glory be to Allah (33 times), Praise be to Allah (33 times), Allah is the greatest (34 times)"
+      },
+      "reference": "At-Tirmidhi: 3412",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "After Prayer"
+    },
+    {
+      "id": "famous-after-prayer-05",
+      "category": "After Prayer",
+      "title": {
+        "en": "After Prayer Remembrances"
+      },
+      "arabic": "أَسْتَغْفِرُ اللّٰهَ (ثَلاثاً). اللَّهُمَّ أَنْتَ السَّلاَمُ، وَمِنْكَ السَّلَامُ، تَبَارَكْتَ ذَا الْجَلَالِ وَالإِكْرَامِ",
+      "transliteration": "Astaghfirul-lah (three times) Allahumma antas-salam waminkas-salam, tabarakta thal-jalali wal-ikram.",
+      "translations": {
+        "en": "I ask Allah for forgiveness.(three times) \"O Allah, You are As-Salam and from You is all peace, blessed are You, O Possessor of majesty and honour.\" (AS-Salam: The One Who is free from all defects and deficiencies.)"
+      },
+      "reference": "Sahih Muslim: 591",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "After Prayer"
+    },
+    {
+      "id": "famous-after-prayer-06",
+      "category": "After Prayer",
+      "title": {
+        "en": "After Prayer Remembrances"
+      },
+      "arabic": "لَا إِلَهَ إِلاَّ اللّٰهُ وَحْدَهُ لاَ شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ اللَّهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ وَلَا مُعْطِيَ لِمَا مَنَعْتَ وَلَا يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ",
+      "transliteration": "La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer, allahumma la maniAAa lima aAAtayt, wala muAAtiya lima manaAAt, wala yanfaAAu thal-jaddi minkal-jad.",
+      "translations": {
+        "en": "None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent.O Allah, none can prevent what You have willed to bestow and none can bestow what You have willed to prevent, and no wealth or majesty can benefit anyone, as from You is all wealth and majesty."
+      },
+      "reference": "Sahih Muslim: 593 (a)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "After Prayer"
+    },
+    {
+      "id": "famous-after-prayer-07",
+      "category": "After Prayer",
+      "title": {
+        "en": "After Prayer Remembrances"
+      },
+      "arabic": "سُبْحَانَ اللّٰهِ، وَالْحَمْدُ لِلّٰهِ، وَاللّٰهُ اَکۡبَرُ (ثلاثاً وثلاثين). لَا إِلَهَ إِلاَّ اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ",
+      "transliteration": "Subhanal-lah walhamdu lillah, wallahu akbar (thirty-three times). La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, wahuwa AAala kulli shayin qadeer.",
+      "translations": {
+        "en": "How perfect Allah is, all praise is for Allah, and Allah is the greatest.’ (thirty-three times) None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise and He is over all things omnipotent."
+      },
+      "reference": "Sahih Muslim: 597 (a)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "After Prayer"
+    },
+    {
+      "id": "famous-after-prayer-08",
+      "category": "After Prayer",
+      "title": {
+        "en": "After Prayer Remembrances"
+      },
+      "arabic": "اَللّٰہُ لَاۤ اِلٰہَ اِلَّا ہُوَ اَلۡحَیُّ الۡقَیُّوۡمُ لَا تَاۡخُذُہٗ سِنَۃٌ وَّ لَا نَوۡمٌ  لَہٗ مَا فِی السَّمٰوٰتِ وَ مَا فِی الۡاَرۡضِ مَنۡ ذَا الَّذِیۡ یَشۡفَعُ عِنۡدَہٗۤ اِلَّا بِاِذۡنِہٖ  یَعۡلَمُ مَا بَیۡنَ اَیۡدِیۡہِمۡ وَ مَا خَلۡفَہُمۡ  وَ لَا یُحِیۡطُوۡنَ بِشَیۡءٍ مِّنۡ عِلۡمِہٖۤ اِلَّا بِمَا شَآءَ وَسِعَ کُرۡسِیُّہُ السَّمٰوٰتِ وَ الۡاَرۡضَ  وَ لَا یَـُٔوۡدُہٗ حِفۡظُہُمَا  وَ ہُوَ الۡعَلِیُّ الۡعَظِیۡمُ",
+      "transliteration": "Allaahu laa ‘ilaaha ‘illaa Huwal-Hayyul-Qayyoom, laa ta’khuthuhu sinatun wa laa nawm, lahu maa fis-samaawaati wa maafil-’ardh, man thal-lathee yashfa’u ‘indahu ‘illaa bi’ithnih, ya’lamu maa bayna ‘aydeehim wa maa khalfahum, wa laa yuheetoona bishay’im-min ‘ilmihi ‘illaa bimaa shaa’a, wasi’a kursiyyuhus-samaawaati wal’ardh, wa laa ya’ooduhu hifdhuhumaa, wa Huwal-’Aliyyul- ‘Adheem",
+      "translations": {
+        "en": "Allah! There is none worthy of worship but He, the Ever Living, the One Who sustains and protects all that exists. Neither slumber nor sleep overtakes Him. To Him belongs whatever is in the heavens and whatever is on the earth. Who is he that can intercede with Him except with His Permission? He knows what happens to them in this world, and what will happen to them in the Hereafter. And they will never compass anything of His Knowledge except that which He wills. His Throne extends over the heavens and the earth, and He feels no fatigue in guarding and preserving them. And He is the Most High, the Most Great."
+      },
+      "reference": "Surah Al-Baqarah - 2:255, al-Mu’jam al-Kabir :7406",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "After Prayer"
+    },
+    {
+      "id": "famous-after-prayer-09",
+      "category": "After Prayer",
+      "title": {
+        "en": "After Prayer Remembrances"
+      },
+      "arabic": "لَا إِلَهَ إِلَّا اللّٰهُ وَحَدْهُ لَا شَرِيكَ لَهُ،  لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ . (عَشْر مَرّات بَعْدَ المَغْرِب)",
+      "transliteration": "La ilaha illal-lahu wahdahu la shareeka lah, lahul-mulku walahul-hamd, yuhyee wayumeet, wahuwa AAala kulli shayin qadeer.(ten times after the Maghrib Prayer)",
+      "translations": {
+        "en": "None has the right to be worshipped except Allah, alone, without partner, to Him belongs all sovereignty and praise, He gives life and causes death and He is over all things omnipotent. (ten times after the Maghrib Prayer)"
+      },
+      "reference": "At-Tirmidhi: 3534",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "After Prayer"
+    },
+    {
+      "id": "famous-after-prayer-10",
+      "category": "After Prayer",
+      "title": {
+        "en": "After Prayer Remembrances"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْماً نَافِعاً وَرِزْقاً طَيِّباً، وَعَمَلاً مُتَقَبَّلاً . (بَعْد السّلامِ من صَلاةِ الفَجْر)",
+      "transliteration": "Allahumma innee as-aluka AAilman nafiAAan, warizqan tayyiban, waAAamalan mutaqabbalan.(after salam from Fajr Prayer).",
+      "translations": {
+        "en": "O Allah, I ask You for knowledge which is beneficial and sustenance which is good, and deeds which are acceptable. (To be said after giving salam for the Fajr Prayer)"
+      },
+      "reference": "Ibn Majah: 925",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "After Prayer"
+    },
+    {
+      "id": "famous-protection-01",
+      "category": "Protection",
+      "title": {
+        "en": "For protection and help from Allah"
+      },
+      "arabic": "قُلۡ ہُوَ اللّٰہُ اَحَدٌ،  اَللّٰہُ الصَّمَدُ،  لَمۡ یَلِدۡ وَ لَمۡ یُوۡلَدۡوَ لَمۡ یَکُنۡ لَّہٗ  کُفُوًا اَحَدٌ",
+      "transliteration": "Qul Huwallaahu ‘Ahad. Allaahus-Samad. Lam yalid wa lam yoolad. Wa lam yaku-llahu kufuwan ‘ahad",
+      "translations": {
+        "en": "He is Allah (the) One. The Self-Sufficient Master, Whom all creatures need, He begets not nor was He begotten, and there is none equal to Him."
+      },
+      "reference": "Surah Al-Ikhlas (112)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-protection-02",
+      "category": "Protection",
+      "title": {
+        "en": "For protection and help from Allah"
+      },
+      "arabic": "اَللّٰہُ لَاۤ اِلٰہَ اِلَّا ہُوَ اَلۡحَیُّ الۡقَیُّوۡمُ لَا تَاۡخُذُہٗ سِنَۃٌ وَّ لَا نَوۡمٌ  لَہٗ مَا فِی السَّمٰوٰتِ وَ مَا فِی الۡاَرۡضِ مَنۡ ذَا الَّذِیۡ یَشۡفَعُ عِنۡدَہٗۤ اِلَّا بِاِذۡنِہٖ  یَعۡلَمُ مَا بَیۡنَ اَیۡدِیۡہِمۡ وَ مَا خَلۡفَہُمۡ  وَ لَا یُحِیۡطُوۡنَ بِشَیۡءٍ مِّنۡ عِلۡمِہٖۤ اِلَّا بِمَا شَآءَ وَسِعَ کُرۡسِیُّہُ السَّمٰوٰتِ وَ الۡاَرۡضَ  وَ لَا یَـُٔوۡدُہٗ حِفۡظُہُمَا  وَ ہُوَ الۡعَلِیُّ الۡعَظِیۡمُ",
+      "transliteration": "Allaahu laa ‘ilaaha ‘illaa Huwal-Hayyul-Qayyoom, laa ta’khuthuhu sinatun wa laa nawm, lahu maa fis-samaawaati wa maafil-’ardh, man thal-lathee yashfa’u ‘indahu ‘illaa bi’ithnih, ya’lamu maa bayna ‘aydeehim wa maa khalfahum, wa laa yuheetoona bishay’im-min ‘ilmihi ‘illaa bimaa shaa’a, wasi’a kursiyyuhus-samaawaati wal’ardh, wa laa ya’ooduhu hifdhuhumaa, wa Huwal-’Aliyyul- ‘Adheem",
+      "translations": {
+        "en": "Allah! There is none worthy of worship but He, the Ever Living, the One Who sustains and protects all that exists. Neither slumber nor sleep overtakes Him. To Him belongs whatever is in the heavens and whatever is on the earth. Who is he that can intercede with Him except with His Permission? He knows what happens to them in this world, and what will happen to them in the Hereafter. And they will never compass anything of His Knowledge except that which He wills. His Throne extends over the heavens and the earth, and He feels no fatigue in guarding and preserving them. And He is the Most High, the Most Great."
+      },
+      "reference": "Surah Al-Baqarah - 2:255, At-Tirmidhi: 2879",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-protection-03",
+      "category": "Protection",
+      "title": {
+        "en": "For protection and help from Allah"
+      },
+      "arabic": "قُلۡ اَعُوۡذُ بِرَبِّ الۡفَلَقِ،  مِنۡ شَرِّ مَا خَلَقَ،  وَ مِنۡ شَرِّ غَاسِقٍ اِذَا وَقَب،  وَ مِنۡ شَرِّ النَّفّٰثٰتِ فِی الۡعُقَدِ،  وَ مِنۡ شَرِّ حَاسِدٍ اِذَا حَسَدَ",
+      "transliteration": "Qul ‘a’oothu birabbil-falaq. Min sharri maa khalaq. Wa min sharri ghaasiqin ‘ithaa waqab. Wa min sharrin-naffaathaati fil-’uqad. Wa min sharri haasidin ‘ithaa hasad",
+      "translations": {
+        "en": "I seek refuge with (Allah) the Lord of the daybreak, from the evil of what He has created, and from the evil of the darkening (night) as it comes with its darkness, and from the evil of those who practice witchcraft when they blow in the knots, and from the evil of the envier when he envies."
+      },
+      "reference": "Surah Al-Falaq (113), At-Tirmidhi: 2058",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-protection-04",
+      "category": "Protection",
+      "title": {
+        "en": "For protection and help from Allah"
+      },
+      "arabic": "قُلۡ اَعُوۡذُ بِرَبِّ النَّاسِ، مَلِکِ النَّاسِ، اِلٰہِ النَّاسِ، مِنۡ شَرِّ الۡوَسۡوَاسِ الۡخَنَّاسِ، الَّذِیۡ یُوَسۡوِسُ فِیۡ صُدُوۡرِ النَّاسِ، مِنَ الۡجِنَّۃِ وَ النَّاسِ",
+      "transliteration": "Qul ‘a’oothu birabbin-naas . Malikin-naas . ‘Ilaahin-naas . Min sharril-waswaasil-khannaas. Allathee yuwaswisu fee sudoorin-naas. Minal-jinnati wannaas",
+      "translations": {
+        "en": "I seek refuge with (Allah) the Lord of mankind, the King of mankind, the God of mankind, from the evil of the whisperer who withdraws, who whispers in the breasts of mankind, of jinns and men."
+      },
+      "reference": "Surah An-Naas (114), At-Tirmidhi: 2058",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-protection-05",
+      "category": "Protection",
+      "title": {
+        "en": "For protection and help from Allah"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ،  وَأَعُوذُ بِكَ مِنْ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ،  وَأَعُوذُ بِكَ مِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ  اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ الْمَأْثَمِ وَالْمَغْرَمِ",
+      "transliteration": "Allaahumma ‘innee ‘a’oothu bika min ‘athaabil-qabri, wa ‘a’oothu bika min fitnatil-maseehid-dajjaali, wa ‘a’oothu bika min fitnatil-mahyaa walmamaati. Allaahumma ‘innee ‘a’oothu bika minal-ma’thami walmaghrami",
+      "translations": {
+        "en": "O Allah, I seek refuge in You from the punishment of the grave, and I seek refuge in You from the trial of the False Messiah, and I seek refuge in You from the trials of life and death. O Allah, I seek refuge in You from sin and from debt."
+      },
+      "reference": "Sahih Muslim: 589",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-protection-06",
+      "category": "Protection",
+      "title": {
+        "en": "For protection and help from Allah"
+      },
+      "arabic": "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+      "transliteration": "Allahumma qinee AAathabaka yawma tabAAathu AAibadak.",
+      "translations": {
+        "en": "O Allah, protect me from Your punishment on the day Your servants are resurrected."
+      },
+      "reference": "Abu Dawud: 5045",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-protection-07",
+      "category": "Protection",
+      "title": {
+        "en": "For protection and help from Allah"
+      },
+      "arabic": "اللَّهُمَّ فَاطِرَ السَّمَوَاتِ وَالأَرْضِ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ لاَ إِلَهَ إِلاَّ أَنْتَ رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ الشَّيْطَانِ وَشَرَكِهِ وَأَنْ أَقْتَرِفَ عَلَى نَفْسِي سُوءًا أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ",
+      "transliteration": "Allaahumma faatiras-samaawaati wal’ardhi, Aalimal-ghaybi wash-shahaadati, laa ‘ilaaha ‘illaa ‘Anta, rabba kulli shai’in wa malīkahu, ‘a’oothu bika min sharri nafsee, wa min sharrish-shaytaani wa sharakihi, wa ‘an ‘aqtarifa ‘alaa nafsee soo’an, ‘aw ‘ajurrahu ‘ilaa Muslimin",
+      "translations": {
+        "en": "O Allah, Creator of the heavens and the earth, Knower of the unseen and the seen, there is none worthy of worship except You, Lord of everything and its Owner, I seek refuge in You from the evil of my soul and from the evil of Shaitan and his Shirk, or that I should do some evil to myself or bring it upon a Muslim."
+      },
+      "reference": "At-Tirmidhi: 3529",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-protection-08",
+      "category": "Protection",
+      "title": {
+        "en": "For protection and help from Allah"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَاىَ وَأَهْلِي وَمَالِي اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي وَاحْفَظْنِي مِنْ بَيْنِ يَدَىَّ وَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي وَمِنْ فَوْقِي وَأَعُوذُ بِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+      "transliteration": "Allahumma inni as’alukal-’afwa wal-’afiyah fid-dunya wal-akhirah. Allahumma inni as’alukal-’afwa wal-’afiyah fi dini wa dunyaya wa ahli wa mali. Allahum-mastur ‘awrati, wa amin raw’ati wahfazni min bayni yadayya, wa min khalfi, wa ‘an yamini wa ‘an shimali, wa min fawqi, wa ‘audhu bika an ughtala min tahti",
+      "translations": {
+        "en": "O Allah, I ask You for forgiveness and well-being in this world and in the Hereafter. O Allah, I ask You for forgiveness and well-being in my religious and my worldly affairs. O Allah, conceal my faults, calm my fears, and protect me from before me and behind me, from my right and my left, and from above me, and I seek refuge in You from being taken unaware from beneath me."
+      },
+      "reference": "Ibn Majah: 3871",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-protection-09",
+      "category": "Protection",
+      "title": {
+        "en": "For protection and help from Allah"
+      },
+      "arabic": "اَنَّ اللّٰہَ مَوۡلٰىکُمۡ ؕ نِعۡمَ الۡمَوۡلٰی وَ نِعۡمَ النَّصِیۡرُ",
+      "transliteration": "Anna Allaha mawlakum ni’mal mawla wa ni’man naseer",
+      "translations": {
+        "en": "Know that Allah is your protector. Excellent is the protector, and Excellent is the helper."
+      },
+      "reference": "Surah Al-Anfal - 8:40",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-protection-10",
+      "category": "Protection",
+      "title": {
+        "en": "For protection from Satan/Shaytan"
+      },
+      "arabic": "رَّبِّ اَعُوۡذُ بِکَ مِنۡ ہَمَزٰتِ الشَّیٰطِیۡنِ وَ اَعُوۡذُ بِکَ رَبِّ اَنۡ یَّحۡضُرُوۡنِ",
+      "transliteration": "Rabbi ‘a`outhubika min hamazaatish-shayaateeni, wa ‘a`outhu bika rabbi ‘ay-yahdhuroon",
+      "translations": {
+        "en": "My Lord! I seek refuge with You from the whisperings (suggestions) of the Shayatin (devils). And I seek refuge with You, My Lord! lest they may attend (or come near) me."
+      },
+      "reference": "Surah Al-Mu'minoon - 23:97-98",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Protection"
+    },
+    {
+      "id": "famous-travel-01",
+      "category": "Travel",
+      "title": {
+        "en": "When Leaving Home"
+      },
+      "arabic": "بِسْمِ اللّٰهِ تَوَكَّلْـتُ عَلَى اللّٰهِ،  لاَ حَوْلَ وَلاَ قُـوَّةَ إِلاَّ بِاللّٰهِ",
+      "transliteration": "Bismil-lah, tawakkaltu AAalal-lah, La hawla wala quwwata illa billah.",
+      "translations": {
+        "en": "In the name of Allah, I trust in Allah; there is no might and no power but in Allah."
+      },
+      "reference": "Abu Dawud: 5095",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-travel-02",
+      "category": "Travel",
+      "title": {
+        "en": "When Leaving Home"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ أَنْ أَضِلَّ أَوْ أُضَلَّ أَوْ أَزِلَّ أَوْ أُزَلَّ أَوْ أَظْلِمَ أَوْ أُظْلَمَ أَوْ أَجْهَلَ أَوْ يُجْهَلَ عَلَىَّ",
+      "transliteration": "Allahumma innee aAAoothu bika an adilla aw odal, aw azilla aw ozall, aw athlima aw othlam, aw ajhala aw yujhala AAalay.",
+      "translations": {
+        "en": "O Allah, I take refuge with You lest I should stray or be led astray, or slip or be tripped, or oppress or be oppressed, or behave foolishly or be treated foolishly.’ slip: i.e. to commit a sin unintentionally"
+      },
+      "reference": "Abu Dawud: 5094",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-travel-03",
+      "category": "Travel",
+      "title": {
+        "en": "Upon Entering Home"
+      },
+      "arabic": "بِسْمِ اللّٰهِ وَلَجْنَا وَبِسْمِ اللّٰهِ خَرَجْنَا وَعَلَى اللّٰهِ رَبِّنَا تَوَكَّلْنَا",
+      "transliteration": "Bismil-lahi walajna, wabismil-lahi kharajna, waAAalallahi rabbina tawakkalna.",
+      "translations": {
+        "en": "In the name of Allah we enter and in the name of Allah we leave, and upon our Lord we place our trust."
+      },
+      "reference": "Abu Dawud: 5096",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-travel-04",
+      "category": "Travel",
+      "title": {
+        "en": "When going up the Stairs / Ascending a high place"
+      },
+      "arabic": "اَللّٰہُ اَکۡبَرُ",
+      "transliteration": "Allahu Akbar",
+      "translations": {
+        "en": "Allah is the Most Great!"
+      },
+      "reference": "Sahih Al-Bukhari: 2993",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-travel-05",
+      "category": "Travel",
+      "title": {
+        "en": "When coming down of Stairs / Descending from high place"
+      },
+      "arabic": "سُبْحَانَ اللّٰه",
+      "transliteration": "Subhan Allah",
+      "translations": {
+        "en": "Glory be to Allah"
+      },
+      "reference": "Sahih Al-Bukhari: 2993",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-travel-06",
+      "category": "Travel",
+      "title": {
+        "en": "For travel"
+      },
+      "arabic": "سُبۡحٰنَ الَّذِیۡ سَخَّرَ لَنَا ہٰذَا وَ مَا کُنَّا لَہٗ مُقۡرِنِیۡنَ  ۙ  وَ اِنَّا اِلٰی رَبِّنَا لَمُنۡقَلِبُوۡنَ",
+      "transliteration": "Subhana-alladhi sakh-khara la-na hadha wa ma kunna la-hu muqrinin. Wa inna ila Rabbi-na la munqalibun.",
+      "translations": {
+        "en": "Glory unto Him Who created this transportation, for us, though we were unable to create it on our own. And unto our Lord we shall return."
+      },
+      "reference": "Sahih Muslim: 1342, Surah Az-Zukhruf 43:13-14",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-travel-07",
+      "category": "Travel",
+      "title": {
+        "en": "While returning from travel"
+      },
+      "arabic": "اللّٰهُ اَکۡبَرُ ، اللّٰهُ اَکۡبَرُ ، اللّٰهُ اَکۡبَرُ ، لاَ إِلَهَ إِلاَّ اللّٰهُ وَحْدَهُ لاَ شَرِيكَ لَهُ،  لَهُ الْمُلْكُ،  وَلَهُ الْحَمْدُ،  وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ،  آيِبُونَ تَائِبُونَ عَابِدُونَ سَاجِدُونَ لِرَبِّنَا حَامِدُونَ،  صَدَقَ اللّٰهُ وَعْدَهُ وَنَصَرَ عَبْدَهُ وَهَزَمَ الأَحْزَابَ وَحْدَهُ",
+      "transliteration": "Allahu Akbar, Allahu Akbar, Allahu Akbar, Laa ilaaha illallaahu wahdahu laa shareeka lahu, lahul-mulku, wa lahul-hamdu, wa Huwa alaa kulli shay in Qadeer, aaiboona, taaiboona, aabidoona, saajidoona, lirabbinaa haamidoona, sadaqallaahu wadahu, wa nasara abdahu, wa hazamal-ahzaaba wahdahu.",
+      "translations": {
+        "en": "Allah is the greatest, Allah is the greatest, Allah is the greatest. None has the right to be worshipped except Allah, alone, without partner. To Him belongs all sovereignty and praise, and He is over all things omnipotent. We return, repent, worship and praise our Lord. Allah fulfilled His promise, aided His Servant, and single-handedly defeated the allies."
+      },
+      "reference": "Sahih Al-Bukhari: 1797",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-travel-08",
+      "category": "Travel",
+      "title": {
+        "en": "When night approaches during Travel"
+      },
+      "arabic": "يَا أَرْضُ رَبِّي وَرَبُّكِ اللّٰهُ أَعُوذُ بِاللّٰهِ مِنْ شَرِّكِ وَشَرِّ مَا فِيكِ وَشَرِّ مَا خُلِقَ فِيكِ وَمِنْ شَرِّ مَا يَدِبُّ عَلَيْكِ وَأَعُوذُ بِاللّٰهِ مِنْ أَسَدٍ وَأَسْوَدَ وَمِنَ الْحَيَّةِ وَالْعَقْرَبِ وَمِنْ سَاكِنِ الْبَلَدِ وَمِنْ وَالِدٍ وَمَا وَلَدَ",
+      "transliteration": "Ya Ardh! Rabbi wa Rabbukillah, audhu billah min sharraki wa sharri ma fiki, wa sharri ma khuliqa fiki, wa min sharri ma yadibbu alaik, wa audhu billahi min asadin wa aswada wa minal-hayati wal-aqrabi, wa min sakinil-balad, wa min walidin wama walad",
+      "translations": {
+        "en": "O earth, my Lord and your Lord is Allah; I seek refuge in Allah from your evil, the evil of what you contain, the evil of what has been created in you, and the evil of what creeps upon you; I seek refuge in Allah from lions, from large black snakes, from other snakes, from scorpions, from the evil of jinn which inhabit a settlement, and from a parent and his offspring."
+      },
+      "reference": "Abu Dawud: 2603",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-travel-09",
+      "category": "Travel",
+      "title": {
+        "en": "For accommodation"
+      },
+      "arabic": "رَّبِّ اَنۡزِلۡنِیۡ مُنۡزَلًا مُّبٰرَکًا وَّ اَنۡتَ خَیۡرُ الۡمُنۡزِلِیۡنَ",
+      "transliteration": "Rabbi anzilnee munzalan mubarakanwaanta khayru almunzileen",
+      "translations": {
+        "en": "My Lord, let me land at a blessed landing place, and You are the best to accommodate [us]."
+      },
+      "reference": "Surah Al-Muminoon - 23:29",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-travel-10",
+      "category": "Travel",
+      "title": {
+        "en": "Before sleeping at night during travel"
+      },
+      "arabic": "أَعُوذُ بِكَلِمَاتِ اللّٰهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+      "transliteration": "A’oothu bikalimaatil-laahit-taammaati min sharri maa khalaqa",
+      "translations": {
+        "en": "I seek refuge in the Perfect Words of Allah from the evil of what He has created."
+      },
+      "reference": "Sahih Muslim: 2708 (a)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Home & Travel"
+    },
+    {
+      "id": "famous-forgiveness-01",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness and Allah's mercy"
+      },
+      "arabic": "اَنۡتَ وَلِیُّنَا فَاغۡفِرۡ لَنَا وَ ارۡحَمۡنَا وَ اَنۡتَ خَیۡرُ الۡغٰفِرِیۡنَ وَ اکۡتُبۡ لَنَا فِیۡ ہٰذِہِ الدُّنۡیَا حَسَنَۃً وَّ فِی الۡاٰخِرَۃِ  اِنَّا ہُدۡنَاۤ  اِلَیۡکَ",
+      "transliteration": "Anta waliyyuna faghfirlana warhamna waanta khayru alghafireen. Waktub lana fee hathihi ddunya hasanatan wafee al-akhiratiinna hudna ilayk",
+      "translations": {
+        "en": "(O my Lord) You are our Protector, so forgive us and have mercy upon us; and You are the best of forgivers. And ordain for us good in this world, and in the Hereafter. Certainly we have turned unto You."
+      },
+      "reference": "Surah Al-A'raf - 7:155-156",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-forgiveness-02",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness and Allah's mercy"
+      },
+      "arabic": "رَبَّنَاۤ اٰمَنَّا فَاغۡفِرۡ لَنَا وَ ارۡحَمۡنَا وَ اَنۡتَ خَیۡرُ الرّٰحِمِیۡنَ",
+      "transliteration": "Rabbanaa Aamannaa Faghfir Lanaa Warh’amnaa Wa Anta Khayrur Raah’imeen",
+      "translations": {
+        "en": "Our Lord! We believe, so forgive us, and have mercy on us, for You are the Best of all who show mercy!"
+      },
+      "reference": "Surah Al-Muminoon - 23:109",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-forgiveness-03",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness and Allah's mercy"
+      },
+      "arabic": "رَّبِّ اغۡفِرۡ وَ ارۡحَمۡ وَ اَنۡتَ خَیۡرُ الرّٰحِمِیۡنَ",
+      "transliteration": "Rabbighfir Warh’am Wa Anta Khayrur Raah’imeen",
+      "translations": {
+        "en": "My Lord! Forgive and have mercy, for You are the Best of those who show mercy!"
+      },
+      "reference": "Surah Al-Muminoon - 23:118",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-forgiveness-04",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness and Allah's mercy"
+      },
+      "arabic": "رَبَّنَا ظَلَمۡنَاۤ اَنۡفُسَنَا ٜ وَ اِنۡ لَّمۡ تَغۡفِرۡ لَنَا وَ تَرۡحَمۡنَا لَنَکُوۡنَنَّ مِنَ الۡخٰسِرِیۡنَ",
+      "transliteration": "Rabbana zalamna anfusina wa il lam taghfir lana wa tarhamna lana kunan minal-khasireen",
+      "translations": {
+        "en": "Our Lord! We have wronged our own souls: If thou forgive us not and bestow not upon us Thy Mercy, we shall certainly be lost."
+      },
+      "reference": "Surah Al-A'raf - 7:23",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-forgiveness-05",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness and Allah's mercy"
+      },
+      "arabic": "رَبَّنَاۤ اٰتِنَا مِنۡ لَّدُنۡکَ رَحۡمَۃً وَّ ہَیِّیٔۡ لَنَا مِنۡ اَمۡرِنَا رَشَدًا",
+      "transliteration": "Rabbanaaa Aatina Mil Ladunka Rah’mataw Wa Hayyi Lanaa Min Amrinaa Rashadaa",
+      "translations": {
+        "en": "Our Lord! Bestow on us Mercy from Thyself, and dispose of our affair for us in the right way!"
+      },
+      "reference": "Surah Al-Kahf - 18:10",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-forgiveness-06",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness"
+      },
+      "arabic": "رَبِّ اِنِّیۡۤ اَعُوۡذُ بِکَ اَنۡ اَسۡـَٔلَکَ مَا لَـیۡسَ لِیۡ بِہٖ عِلۡمٌ ؕ وَ اِلَّا تَغۡفِرۡ لِیۡ وَ تَرۡحَمۡنِیۡۤ  اَکُنۡ مِّنَ الۡخٰسِرِیۡنَ",
+      "transliteration": "Rabbi Inneee A-o’od’u Bika An As-alaka Maa Laysa Lee Bihee I’lm Wa Illaa Taghfirlee Wa Tarh’amneee Akum Minal Khaasireen",
+      "translations": {
+        "en": "O my Lord! I seek refuge with You from asking You that of which I have no knowledge. And unless You forgive me and have Mercy on me, I would indeed be one of the losers."
+      },
+      "reference": "Surah Hud - 11:47",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-forgiveness-07",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness"
+      },
+      "arabic": "رَبِّ اغْفِرْ لِي رَبِّ اغْفِرْ لِي",
+      "transliteration": "Rabbighfir lee, Rabbighfir lee",
+      "translations": {
+        "en": "Lord, forgive me. My Lord, forgive me."
+      },
+      "reference": "An-Nasai: 1146",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-forgiveness-08",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness"
+      },
+      "arabic": "اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَعَافِنِي وَاهْدِنِي وَارْزُقْنِي",
+      "transliteration": "Allaahum-maghfir lee, warhamnee, wa ‘aafinee, wahdinee, warzuqnee",
+      "translations": {
+        "en": "O Allah, forgive me, have mercy on me, guide me, heal me, and provide for me."
+      },
+      "reference": "Abu Dawud: 850",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-forgiveness-09",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness"
+      },
+      "arabic": "اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ دِقَّهُ وَجِلَّهُ وَأَوَّلَهُ وَآخِرَهُ وَعَلاَنِيَتَهُ وَسِرَّهُ",
+      "transliteration": "Allaahum-maghfir lee thanbee kullahu, diqqahu wa jillahu, wa ‘awwalahu wa ‘aakhirahu wa ‘alaaniyata hu wa sirrahu",
+      "translations": {
+        "en": "O Allah, forgive me all my sins, great and small, the first and the last, those that are apparent and those that are hidden."
+      },
+      "reference": "Sahih Muslim: 483",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-forgiveness-10",
+      "category": "Forgiveness",
+      "title": {
+        "en": "For forgiveness"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِرِضَاكَ مِنْ سَخَطِكَ، وَبِمُعَافَاتِكَ مِنْ عُقُوبَتِكَ، وَاَعُوذُ بِكَ مِنْكَ، لَا أُحصِي ثَنَاءً عَلَيْكَ أَنْتَ كَمَا أَثْنَيْتَ عَلَى نَفْسِكَ",
+      "transliteration": "Allaahumma ‘innee ‘a’oothu biridhaaka min sakhatika, wa bimu’aafaatika min ‘uqoobatika wa ‘a’oothu bika minka, laa ‘uhsee thanaa’an ‘alayka ‘Anta kamaa ‘athnayta ‘alaa nafsika",
+      "translations": {
+        "en": "O Allah, I seek protection in Your pleasure from Your anger, and I seek protection in Your forgiveness from Your punishment. I seek protection in You from You. I cannot count Your praises. You are as You have praised Yourself."
+      },
+      "reference": "Ibn Majah: 3841",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Seeking Forgiveness"
+    },
+    {
+      "id": "famous-family-01",
+      "category": "Family",
+      "title": {
+        "en": "For forgiveness for your parents and all Muslims"
+      },
+      "arabic": "رَبَّنَا اغۡفِرۡ لِیۡ وَ لِوَالِدَیَّ وَ لِلۡمُؤۡمِنِیۡنَ یَوۡمَ یَقُوۡمُ الۡحِسَابُ",
+      "transliteration": "Rabbanaghfir Lee Wa Liwaalidayya Wa Lil-Mu’mineena Yawma Yaqoomul H’isaab",
+      "translations": {
+        "en": "Our Lord, forgive me and my parents and the believers the Day the account is established."
+      },
+      "reference": "Surah Ibraheem - 14:41",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Children"
+    },
+    {
+      "id": "famous-family-02",
+      "category": "Family",
+      "title": {
+        "en": "Make Dua for your parents"
+      },
+      "arabic": "قَالَ رَبِّ اِنِّیۡ ظَلَمۡتُ نَفۡسِیۡ فَاغۡفِرۡ لِیۡ فَغَفَرَ لَہٗ ؕ اِنَّہٗ ہُوَ الۡغَفُوۡرُ الرَّحِیۡمُ، قَالَ رَبِّ بِمَاۤ اَنۡعَمۡتَ عَلَیَّ فَلَنۡ اَکُوۡنَ ظَہِیۡرًا لِّلۡمُجۡرِمِیۡنَ، رَبِّ نَجِّنِیۡ مِنَ الۡقَوۡمِ الظّٰلِمِیۡنَ",
+      "transliteration": "Qala Rabbi innee thalamtunafsee faghfir lee faghafara lahu innahu huwa alghafooruarraheem Qala Rabbi bima anAAamtaAAalayya falan akoona thaheeran lilmujrimeen Rabbi najjinee mina alqawmi aththalimeen",
+      "translations": {
+        "en": "He said, \"My Lord, indeed I have wronged myself, so forgive me,\" and He forgave him. Indeed, He is the Forgiving, the Merciful. He said, \"My Lord, for the favor You bestowed upon me, I will never be an assistant to the criminals. My Lord, save me from the wrong doing people."
+      },
+      "reference": "Surah Al-Qasas - 28:16-17, 21",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Children"
+    },
+    {
+      "id": "famous-family-03",
+      "category": "Family",
+      "title": {
+        "en": "Make Dua for your parents"
+      },
+      "arabic": "رَبِّ اجۡعَلۡنِیۡ مُقِیۡمَ الصَّلٰوۃِ وَ مِنۡ ذُرِّیَّتِیۡ، رَبَّنَا وَ تَقَبَّلۡ دُعَآءِ",
+      "transliteration": "Rabbij-A’lnee Muqeemas’ S’alaati Wa Min D’urrriyyatee Rabbanaa Wa Taqabbal Du-A’aa",
+      "translations": {
+        "en": "O my Lord! Make me one who performs As-Salaat (Iqaamat-as-Salaat), and (also) from my offspring, our Lord! And accept my invocation."
+      },
+      "reference": "Surah Ibraheem - 14:40",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Children"
+    },
+    {
+      "id": "famous-family-04",
+      "category": "Family",
+      "title": {
+        "en": "Make Dua for your parents"
+      },
+      "arabic": "رَّبِّ ارۡحَمۡہُمَا کَمَا رَبَّیٰنِیۡ صَغِیۡرًا",
+      "transliteration": "Rabbi  irhamhuma kama rabbayani sagheera",
+      "translations": {
+        "en": "My Lord, have mercy upon them (parents) as they brought me up [when i was] small."
+      },
+      "reference": "Surah Al-Isra - 17:24",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Children"
+    },
+    {
+      "id": "famous-family-05",
+      "category": "Family",
+      "title": {
+        "en": "For a blissful family"
+      },
+      "arabic": "رَبَّنَا ہَبۡ لَنَا مِنۡ اَزۡوَاجِنَا وَ ذُرِّیّٰتِنَا قُرَّۃَ اَعۡیُنٍ وَّ اجۡعَلۡنَا لِلۡمُتَّقِیۡنَ اِمَامًا",
+      "transliteration": "Rabbana Hablana min azwaajina wadhurriy-yatina, qurrata ‘ayioni wa-jalna lil-muttaqeena Imaama",
+      "translations": {
+        "en": "O my Lord! Grant unto us wives and offspring who will be the comfort of our eyes, and give us (the grace) to lead the righteous."
+      },
+      "reference": "Surah Al-Furqan - 25:74",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Children"
+    },
+    {
+      "id": "famous-family-06",
+      "category": "Family",
+      "title": {
+        "en": "Asking Allah to grant you a child"
+      },
+      "arabic": "رَبِّ ہَبۡ لِیۡ مِنۡ لَّدُنۡکَ ذُرِّیَّۃً طَیِّبَۃً ۚ اِنَّکَ سَمِیۡعُ الدُّعَآءِ",
+      "transliteration": "Rabbi Hab Lee Mil Ladunka D’urriyyatan T’ayyibah Innaka Samee-u’d Du’aa",
+      "translations": {
+        "en": "O my Lord! Grant me from You, a good offspring. You are indeed the All-Hearer of invocation."
+      },
+      "reference": "Surah Al-Imran - 3:38",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Children"
+    },
+    {
+      "id": "famous-family-07",
+      "category": "Family",
+      "title": {
+        "en": "Asking Allah to grant you a child"
+      },
+      "arabic": "رَبِّ لَا تَذَرۡنِیۡ فَرۡدًا وَّ اَنۡتَ خَیۡرُ الۡوٰرِثِیۡنَ",
+      "transliteration": "Rabbi Laa Tad’arnee Fardaw wa Anta Khayrul Waaritheen",
+      "translations": {
+        "en": "O My Lord! Leave me not single (childless), though You are the Best of the inheritors."
+      },
+      "reference": "Surah Al-Anbiya - 21:89",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Children"
+    },
+    {
+      "id": "famous-family-08",
+      "category": "Family",
+      "title": {
+        "en": "For Righteous Children"
+      },
+      "arabic": "رَبِّ هَبۡ لِى مِن لَّدُنكَ ذُرِّيَّةً۬ طَيِّبَةً‌ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ",
+      "transliteration": "Rabbi hab lee min ladunka dhurriyyatan tayyibatan innaka samee'ud-du'a",
+      "translations": {
+        "en": "My Lord, grant me from Yourself a good offspring. Indeed, You are the Hearer of supplication."
+      },
+      "reference": "Surah Al-Imran 3:38",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Righteous Offspring"
+    },
+    {
+      "id": "famous-family-09",
+      "category": "Family",
+      "title": {
+        "en": "For Righteous Children"
+      },
+      "arabic": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+      "transliteration": "Rabbana hab lana min azwajina wa dhurriyyatina qurrata a'yunin waj'alna lil-muttaqeena imaman",
+      "translations": {
+        "en": "Our Lord, grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous."
+      },
+      "reference": "Surah Al-Furqan 25:74",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Righteous Offspring"
+    },
+    {
+      "id": "famous-family-10",
+      "category": "Family",
+      "title": {
+        "en": "For Righteous Children"
+      },
+      "arabic": "رَبِّ هَبۡ لِى مِنَ ٱلصَّـٰلِحِينَ",
+      "transliteration": "Rabbi hab lee minas-saliheen",
+      "translations": {
+        "en": "My Lord, grant me [a child] from among the righteous."
+      },
+      "reference": "Surah Al-Saffat 37:100",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Family & Righteous Offspring"
+    },
+    {
+      "id": "famous-health-01",
+      "category": "Health",
+      "title": {
+        "en": "For a healthy life"
+      },
+      "arabic": "اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي لاَ إِلَهَ إِلاَّ أَنْتَ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ لاَ إِلَهَ إِلاَّ أَنْتَ",
+      "transliteration": "Allahumma AAafinee fee badanee, allahumma AAafinee fee samAAee, allahumma AAafinee fee basaree, la ilaha illa anta. Allahumma innee aAAoothu bika minal-kufri, walfaqri, Allahumma innee aAAoothu bika min AAathabil-qabri, la ilaha illa anta.",
+      "translations": {
+        "en": "O Allah, grant my body health, O Allah, grant my hearing health, O Allah, grant my sight health. None has the right to be worshipped except You. O Allah, I take refuge with You from disbelief and poverty, and I take refuge with You from the punishment of the grave. None has the right to be worshipped except You."
+      },
+      "reference": "Abu Dawud: 5090",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-health-02",
+      "category": "Health",
+      "title": {
+        "en": "When Visiting the Sick"
+      },
+      "arabic": "لَا بَأْسَ طَهُورٌ إِنْ شَاءَ اللّٰهُ",
+      "transliteration": "Laa ba’sa tahoorun ‘inshaa’Allaah.",
+      "translations": {
+        "en": "Do not worry, it will be a purification (for you), Allah willing."
+      },
+      "reference": "Sahih Al-Bukhari: 3616",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-health-03",
+      "category": "Health",
+      "title": {
+        "en": "When Visiting the Sick"
+      },
+      "arabic": "أَسْأَلُ اللّٰهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَكَ",
+      "transliteration": "As’alullaahal-’Adheema Rabbal-’Arshil-’Adheemi ‘an yashfiyaka.",
+      "translations": {
+        "en": "I ask Allah who is the Lofty and the Lord of the Mighty Throne that He cures you (Prophet Mohammad (SAW.) said that by reciting this dua seven times, the ill person will regain his health and if death occurs then that (death) is a different issue (i.e. death is written it cannot be prevented))"
+      },
+      "reference": "At-Tirmidhi: 2083",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-health-04",
+      "category": "Health",
+      "title": {
+        "en": "To alleviate pain"
+      },
+      "arabic": "بِسْمِ اللّٰهِ، أَعُوذُ بِعِزَّةِ اللّٰهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ. (سَبْعَ مَرَّاتٍ)",
+      "transliteration": "Bismillah, A’udhu bi’izzatil-lahi wa qudratihi min sharri ma ajidu wa uhadhiru.",
+      "translations": {
+        "en": "In the Name of Allah, I seek refuge in the might and power of Allah from the evil of what I feel and what I fear."
+      },
+      "reference": "Ibn Majah: 3522",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-health-05",
+      "category": "Health",
+      "title": {
+        "en": "Upon seeing someone going through a trial or tribulation"
+      },
+      "arabic": "الْحَمْدُ لِلّٰهِ الَّذِي عَافَانِي مِمَّا ابْتَلاَكَ بِهِ وَفَضَّلَنِي عَلَى كَثِيرٍ مِمَّنْ خَلَقَ تَفْضِيلاً",
+      "transliteration": "Alhamdu lillaahil-lathee ‘aafaanee mimmab-talaaka bihi wa fadhdhalanee ‘alaa katheerin mimman khalaqa tafdheela",
+      "translations": {
+        "en": "Praise is to Allah Who has spared me what He has afflicted you with, and preferred me greatly above much of what He has created."
+      },
+      "reference": "Ibn Majah: 3892",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-health-06",
+      "category": "Health",
+      "title": {
+        "en": "If you fall on hard times"
+      },
+      "arabic": "اَنِّیۡ مَسَّنِیَ الضُّرُّ وَ اَنۡتَ اَرۡحَمُ الرّٰحِمِیۡنَ",
+      "transliteration": "Annee massaniya addurru waanta arhamuarrahimeen",
+      "translations": {
+        "en": "Indeed, adversity has touched me, and you are the Most Merciful of the merciful."
+      },
+      "reference": "Surah Al-Anbiya - 21:83",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-health-07",
+      "category": "Health",
+      "title": {
+        "en": "When you are nearing your death"
+      },
+      "arabic": "اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَأَلْحِقْنِي بِالرَّفِيقِ الأَعْلَى",
+      "transliteration": "Allaahum-maghfir lee warhamnee wa ‘alhiqnee bir-rafeeqil-’a’laa",
+      "translations": {
+        "en": "O Allah, forgive me and have mercy upon me and join me with the highest companions (in Paradise)."
+      },
+      "reference": "At-Tirmidhi: 3496",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-health-08",
+      "category": "Health",
+      "title": {
+        "en": "When you are nearing your death"
+      },
+      "arabic": "لَا اِلٰہَ اِلَّا اللّٰہُ وَاللّٰهُ اَکۡبَرُ، لَا اِلٰہَ اِلَّا اللّٰہُ وَحْدَهُ، لَا اِلٰہَ اِلَّا اللّٰہُ لَا شَرِيۡکَ لَهُ، لَا اِلٰہَ اِلَّا اللّٰہُ لَهُ الْمُلْکُ وَلَهُ الْحَمْدُ، لَا اِلٰہَ اِلَّا اللّٰہُ وَلَا حَوْلَ وَلَا قُوَّةَ اِلَّا بِاللّٰہِِ",
+      "transliteration": "Laa ‘ilaaha ‘illallaahu wallaahu ‘Akbar, laa ‘ilaaha ‘illallaahu wahdahu, laa ‘ilaaha ‘illallaahu laa shareeka lahu, laa ‘ilaaha ‘illallaahu lahul-mulku wa lahul-hamdu, laa ‘ilaaha ‘illallaahu wa laa hawla wa laa quwwata ‘illaa billaah",
+      "translations": {
+        "en": "There is none worthy of worship but Allah, Allah is the Most Great. None has the right to be worshipped but Allah alone. None has the right to be worshipped but Allah alone, Who has no partner. There is none worthy of worship but Allah, His is the dominion and His is the praise. There is none worthy of worship but Allah, there is no power and no might but by Allah."
+      },
+      "reference": "Ibn Majah: 3794",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-health-09",
+      "category": "Health",
+      "title": {
+        "en": "When visiting graves"
+      },
+      "arabic": "السَّلاَمُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ وَإِنَّا إِنْ شَاءَ اللّٰهُ بِكُمْ لاَحِقُونَ نَسْأَلُ اللّٰهَ لَنَا وَلَكُمُ الْعَافِيَةَ",
+      "transliteration": "Assalaamu ‘alaykum ‘ahlad-diyaari, minal-mu’mineena walmuslimeena, wa ‘innaa ‘in shaa’ Allaahu bikum laahiqoona [wa yarhamullaahul-mustaqdimeena minnaa walmusta’khireena] ‘as’alullaaha lanaa wa lakumul- ‘aafiyata.",
+      "translations": {
+        "en": "Oh Muslims residing here, salaams on you, by the will of Allah we will also be coming to you. We seek safety for us and you."
+      },
+      "reference": "Ibn Majah: 1547",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-health-10",
+      "category": "Health",
+      "title": {
+        "en": "During illness"
+      },
+      "arabic": "[سُوۡرَةُ الفَلَق]  قُلۡ اَعُوۡذُ بِرَبِّ الۡفَلَقِ،  مِنۡ شَرِّ مَا خَلَقَ،  وَ مِنۡ شَرِّ غَاسِقٍ اِذَا وَقَب،  وَ مِنۡ شَرِّ النَّفّٰثٰتِ فِی الۡعُقَدِ،  وَ مِنۡ شَرِّ حَاسِدٍ اِذَا حَسَدَ [سُوۡرَةُ  النَّاس]  ۡقُلۡ اَعُوۡذُ بِرَبِّ النَّاسِ، مَلِکِ النَّاسِ، اِلٰہِ النَّاسِ، مِنۡ شَرِّ الۡوَسۡوَاسِ الۡخَنَّاسِ، الَّذِیۡ یُوَسۡوِسُ فِیۡ صُدُوۡرِ النَّاسِ، مِنَ الۡجِنَّۃِ وَ النَّاسِ",
+      "transliteration": "[Surah Al-Falaq]Qul ‘A’udhu Bi-Rabbil-Falaq, Min Sharri Ma Khalaq, Wa Min Sharri Ghasiqin ‘Idha Waqab, Wa Min Sharri-Naffathati Fil-‘Uqadi, Wa Min Sharri Hasidin ‘Idha Hasad. [Surah An-Nas]Qul ‘A’udhu Bi-Rabbin-Nas, Malikin-Nas, Ilahin-Nas, Min-Sharril-Waswasil-Khan-Nas, Al-Ladhi Yuwas-wisu Fee Sudurin-Nas, Mina Al-Jinnati Wan-Nas.",
+      "translations": {
+        "en": "[Surah Al-Falaq]Say, \"I seek refuge in the Lord of daybreak, From the evil of that which He created, And from the evil of darkness when it settles, And from the evil of the blowers in knots, And from the evil of an envier when he envies.\" [Surah An-Nas]Say, \"I seek refuge in the Lord of mankind, The Sovereign of mankind, The God of mankind, From the evil of the retreating whisperer, Who whispers [evil] into the breasts of mankind, From among the jinn and mankind.\""
+      },
+      "reference": "Sahih Al-Bukhari: 5016",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Health & Sickness"
+    },
+    {
+      "id": "famous-rizq-01",
+      "category": "Rizq",
+      "title": {
+        "en": "Daily Remembrance"
+      },
+      "arabic": "اَلۡحَمۡدُ لِلّٰہِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَكَفَانَا وَآوَانَا فَكَمْ مِمَّنْ لاَ كَافِيَ لَهُ وَلاَ مُئْوِيَ",
+      "transliteration": "Alhamdu lillahil-lathee atAAamana wasaqana, wakafana, wa-awana, fakam mimman la kafiya lahu wala mu/wee.",
+      "translations": {
+        "en": "All praise is for Allah, Who fed us and gave us drink, and Who is sufficient for us and has sheltered us, for how many have none to suffice them or shelter them."
+      },
+      "reference": "Sahih Muslim: 2715",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-rizq-02",
+      "category": "Rizq",
+      "title": {
+        "en": "Daily Remembrance"
+      },
+      "arabic": "اللَّهُمَّ عَالِمَ الغَيْبِ والشَّهَادَةِ، فَاطِرَ السَّموَاتِ والأرْضِ، رَبَّ كُلِّ  شَیۡءٍ ومَلِيْكَهُ، أشْهَدُ أنْ لَا إلَهَ إلاَّ أنْتَ، أعُوذُ بِكَ مِنْ شَرِّ نَفْسِي، وَمِنْ شَرِّ الشَّيْطَانِ وَشِرْكِهِ",
+      "transliteration": "Allahumma AAalimal-ghaybi washshahadah, fatiras-samawati wal-ard, rabba kulli shayin wamaleekah, ashhadu an la ilaha illa ant, aAAoothu bika min sharri nafsee wamin sharrish-shaytani washirkih",
+      "translations": {
+        "en": "O Allah Knower of the Unseen and the Seen, Originator of the heavens and the earth, Lord of everything and its Possessor, I bear witness that there is none worthy of worship except You, I seek refuge from You from the evil of my soul and from the evil of Shaitan and his Shirk."
+      },
+      "reference": "At-Tirmidhi: 3392",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-rizq-03",
+      "category": "Rizq",
+      "title": {
+        "en": "Daily Remembrance"
+      },
+      "arabic": "اللَّهُمَّ أَسْلَمْتُ نَفْسِي إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، وَوَجَّهْتُ وَجْهِي إِلَيْكَ، وَأَلْجَأْتُ ظَهْرِي إِلَيْكَ، رَغْبَةً وَرَهْبَةً إِلَيْكَ، لاَ مَلْجَأَ وَلاَ مَنْجَا مِنْكَ إِلاَّ إِلَيْكَ، آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ، وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ",
+      "transliteration": "Allahumma aslamtu nafsi ilaika wa fauwadtu `Amri ilaika, wa wajjahtu wajhi ilaika wa aljaatu zahri ilaika, reghbatan wa rahbatan ilaika. La maljaa wa la manja minka illa ilaika. Amantu bikitabikal-ladhi anzalta; wa nabiyyikalladhi arsalta",
+      "translations": {
+        "en": "O Allah! I have surrendered myself over to you and have turned my face towards You, and leave all my affairs to You and depend on You and put my trust in You expecting Your reward and fearing Your punishment. There is neither fleeing from You nor refuge but with You. I believe in the Book (Qur’an) which You have revealed and in Your Prophet (Muhammad) whom You have sent."
+      },
+      "reference": "Sahih Al-Bukhari: 6313",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-rizq-04",
+      "category": "Rizq",
+      "title": {
+        "en": "Daily Remembrance"
+      },
+      "arabic": "اَللّٰہُ لَاۤ اِلٰہَ اِلَّا ہُوَ اَلۡحَیُّ الۡقَیُّوۡمُ لَا تَاۡخُذُہٗ سِنَۃٌ وَّ لَا نَوۡمٌ  لَہٗ مَا فِی السَّمٰوٰتِ وَ مَا فِی الۡاَرۡضِ مَنۡ ذَا الَّذِیۡ یَشۡفَعُ عِنۡدَہٗۤ اِلَّا بِاِذۡنِہٖ  یَعۡلَمُ مَا بَیۡنَ اَیۡدِیۡہِمۡ وَ مَا خَلۡفَہُمۡ  وَ لَا یُحِیۡطُوۡنَ بِشَیۡءٍ مِّنۡ عِلۡمِہٖۤ اِلَّا بِمَا شَآءَ وَسِعَ کُرۡسِیُّہُ السَّمٰوٰتِ وَ الۡاَرۡضَ  وَ لَا یَـُٔوۡدُہٗ حِفۡظُہُمَا  وَ ہُوَ الۡعَلِیُّ الۡعَظِیۡمُ",
+      "transliteration": "Allaahu laa ‘ilaaha ‘illaa Huwal-Hayyul-Qayyoom, laa ta’khuthuhu sinatun wa laa nawm, lahu maa fis-samaawaati wa maafil-’ardh, man thal-lathee yashfa’u ‘indahu ‘illaa bi’ithnih, ya’lamu maa bayna ‘aydeehim wa maa khalfahum, wa laa yuheetoona bishay’im-min ‘ilmihi ‘illaa bimaa shaa’a, wasi’a kursiyyuhus-samaawaati wal’ardh, wa laa ya’ooduhu hifdhuhumaa, wa Huwal-’Aliyyul- ‘Adheem",
+      "translations": {
+        "en": "Allah! There is none worthy of worship but He, the Ever Living, the One Who sustains and protects all that exists. Neither slumber nor sleep overtakes Him. To Him belongs whatever is in the heavens and whatever is on the earth. Who is he that can intercede with Him except with His Permission? He knows what happens to them in this world, and what will happen to them in the Hereafter. And they will never compass anything of His Knowledge except that which He wills. His Throne extends over the heavens and the earth, and He feels no fatigue in guarding and preserving them. And He is the Most High, the Most Great."
+      },
+      "reference": "Surah Al-Baqarah - 2:255, Sahih Al-Bukhari: 2311",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-rizq-05",
+      "category": "Rizq",
+      "title": {
+        "en": "Daily Remembrance"
+      },
+      "arabic": "سُبْحَانَ اللّٰہِ  (33 times) الۡحَمۡدُ لِلّٰہ  (33 times) اَللّٰہُ اَکۡبَر  (34 times)",
+      "transliteration": "Subhana-Allah (33 times) Alhamdulillah (33 times) Allahu Akbar (34 times)",
+      "translations": {
+        "en": "Glory be to Allah (33 times), Praise be to Allah (33 times), Allah is the greatest (34 times)"
+      },
+      "reference": "Sahih Al-Bukhari: 5362",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-rizq-06",
+      "category": "Rizq",
+      "title": {
+        "en": "Daily Remembrance"
+      },
+      "arabic": "[سُوۡرَةُ الإخلاص] \n قُلۡ ہُوَ اللّٰہُ اَحَدٌ،  اَللّٰہُ الصَّمَدُ،  لَمۡ یَلِدۡ وَ لَمۡ یُوۡلَدۡوَ لَمۡ یَکُنۡ لَّہٗ  کُفُوًا اَحَدٌ \n\n[سُوۡرَةُ الفَلَق]\n قُلۡ اَعُوۡذُ بِرَبِّ الۡفَلَقِ،  مِنۡ شَرِّ مَا خَلَقَ،  وَ مِنۡ شَرِّ غَاسِقٍ اِذَا وَقَب،  وَ مِنۡ شَرِّ النَّفّٰثٰتِ فِی الۡعُقَدِ،  وَ مِنۡ شَرِّ حَاسِدٍ اِذَا حَسَدَ \n\n[سُوۡرَةُ  النَّاس]\n قُلۡ اَعُوۡذُ بِرَبِّ النَّاسِ، مَلِکِ النَّاسِ، اِلٰہِ النَّاسِ، مِنۡ شَرِّ الۡوَسۡوَاسِ الۡخَنَّاسِ، الَّذِیۡ یُوَسۡوِسُ فِیۡ صُدُوۡرِ النَّاسِ، مِنَ الۡجِنَّۃِ وَ النَّاسِ",
+      "transliteration": "[Surah Al-Ikhlas]Qul Huwa-llahu ‘Ahad, Allahus-Samad, Lam Yalid Wa Lam Yulad, Walam Yakul-La-Hu-Kufuwan ‘Ahad. [Surah Al-Falaq]Qul ‘A’udhu Bi-Rabbil-Falaq, Min Sharri Ma Khalaq, Wa Min Sharri Ghasiqin ‘Idha Waqab, Wa Min Sharri-Naffathati Fil-‘Uqadi, Wa Min Sharri Hasidin ‘Idha Hasad. [Surah An-Nas]Qul ‘A’udhu Bi-Rabbin-Nas, Malikin-Nas, Ilahin-Nas, Min-Sharril-Waswasil-Khan-Nas, Al-Ladhi Yuwas-wisu Fee Sudurin-Nas, Mina Al-Jinnati Wan-Nas.",
+      "translations": {
+        "en": "[Surah Al-Ikhlas] Say, He is Allah, [who is] One, Allah, the Eternal Refuge, He neither begets nor is born, Nor is there to Him any equivalent. [Surah Al-Falaq] Say, I seek refuge in the Lord of daybreak, From the evil of that which He created, And from the evil of darkness when it settles, And from the evil of the blowers in knots, And from the evil of an envier when he envies. [Surah An-Nas] Say, I seek refuge in the Lord of mankind, The Sovereign of mankind, The God of mankind, From the evil of the retreating whisperer, Who whispers [evil] into the breasts of mankind, From among the jinn and mankind."
+      },
+      "reference": "Sahih Al-Bukhari: 5017",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-rizq-07",
+      "category": "Rizq",
+      "title": {
+        "en": "Everyday Duas"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْماً نَافِعاً،  وَرِزْقاً طَيِّباً،  وَعَمَلاً مُتَقَبَّلاً",
+      "transliteration": "Allaahumma ‘innee ‘as’aluka ‘ilman naafi’an, wa rizqan tayyiban, wa ‘amalan mutaqabbalan",
+      "translations": {
+        "en": "O Allah, I ask You for knowledge that is of benefit, a good provision, and deeds that will be accepted."
+      },
+      "reference": "Ibn Majah: 925",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-rizq-08",
+      "category": "Rizq",
+      "title": {
+        "en": "Everyday Duas"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ",
+      "transliteration": "Allaahumma ‘innee ‘as’alukal-jannata wa ‘a’oothu bika minan-naar",
+      "translations": {
+        "en": "O Allah, I ask You for Paradise and seek Your protection from the Fire."
+      },
+      "reference": "Abu Dawud: 792",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-rizq-09",
+      "category": "Rizq",
+      "title": {
+        "en": "Everyday Duas"
+      },
+      "arabic": "سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ وَلَا إِلَهَ إِلاَّ اللّٰهُ وَاللّٰهُ اَکۡبَرُ",
+      "transliteration": "Subhaanallaahi, Walhamdu lillaahi, Wala Illaha Illallahu, Wallaahu ‘Akbar",
+      "translations": {
+        "en": "Glory is to Allah, praise is to Allah, there is no god but Allah and Allah is the Most Great."
+      },
+      "reference": "Sahih Muslim: 2695",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-rizq-10",
+      "category": "Rizq",
+      "title": {
+        "en": "Everyday Duas"
+      },
+      "arabic": "لَّاۤ اِلٰہَ  اِلَّاۤ اَنۡتَ سُبۡحٰنَکَ  اِنِّیۡ کُنۡتُ مِنَ الظّٰلِمِیۡنَ",
+      "transliteration": "Laa ‘ilaaha ‘illaa ‘Anta subhaanaka ‘innee kuntu minadh-dhaalimeen",
+      "translations": {
+        "en": "There is none worthy of worship but You, glory is to You. Surely, I was among the wrongdoers."
+      },
+      "reference": "Surah Al-Anbiya - 21:87, At-Tirmidhi: 3505",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Daily Needs"
+    },
+    {
+      "id": "famous-qur-anic-dua-01",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا",
+      "transliteration": "Rabbana la tu'akhidhna in nasina aw akhta'na",
+      "translations": {
+        "en": "Our Lord, do not impose blame upon us if we have forgotten or erred."
+      },
+      "reference": "Surah Al-Baqarah 2:286",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-qur-anic-dua-02",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا",
+      "transliteration": "Rabbana wa la tahmil 'alayna isran kama hamaltahu 'alalladhina min qablina",
+      "translations": {
+        "en": "Our Lord, and lay not upon us a burden like that which You laid upon those before us."
+      },
+      "reference": "Surah Al-Baqarah 2:286",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-qur-anic-dua-03",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",
+      "transliteration": "Rabbana wa la tuhammilna ma la taqata lana bihi wa'fu 'anna waghfir lana warhamna anta mawlana fansurna 'alal-qawmil-kafireen",
+      "translations": {
+        "en": "Our Lord, and burden us not with that which we have no ability to bear. And pardon us; and forgive us; and have mercy upon us. You are our protector, so give us victory over the disbelieving people."
+      },
+      "reference": "Surah Al-Baqarah 2:286",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-qur-anic-dua-04",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَبَّنَا إِنَّنَا آمَنَّا فَاغْفِرْ لَنَا ذُنُوبَنَا وَقِنَا عَذَابَ النَّارِ",
+      "transliteration": "Rabbana innana amanna faghfir lana dhunubana wa qina 'adhaban-nar",
+      "translations": {
+        "en": "Our Lord, indeed we have believed, so forgive us our sins and protect us from the punishment of the Fire."
+      },
+      "reference": "Surah Al-Imran 3:16",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-qur-anic-dua-05",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَبَّنَا اغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِي أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى القَوْمِ الكَافِرِينَ",
+      "transliteration": "Rabbanaghfir lana dhunubana wa israfana fi amrina wa thabbit aqdamana wansurna 'alal-qawmil-kafireen",
+      "translations": {
+        "en": "Our Lord, forgive us our sins and our excesses in our affairs, plant firmly our feet, and give us victory over the disbelieving people."
+      },
+      "reference": "Surah Al-Imran 3:147",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-qur-anic-dua-06",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَبَّنَا فَاغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّئَاتِنَا وَتَوَفَّنَا مَعَ الْأَبْرَارِ",
+      "transliteration": "Rabbana faghfir lana dhunubana wa kaffir 'anna sayyi'atina wa tawaffana ma'al-abrar",
+      "translations": {
+        "en": "Our Lord, so forgive us our sins and remove from us our misdeeds and cause us to die with the righteous."
+      },
+      "reference": "Surah Al-Imran 3:193",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-qur-anic-dua-07",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَبِّ ٱغۡفِرۡلِي وَلِأَخِى وَأَدۡخِلۡنَا فِى رَحۡمَتِكَ‌ وَأَنتَ أَرۡحَمُ ٱلرَّٲحِمِينَ",
+      "transliteration": "Rabbighfir lee wa li-akhi wa adkhilna fi rahmatika wa anta arhamur-rahimeen",
+      "translations": {
+        "en": "My Lord, forgive me and my brother and admit us into Your mercy, for You are the most merciful of the merciful."
+      },
+      "reference": "Surah Al-A'raf 7:151",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-qur-anic-dua-08",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَبَّنَآ ءَامَنَّا فَٱغۡفِرۡ لَنَا وَٱرۡحَمۡنَا وَأَنتَ خَيۡرُ ٱلرَّٰحِمِينَ",
+      "transliteration": "Rabbana amanna faghfir lana warhamna wa anta khayrur-rahimeen",
+      "translations": {
+        "en": "Our Lord, we have believed, so forgive us and have mercy upon us, and You are the best of the merciful."
+      },
+      "reference": "Surah Al-Mu'minun 23:109",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-qur-anic-dua-09",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَّبِّ ٱغۡفِرۡ وَٱرۡحَمۡ وَأَنتَ خَيۡرُ ٱلرَّٰحِمِينَ",
+      "transliteration": "Rabbighfir warham wa anta khayrur-rahimeen",
+      "translations": {
+        "en": "My Lord, forgive and have mercy, and You are the best of the merciful."
+      },
+      "reference": "Surah Al-Mu'minun 23:118",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-qur-anic-dua-10",
+      "category": "Qur'anic Dua",
+      "title": {
+        "en": "Seeking Forgiveness for Sins"
+      },
+      "arabic": "رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ وَلَا تَجْعَلْ فِي قُلُوبِنَا غِلًّا لِّلَّذِينَ اٰمَنُوا",
+      "transliteration": "Rabbanaghfir lana wa li-ikhwaninalladhina sabaquna bil-eemani wa la taj'al fi qulubina ghillan lilladhina amanu",
+      "translations": {
+        "en": "Our Lord, forgive us and our brothers who preceded us in faith and put not in our hearts [any] resentment toward those who have believed."
+      },
+      "reference": "Surah Al-Hashr 59:10",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Forgiveness & Repentance"
+    },
+    {
+      "id": "famous-personal-01",
+      "category": "Personal",
+      "title": {
+        "en": "Say these words when in distress"
+      },
+      "arabic": "اللّٰہُ اللّٰہُ رَبِّي لَا أُشْرِكُ بِهِ شَيْئًا",
+      "transliteration": "Allahu Allahu Rabbi, la ushriku bihi shai'a",
+      "translations": {
+        "en": "Allah, Allah is my Lord. I do not associate anything with Him."
+      },
+      "reference": "Abu Dawood: 1525",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    },
+    {
+      "id": "famous-personal-02",
+      "category": "Personal",
+      "title": {
+        "en": "Get a house in Jannah!"
+      },
+      "arabic": "قَالَتۡ رَبِّ ابۡنِ لِیۡ عِنۡدَکَ بَیۡتًا فِی الۡجَنَّۃِ",
+      "transliteration": "Qaalat rab bibni lee 'indaka baitan fil jannati",
+      "translations": {
+        "en": "My Lord! Build me a house in Paradise near You"
+      },
+      "reference": "Quran 66:11",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    },
+    {
+      "id": "famous-personal-03",
+      "category": "Personal",
+      "title": {
+        "en": "When you fail or lose at something"
+      },
+      "arabic": "قَدَّرَ اللّٰهُ وَمَا شَاءَ فَعَلَ",
+      "transliteration": "Qadarullaahu wa maa shaa’afa’ala",
+      "translations": {
+        "en": "It is the Decree of Allah and He does whatever He wills."
+      },
+      "reference": "Ibn Majah: 4168",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    },
+    {
+      "id": "famous-personal-04",
+      "category": "Personal",
+      "title": {
+        "en": "When stricken by tragedy"
+      },
+      "arabic": "اِنَّا لِلّٰہِ وَ اِنَّاۤ اِلَیۡہِ رٰجِعُوۡنَ، اللَّهُمَّ أْجُرْنِي فِي مُصِيبَتِي وَأَخْلِفْ لِي خَيْرًا مِنْهَا",
+      "transliteration": "Innaa lillaahi wa ‘innaa ‘ilayhi raaji’oon, Allaahumma’-jurni fee museebatee wa ‘akhliflee khayran minhaa",
+      "translations": {
+        "en": "We are from Allah and unto Him we return. O Allah take me out of my plight and bring to me after it something better."
+      },
+      "reference": "Sahih Muslim: 918 (b)",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    },
+    {
+      "id": "famous-personal-05",
+      "category": "Personal",
+      "title": {
+        "en": "When stricken by tragedy"
+      },
+      "arabic": "حَسۡبُنَا اللّٰہُ وَ نِعۡمَ الۡوَکِیۡلُ",
+      "transliteration": "Hasbunallaahu wa ni’amal-wakeel",
+      "translations": {
+        "en": "Allah is sufficient for us and the best of those on whom to depend."
+      },
+      "reference": "Surah Al-Imran 3:173",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    },
+    {
+      "id": "famous-personal-06",
+      "category": "Personal",
+      "title": {
+        "en": "For seeking Allah's help"
+      },
+      "arabic": "اِنَّمَاۤ اَشۡکُوۡا بَثِّیۡ وَ حُزۡنِیۡۤ  اِلَی اللّٰہِ وَ اَعۡلَمُ مِنَ اللّٰہِ مَا لَا تَعۡلَمُوۡنَ",
+      "transliteration": "Innama ashkoo baththee wahuzneeila Allahi waaAAlamu mina Allahi ma lataAAlamoon",
+      "translations": {
+        "en": "I only complain of my suffering and my grief to Allah, and I know from Allah that which you do not know."
+      },
+      "reference": "Surah Yusuf - 12:86",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    },
+    {
+      "id": "famous-personal-07",
+      "category": "Personal",
+      "title": {
+        "en": "At times of worry and sorry"
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ وَالْعَجْزِ وَالْكَسَلِ وَالْبُخْلِ وَالْجُبْنِ وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",
+      "transliteration": "Allaahumma ‘innee ‘a’oothu bika minal-hammi walhazani, wal’ajzi walkasali, walbukhli waljubni, wa dhala’id-dayni wa ghalabatir-rijaal",
+      "translations": {
+        "en": "O Allah, I seek refuge in you from grief and sadness, from weakness and from laziness, from miserliness and from cowardice, from being overcome by debt and overpowered by men (i .e . others)."
+      },
+      "reference": "Sahih Al-Bukhari: 6369",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    },
+    {
+      "id": "famous-personal-08",
+      "category": "Personal",
+      "title": {
+        "en": "When in distress"
+      },
+      "arabic": "لَّاۤ اِلٰہَ  اِلَّاۤ اَنۡتَ سُبۡحٰنَکَ  اِنِّیۡ کُنۡتُ مِنَ الظّٰلِمِیۡنَ",
+      "transliteration": "Laa ‘ilaaha ‘illaa ‘Anta subhaanaka ‘innee kuntu minadh-dhaalimeen",
+      "translations": {
+        "en": "There is none worthy of worship but You, glory is to You. Surely, I was among the wrongdoers."
+      },
+      "reference": "Surah Al-Anbiya - 21:87, At-Tirmidhi: 3505",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    },
+    {
+      "id": "famous-personal-09",
+      "category": "Personal",
+      "title": {
+        "en": "When in distress"
+      },
+      "arabic": "اللَّهُمَّ رَحْمَتَكَ أَرْجُو فَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ وَأَصْلِحْ لِي شَأْنِي كُلَّهُ لاَ إِلَهَ إِلاَّ أَنْتَ",
+      "transliteration": "Allaahumma rahmataka ‘arjoo falaa takilnee ‘ilaa nafsee tarfata ‘aynin, wa ‘aslih lee sha’nee kullahu, laa’ilaaha ‘illaa ‘Anta",
+      "translations": {
+        "en": "O Allah, I hope for Your mercy. Do not leave me to myself even for the blinking of an eye (i.e. a moment). Correct all of my affairs for me. There is none worthy of worship but You."
+      },
+      "reference": "Abu Dawud: 5090",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    },
+    {
+      "id": "famous-personal-10",
+      "category": "Personal",
+      "title": {
+        "en": "When in distress"
+      },
+      "arabic": "لَا إِلَهَ إِلاَّ اللّٰهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَهَ إِلاَّ اللّٰهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لَا إِلَهَ إِلاَّ اللّٰهُ رَبُّ السَّمَوَاتِ، وَرَبُّ الأَرْضِ، وَرَبُّ الْعَرْشِ الْكَرِيمِ",
+      "transliteration": "Laa ‘ilaaha ‘illallaahul-’Adheemul-Haleem, laa ‘ilaaha ‘illallaahu Rabbul-’Arshil-’Adheem, laa ‘ilaaha ‘illallaahu Rabbus-samaawaati wa Rabbul-’ardhi wa Rabbul-’Arshil-Kareem",
+      "translations": {
+        "en": "There is none worthy of worship but Allah the Mighty, the Forbearing. There is none worthy of worship but Allah, Lord of the Magnificent Throne. There is none worthy of worship but Allah, Lord of the heavens and Lord of the earth, and Lord of the Noble Throne."
+      },
+      "reference": "Sahih Al-Bukhari: 6346",
+      "sourceCollection": "Hisnul Muslim",
+      "sourceCategory": "Hardship & Patience"
+    }
+  ]
+}
