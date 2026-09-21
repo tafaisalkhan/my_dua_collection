@@ -338,3 +338,16 @@ otification, so they intentionally did not launch voice playback. Users must sel
 - Selected bundle Duas retain their per-Dua repeat selector (1–10) and daily/weekly/monthly schedule controls.
 - Focused Flutter analysis completed with no errors; only three pre-existing style-level curly-brace info notices remain.
 - These changes were not deployed after editing; deploy only when the user explicitly asks.
+## 2026-09-21 — Release signing, privacy, ads, device, and Git status
+
+- Git repository initialized and pushed to `https://github.com/tafaisalkhan/my_dua_collection.git` on branch `main`.
+- Added `PRIVACY.md` and standalone `privacy.html`.
+- Created local Android upload keystore at `android/app/upload-keystore.jks` and local credentials at `android/key.properties`.
+- Signing secrets are explicitly ignored by `.gitignore` and were verified absent from the Git commit.
+- Android release signing is configured in `android/app/build.gradle.kts`.
+- Product identifier reserved as `remove_ads`; dummy purchase and cloud/offline-save settings UI removed for now.
+- Test banner ads are placed above app content and above bottom navigation while ads are enabled.
+- First test interstitial is scheduled after 3 minutes of app use; subsequent interstitials use the existing 5–6 interaction interval.
+- Latest debug APK built, installed, and launched successfully on RMX3760.
+- Release AAB is currently blocked by Windows Application Control preventing Flutter's `gen_snapshot.exe` from running. Signing configuration succeeds; the Windows policy must allow Flutter's release compiler before `flutter build appbundle --release` can complete.
+- Never commit or share `android/key.properties` or `android/app/upload-keystore.jks`. Back up both securely; losing the upload key can prevent future app updates.
