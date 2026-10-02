@@ -1,9 +1,11 @@
 # Privacy Policy
 
-**Favorite Dua**  
-**Effective date:** September 21, 2026
+**App Name:** Favorite Dua  
+**Package Name:** com.myfavourite.duas  
+**Developer / Publisher:** Tafaisal Khan  
+**Effective Date:** September 21, 2026  
 
-Favorite Dua is a personal Dua, image, audio, document, link, and scheduling application. This policy explains how the app handles information.
+This privacy policy governs the mobile application **Favorite Dua** (Package ID: `com.myfavourite.duas`), developed and offered by **Tafaisal Khan**. This policy explains how information is handled within the application.
 
 ## Information the app handles
 
@@ -50,9 +52,9 @@ The app is not designed to knowingly collect personal information from children 
 
 This policy may be updated when the app’s features or legal requirements change. The effective date above will be revised when material changes are made.
 
-## Contact
+## Contact and Support
 
-For privacy questions, open an issue at:
+If you have any questions or concerns regarding this privacy policy or the **Favorite Dua** app, please contact developer **Tafaisal Khan** via:
 
-https://github.com/tafaisalkhan/my_dua_collection/issues
+- GitHub Issues: https://github.com/tafaisalkhan/my_dua_collection/issues
 
