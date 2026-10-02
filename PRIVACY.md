@@ -2,10 +2,11 @@
 
 **App Name:** Favorite Dua  
 **Package Name:** com.myfavourite.duas  
-**Developer / Publisher:** Tafaisal Khan  
-**Effective Date:** September 21, 2026  
+**Developer / Publisher:** Muhammad Faisal Khan  
+**Contact Email:** android.nextlevel@gmail.com  
+**Effective Date:** October 2, 2026  
 
-This privacy policy governs the mobile application **Favorite Dua** (Package ID: `com.myfavourite.duas`), developed and offered by **Tafaisal Khan**. This policy explains how information is handled within the application.
+This privacy policy governs the mobile application **Favorite Dua** (Package ID: `com.myfavourite.duas`), developed and offered by **Muhammad Faisal Khan**. This policy explains how information is handled within the application.
 
 ## Information the app handles
 
@@ -54,7 +55,8 @@ This policy may be updated when the app’s features or legal requirements chang
 
 ## Contact and Support
 
-If you have any questions or concerns regarding this privacy policy or the **Favorite Dua** app, please contact developer **Tafaisal Khan** via:
+If you have any questions or concerns regarding this privacy policy or the **Favorite Dua** app, please contact developer **Muhammad Faisal Khan** via:
 
+- Email: android.nextlevel@gmail.com
 - GitHub Issues: https://github.com/tafaisalkhan/my_dua_collection/issues
 
