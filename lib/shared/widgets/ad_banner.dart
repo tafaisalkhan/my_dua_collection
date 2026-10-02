@@ -20,7 +20,7 @@ class _AppBannerAdState extends ConsumerState<AppBannerAd> {
   void initState() {
     super.initState();
     _ad = BannerAd(
-      adUnitId: AdService.androidTestBanner,
+      adUnitId: AdService.androidBanner,
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(

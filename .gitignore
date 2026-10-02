@@ -44,7 +44,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 # Android release signing secrets (never commit)
-/android/key.properties
-/android/app/upload-keystore.jks
+**/key.properties
+**/*.jks
+**/*.keystore
+**/*.p12
 .dart_cli/
 /android/build/

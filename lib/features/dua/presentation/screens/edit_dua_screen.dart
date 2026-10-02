@@ -50,7 +50,6 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
   final _title = TextEditingController();
   final _duaText = TextEditingController();
   final _translation = TextEditingController();
-  final _transliteration = TextEditingController();
   final _reference = TextEditingController();
   final _tags = TextEditingController();
   final _notes = TextEditingController();
@@ -126,7 +125,6 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       _title.text = dua.title;
       _duaText.text = dua.originalText;
       _translation.text = dua.translation ?? '';
-      _transliteration.text = dua.transliteration ?? '';
       _reference.text = dua.reference ?? '';
       _tags.text = dua.tagsText;
       _notes.text = dua.notes ?? '';
@@ -339,7 +337,6 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
           title: Value(_title.text.trim()),
           originalText: Value(_duaText.text.trim()),
           translation: Value(_nullableText(_translation)),
-          transliteration: Value(_nullableText(_transliteration)),
           reference: Value(_nullableText(_reference)),
           tagsText: Value(_tags.text.trim()),
           notes: Value(_nullableText(_notes)),
@@ -436,7 +433,6 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
               title: _title.text.trim(),
               originalText: _duaText.text.trim(),
               translation: Value(_nullableText(_translation)),
-              transliteration: Value(_nullableText(_transliteration)),
               reference: Value(_nullableText(_reference)),
               tagsText: Value(_tags.text.trim()),
               notes: Value(_nullableText(_notes)),
@@ -551,7 +547,6 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
     _title.dispose();
     _duaText.dispose();
     _translation.dispose();
-    _transliteration.dispose();
     _reference.dispose();
     _tags.dispose();
     _notes.dispose();
@@ -610,17 +605,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            TextFormField(
-              controller: _transliteration,
-              minLines: 2,
-              maxLines: 6,
-              decoration: const InputDecoration(
-                labelText: 'Transliteration',
-                hintText: 'Enter pronunciation using Latin letters',
-                alignLabelWithHint: true,
-              ),
-            ),
-            const SizedBox(height: 16),
+
             TextFormField(
               controller: _reference,
               decoration: const InputDecoration(

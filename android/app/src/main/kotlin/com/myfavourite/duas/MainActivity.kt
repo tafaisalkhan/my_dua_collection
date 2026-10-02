@@ -1,4 +1,4 @@
-package com.favoritedua.favorite_dua
+package com.myfavourite.duas
 
 import android.app.AlarmManager
 import android.content.Context

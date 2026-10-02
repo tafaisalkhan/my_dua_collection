@@ -1,4 +1,4 @@
-package com.favoritedua.favorite_dua
+package com.myfavourite.duas
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -95,7 +95,7 @@ object DuaBundleScheduler {
         frequency: String, weekday: Int, dayOfMonth: Int
     ): PendingIntent {
         val intent = Intent(context, DuaBundleReceiver::class.java).apply {
-            action = "com.favoritedua.PLAY_BUNDLE"
+            action = "com.myfavourite.duas.PLAY_BUNDLE"
             putExtra("id", id); putExtra("name", name)
             putStringArrayListExtra("titles", titles)
             putStringArrayListExtra("audioPaths", audioPaths)

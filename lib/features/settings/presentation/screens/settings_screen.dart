@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/theme/theme_provider.dart';
 import '../../../../core/theme/font_scale_provider.dart';
 import '../controllers/reminder_controller.dart';
+import '../controllers/ad_entitlement_controller.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -14,6 +15,7 @@ class SettingsScreen extends ConsumerWidget {
     final mode = ref.watch(themeModeProvider);
     final fontScale = ref.watch(fontScaleProvider);
     final reminder = ref.watch(reminderControllerProvider);
+    final removeAds = ref.watch(removeAdsPurchaseProvider);
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
       body: ListView(
@@ -154,6 +156,65 @@ class SettingsScreen extends ConsumerWidget {
                 },
               ),
             ),
+          ),
+          const SizedBox(height: 24),
+          Text('Support', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          Card(
+            child: removeAds.entitled
+                ? const ListTile(
+                    leading: Icon(Icons.verified_outlined),
+                    title: Text('Ads removed'),
+                    subtitle: Text(
+                      'Your Google Play Remove Ads purchase is active.',
+                    ),
+                  )
+                : Column(
+                    children: [
+                      ListTile(
+                        leading: const Icon(Icons.block_outlined),
+                        title: const Text('Remove Ads'),
+                        subtitle: Text(
+                          removeAds.product == null
+                              ? 'One-time Google Play purchase'
+                              : 'One-time purchase • ${removeAds.product!.price}',
+                        ),
+                        trailing: removeAds.loading || removeAds.purchasePending
+                            ? const SizedBox.square(
+                                dimension: 22,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              )
+                            : const Icon(Icons.chevron_right),
+                        onTap: removeAds.loading || removeAds.purchasePending
+                            ? null
+                            : () => ref
+                                  .read(removeAdsPurchaseProvider.notifier)
+                                  .buy(),
+                      ),
+                      const Divider(height: 1),
+                      TextButton.icon(
+                        onPressed: removeAds.purchasePending
+                            ? null
+                            : () => ref
+                                  .read(removeAdsPurchaseProvider.notifier)
+                                  .restore(),
+                        icon: const Icon(Icons.restore),
+                        label: const Text('Restore purchase'),
+                      ),
+                      if (removeAds.message != null)
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                          child: Text(
+                            removeAds.message!,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
           ),
         ],
       ),

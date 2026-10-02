@@ -17,13 +17,21 @@ class _State extends ConsumerState<IncomingShareListener> {
   @override
   void initState() {
     super.initState();
-    sub = ReceiveSharingIntent.instance.getMediaStream().listen(
-      _receive,
-      onError: (Object error) => debugPrint('Incoming share error: $error'),
-    );
+    try {
+      sub = ReceiveSharingIntent.instance.getMediaStream().listen(
+        (items) => _receive(items),
+        onError: (Object error) => debugPrint('Incoming share error: $error'),
+      );
+    } catch (e) {
+      debugPrint('Incoming share getMediaStream error: $e');
+    }
     ReceiveSharingIntent.instance.getInitialMedia().then((v) async {
-      await _receive(v);
-      await ReceiveSharingIntent.instance.reset();
+      if (v.isNotEmpty) {
+        await _receive(v);
+        await ReceiveSharingIntent.instance.reset();
+      }
+    }).catchError((Object error) {
+      debugPrint('Error getting initial media: $error');
     });
   }
 

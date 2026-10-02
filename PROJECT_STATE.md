@@ -351,3 +351,88 @@ otification, so they intentionally did not launch voice playback. Users must sel
 - Latest debug APK built, installed, and launched successfully on RMX3760.
 - Release AAB is currently blocked by Windows Application Control preventing Flutter's `gen_snapshot.exe` from running. Signing configuration succeeds; the Windows policy must allow Flutter's release compiler before `flutter build appbundle --release` can complete.
 - Never commit or share `android/key.properties` or `android/app/upload-keystore.jks`. Back up both securely; losing the upload key can prevent future app updates.
+## 2026-09-22 — Current handoff: real Remove Ads purchase pending
+
+### User's latest requirements
+
+- Restore a visible **Remove Ads** button in Settings.
+- This must be a real Google Play Billing purchase, not the previous dummy purchase.
+- The Google Play product has already been created by the user with product ID `remove_ads`.
+- Tapping anywhere on a Dua card should open the Dua detail page; tapping the arrow must open the same page.
+
+### Work completed in this step
+
+- Investigated why Remove Ads was missing: the Settings purchase card was removed together with the dummy purchase UI in the previous change.
+- Confirmed `DuaCard` already wraps the full colored card in an `InkWell(onTap: widget.onTap)` and the chevron has `onPressed: widget.onTap`. Attachment chips intentionally handle their own taps to play/open the attachment.
+- Added the official Flutter Google Play billing dependency with `flutter pub add in_app_purchase`.
+- Current resolved package: `in_app_purchase 3.3.1` plus its Android/platform dependencies.
+- `pubspec.yaml` and `pubspec.lock` are currently modified and not yet committed/pushed for this latest work.
+
+### Remaining implementation
+
+1. Replace/extend `lib/features/settings/presentation/controllers/ad_entitlement_controller.dart` to:
+   - listen to `InAppPurchase.instance.purchaseStream`;
+   - query product ID `remove_ads`;
+   - call `buyNonConsumable` for the one-time ad-removal purchase;
+   - validate product ID and successful/restored purchase status;
+   - call `completePurchase` when required;
+   - persist `remove_ads_entitlement = true` only after a successful purchase or restore;
+   - expose purchase and restore methods plus user-readable errors/loading state.
+2. Restore a Remove Ads card/button in `settings_screen.dart`:
+   - show actual Play Store product price returned by `ProductDetails` when available;
+   - launch the real purchase flow;
+   - provide Restore Purchases;
+   - show the existing “Ads removed” state after entitlement succeeds;
+   - explain that sideloaded debug builds may not return Play products and testing should use a Google Play internal/closed testing install with a licensed tester account.
+3. Verify `AdService.instance.setAdsEnabled(!adsRemoved)` continues to hide/dispose banner and interstitial ads after purchase.
+4. Improve card affordance if needed, but do not remove attachment chip actions. Whole-card and arrow navigation are already implemented in `dua_card.dart`.
+5. Format, analyze, build/install on device only if explicitly requested, then commit and push when requested.
+
+### Important repository/release state
+
+- Remote: `https://github.com/tafaisalkhan/my_dua_collection.git`, branch `main`.
+- Last pushed commit before this unfinished purchase work: `daf95c4`.
+- Local upload key remains at `android/app/upload-keystore.jks`; credentials remain at `android/key.properties`.
+- Both signing files are ignored and must never be committed.
+- Release AAB is still blocked on this Windows machine because Application Control blocks Flutter's release `gen_snapshot.exe`.
+## 2026-09-22 — Real Remove Ads completed; deployment authorization pending
+
+- Added `in_app_purchase 3.3.1` and completed the real Google Play Billing flow for product ID `remove_ads`.
+- `RemoveAdsPurchaseController` now queries Play product details, displays the Play price, starts a non-consumable purchase, listens to purchase updates, completes pending purchases, restores purchases, and persists the entitlement only for Play-reported purchased/restored `remove_ads` transactions.
+- Settings now displays Remove Ads, purchase progress/errors, dynamic Play price, Restore Purchase, and the active Ads Removed state.
+- `adsRemovedProvider` is derived from purchase state; existing banners/interstitials are disabled and disposed after entitlement becomes active.
+- Added explicit `com.android.vending.BILLING` permission to the Android manifest. The product ID remains in Dart purchase code, where Google Play Billing expects it; product IDs do not belong in manifest metadata.
+- Removed transliteration from user-facing add/edit forms and the legacy generic Dua form. The database field remains for backward compatibility and no destructive migration is required.
+- Focused analysis passes with no errors; only one pre-existing `use_build_context_synchronously` info notice remains in `edit_dua_screen.dart`.
+- Debug APK builds successfully with Play Billing.
+- Latest debug APK with real Play Billing and transliteration removal was built, installed, and launched successfully on RMX3760.
+- Signed release AAB was attempted again and remains blocked by Windows Application Control denying Flutter's `gen_snapshot.exe`. No valid release AAB was produced locally.
+- Latest purchase/transliteration changes are local and not yet committed or pushed.
+
+## 2026-09-22 — Production AdMob IDs and release bundle
+
+- Replaced Google's Android sample AdMob app ID with production app ID `ca-app-pub-1852108665659812~5569410427`.
+- Replaced the sample banner unit with production banner unit `ca-app-pub-1852108665659812/5571436549`.
+- Replaced the sample interstitial unit with production interstitial unit `ca-app-pub-1852108665659812/5379864859`.
+- Renamed the Dart ad constants to remove the obsolete `Test` designation.
+- Release AAB remains blocked by Flutter's native debug-symbol stripping failure on this Windows environment; no new AAB artifact was produced.
+
+## 2026-09-22 — Google Play photo/video permission compliance
+
+- Confirmed the app already uses `image_picker`/`file_picker` system picker flows and had no direct broad media permission declarations.
+- Added manifest merge removal rules for `READ_MEDIA_IMAGES` and `READ_MEDIA_VIDEO`, preventing any transitive plugin manifest from adding broad Android 13+ photo/video access.
+- Also removed transitive `READ_EXTERNAL_STORAGE` (including its legacy max-SDK declaration); media access is exclusively through system pickers/content URIs.
+- The app continues to receive user-selected media through system picker/content URIs and share intents; no broad photo/video permission is requested.
+- Release manifest merge task passed, and the generated merged manifest contains none of `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, `READ_EXTERNAL_STORAGE`, or `WRITE_EXTERNAL_STORAGE`.
+- Configured release `ndk.debugSymbolLevel = "SYMBOL_TABLE"` so Flutter can verify native symbols in the AAB and Google Play can symbolicate native crashes.
+
+## 2026-09-22 — Version 2 release AAB generated
+
+- Generated signed release bundle at `build/app/outputs/bundle/release/app-release.aab` (approximately 97.7 MB).
+- Bundle contains native symbol metadata for `libapp.so`, `libflutter.so`, and `libdartjni.so` across arm64-v8a, armeabi-v7a, and x86_64.
+- Flutter still exits with its generic post-build symbol-check error even though the AAB is present and contains the expected symbols; the artifact itself is available for Play Console upload.
+
+## 2026-09-22 — Play release version increment
+
+- Incremented Flutter build number from `1` to `2` (`version: 1.0.0+2`) because Google Play rejects reusing an already-uploaded version code.
+- The Android `versionCode` remains sourced from `flutter.versionCode`; the next release AAB will therefore use version code 2.

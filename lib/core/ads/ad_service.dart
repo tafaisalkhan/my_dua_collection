@@ -7,9 +7,8 @@ class AdService {
   AdService._();
   static final instance = AdService._();
 
-  static const androidTestInterstitial =
-      'ca-app-pub-3940256099942544/1033173712';
-  static const androidTestBanner = 'ca-app-pub-3940256099942544/6300978111';
+  static const androidInterstitial = 'ca-app-pub-1852108665659812/5379864859';
+  static const androidBanner = 'ca-app-pub-1852108665659812/5571436549';
   static const removeAdsProductId = 'remove_ads';
 
   final _random = Random();
@@ -79,7 +78,7 @@ class AdService {
     if (!_adsEnabled || _loading || _interstitial != null) return;
     _loading = true;
     InterstitialAd.load(
-      adUnitId: androidTestInterstitial,
+      adUnitId: androidInterstitial,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {

@@ -37,12 +37,7 @@ class DuaForm extends StatelessWidget {
               v == null || v.trim().isEmpty ? 'Dua text is required' : null,
         ),
         const SizedBox(height: 14),
-        for (final label in const [
-          'Translation',
-          'Transliteration',
-          'Reference',
-          'Notes',
-        ]) ...[
+        for (final label in const ['Translation', 'Reference', 'Notes']) ...[
           TextFormField(
             minLines: label == 'Notes' ? 3 : 1,
             maxLines: label == 'Notes' ? 5 : 1,
