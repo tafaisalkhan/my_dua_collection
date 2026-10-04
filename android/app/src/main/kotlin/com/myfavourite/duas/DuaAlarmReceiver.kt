@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 
@@ -17,18 +18,29 @@ class DuaAlarmReceiver : BroadcastReceiver() {
         val hour = intent.getIntExtra("hour", 8)
         val minute = intent.getIntExtra("minute", 0)
         val repeats = intent.getIntExtra("repeats", 3)
-        val mode = intent.getStringExtra("mode") ?: "notification"
+        var mode = intent.getStringExtra("mode") ?: "both"
         val category = intent.getStringExtra("category") ?: ""
         val duaText = intent.getStringExtra("duaText") ?: ""
+        
+        if (mode == "notification" && audioPath != null) {
+            mode = "both"
+        }
+
+        Log.d("FavoriteDuaAlarm", "Alarm triggered for '$title' (id=$id, mode=$mode, audioPath=$audioPath)")
+
         DuaAlarmScheduler.schedule(context, id, title, audioPath, hour, minute, repeats, mode, persist = true, afterFiring = true, category = category, duaText = duaText)
 
         if (mode == "notification" || mode == "both") showReminder(context, id, title, category, duaText)
         if ((mode == "play" || mode == "both") && audioPath != null) {
-            ContextCompat.startForegroundService(context, Intent(context, DuaPlaybackService::class.java).apply {
-                putExtra("title", title)
-                putExtra("audioPath", audioPath)
-                putExtra("repeats", repeats)
-            })
+            try {
+                ContextCompat.startForegroundService(context, Intent(context, DuaPlaybackService::class.java).apply {
+                    putExtra("title", title)
+                    putExtra("audioPath", audioPath)
+                    putExtra("repeats", repeats)
+                })
+            } catch (e: Exception) {
+                Log.e("FavoriteDuaAlarm", "Error starting DuaPlaybackService: ${e.message}")
+            }
         }
     }
 

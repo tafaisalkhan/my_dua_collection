@@ -67,7 +67,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
   int _repeats = 3;
   bool _scheduleEnabled = false;
   String _category = 'Morning';
-  String _scheduleMode = 'notification';
+  String _scheduleMode = 'both';
   List<Category> _categories = const [];
 
   @override
@@ -492,7 +492,13 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
         );
       }
       await DuaJsonService.writeSnapshot(db, id);
-      if (mounted) context.go('/dua/$id');
+      if (mounted) {
+        if (_scheduleEnabled) {
+          context.go('/home');
+        } else {
+          context.go('/dua/$id');
+        }
+      }
     } catch (error) {
       if (mounted) {
         setState(() => _saving = false);
@@ -646,7 +652,13 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       }
       await DuaJsonService.writeSnapshot(db, id);
       _audioTemporary = false;
-      if (mounted) context.go('/dua/$id');
+      if (mounted) {
+        if (_scheduleEnabled) {
+          context.go('/home');
+        } else {
+          context.go('/dua/$id');
+        }
+      }
     } catch (error) {
       if (mounted) {
         setState(() => _saving = false);

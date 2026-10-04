@@ -51,10 +51,16 @@ object DuaAlarmScheduler {
         val pending = pendingIntent(
             context, id, title, audioPath, hour, minute, repeats, mode, category, duaText
         )
+        val showIntent = PendingIntent.getActivity(
+            context,
+            id.hashCode(),
+            context.packageManager.getLaunchIntentForPackage(context.packageName) ?: Intent(context, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 alarm.setAlarmClock(
-                    AlarmManager.AlarmClockInfo(next.timeInMillis, pending),
+                    AlarmManager.AlarmClockInfo(next.timeInMillis, showIntent),
                     pending
                 )
             } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || alarm.canScheduleExactAlarms()) {

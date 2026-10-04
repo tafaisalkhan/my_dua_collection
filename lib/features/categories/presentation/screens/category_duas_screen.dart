@@ -16,7 +16,20 @@ class CategoryDuasScreen extends ConsumerWidget {
   Widget build(BuildContext c, WidgetRef r) {
     final d = r.watch(categoryDuasProvider(name));
     return Scaffold(
-      appBar: AppBar(title: Text(name)),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          tooltip: 'Back to Home',
+          onPressed: () {
+            if (c.canPop()) {
+              c.pop();
+            } else {
+              c.go('/home');
+            }
+          },
+        ),
+        title: Text(name),
+      ),
       body: d.when(
         loading: () => const AppLoading(),
         error: (e, s) => AppError(e.toString()),

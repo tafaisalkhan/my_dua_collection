@@ -316,6 +316,17 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
         appBar: AppBar(
           backgroundColor: duaColor,
           foregroundColor: Colors.black87,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            tooltip: 'Back to Home',
+            onPressed: () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/home');
+              }
+            },
+          ),
           title: Text(dua.title),
           actions: [
             IconButton(

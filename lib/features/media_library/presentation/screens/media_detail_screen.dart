@@ -52,6 +52,17 @@ class _MediaDetailState extends ConsumerState<MediaDetailScreen> {
           _init(item.kind, item.filePath);
           return Scaffold(
             appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                tooltip: 'Back to Home',
+                onPressed: () {
+                  if (context.canPop()) {
+                    context.pop();
+                  } else {
+                    context.go('/home');
+                  }
+                },
+              ),
               title: Text(item.title),
               actions: [
                 IconButton(

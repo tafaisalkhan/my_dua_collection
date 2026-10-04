@@ -39,6 +39,7 @@ class IncomingShareReviewScreen extends ConsumerWidget {
       context.push('/add/manual?libraryItemId=$id');
   }
 
+  // ignore: unused_element
   Future<void> _addTextToExisting(
     BuildContext context,
     WidgetRef ref,

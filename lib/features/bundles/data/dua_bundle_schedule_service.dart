@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -54,7 +55,7 @@ class DuaBundleScheduleService {
   static const _bundlesKey = 'all_dua_bundles_v2';
   static const _legacyKey = 'primary_dua_bundle';
 
-  /// Loads all scheduled Dua bundles.
+  /// Loads all scheduled Dua bundles safely.
   static Future<List<DuaBundleConfig>> loadAll() async {
     final prefs = await SharedPreferences.getInstance();
     final rawList = prefs.getStringList(_bundlesKey);
@@ -63,17 +64,17 @@ class DuaBundleScheduleService {
           .map((item) => DuaBundleConfig.fromJson(jsonDecode(item) as Map<String, dynamic>))
           .toList();
     }
-    // Migration check for legacy single bundle
+    // Safe migration check for legacy single bundle
     final legacyRaw = prefs.getString(_legacyKey);
     if (legacyRaw != null) {
-      final single = DuaBundleConfig.fromJson(jsonDecode(legacyRaw) as Map<String, dynamic>);
-      await save(
-        config: single,
-        titles: const [],
-        audioPaths: const [],
-        repeats: const [],
-      );
-      return [single];
+      try {
+        final single = DuaBundleConfig.fromJson(jsonDecode(legacyRaw) as Map<String, dynamic>);
+        await prefs.setStringList(_bundlesKey, [jsonEncode(single.toJson())]);
+        await prefs.remove(_legacyKey);
+        return [single];
+      } catch (e) {
+        debugPrint('Legacy bundle migration error: $e');
+      }
     }
     return const [];
   }
@@ -92,18 +93,20 @@ class DuaBundleScheduleService {
     final rawList = updatedList.map((b) => jsonEncode(b.toJson())).toList();
     await prefs.setStringList(_bundlesKey, rawList);
 
-    await _channel.invokeMethod('scheduleBundle', {
-      'id': config.id,
-      'name': config.name,
-      'titles': titles,
-      'audioPaths': audioPaths,
-      'repeats': repeats,
-      'hour': config.hour,
-      'minute': config.minute,
-      'frequency': config.frequency,
-      'weekday': config.weekday,
-      'dayOfMonth': config.dayOfMonth,
-    });
+    if (audioPaths.isNotEmpty) {
+      await _channel.invokeMethod('scheduleBundle', {
+        'id': config.id,
+        'name': config.name,
+        'titles': titles,
+        'audioPaths': audioPaths,
+        'repeats': repeats,
+        'hour': config.hour,
+        'minute': config.minute,
+        'frequency': config.frequency,
+        'weekday': config.weekday,
+        'dayOfMonth': config.dayOfMonth,
+      });
+    }
   }
 
   /// Cancels and deletes a Dua bundle schedule by ID.

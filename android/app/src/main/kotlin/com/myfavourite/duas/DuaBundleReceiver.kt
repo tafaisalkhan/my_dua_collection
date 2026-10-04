@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 
@@ -21,6 +22,9 @@ class DuaBundleReceiver : BroadcastReceiver() {
         val frequency = intent.getStringExtra("frequency") ?: "daily"
         val weekday = intent.getIntExtra("weekday", 1)
         val dayOfMonth = intent.getIntExtra("dayOfMonth", 1)
+
+        Log.d("FavoriteDuaBundle", "Bundle alarm triggered for '$name' (id=$id, ${paths.size} audio item(s))")
+
         DuaBundleScheduler.schedule(context, id, name, titles, paths, repeats, hour, minute, frequency, weekday, dayOfMonth, afterFiring = true)
 
         val manager = context.getSystemService(NotificationManager::class.java)
@@ -35,11 +39,15 @@ class DuaBundleReceiver : BroadcastReceiver() {
             .setAutoCancel(true).build())
 
         if (paths.isNotEmpty()) {
-            ContextCompat.startForegroundService(context, Intent(context, DuaPlaybackService::class.java).apply {
-                putExtra("title", name)
-                putStringArrayListExtra("audioPaths", paths)
-                putIntegerArrayListExtra("audioRepeats", repeats)
-            })
+            try {
+                ContextCompat.startForegroundService(context, Intent(context, DuaPlaybackService::class.java).apply {
+                    putExtra("title", name)
+                    putStringArrayListExtra("audioPaths", paths)
+                    putIntegerArrayListExtra("audioRepeats", repeats)
+                })
+            } catch (e: Exception) {
+                Log.e("FavoriteDuaBundle", "Error starting DuaPlaybackService for bundle: ${e.message}")
+            }
         }
     }
 }

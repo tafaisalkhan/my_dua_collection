@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../core/database/app_database.dart';
@@ -157,6 +158,7 @@ class _DuaBundleScreenState extends ConsumerState<DuaBundleScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Dua bundle "${config.name}" scheduled.')),
     );
+    context.go('/home');
   }
 
   Future<void> _deleteBundle(DuaBundleConfig bundle) async {
@@ -221,6 +223,7 @@ class _DuaBundleScreenState extends ConsumerState<DuaBundleScreen> {
                     Card(
                       margin: const EdgeInsets.only(bottom: 12),
                       child: ListTile(
+                        onTap: () => _startEditing(bundle),
                         leading: const CircleAvatar(
                           child: Icon(Icons.queue_music),
                         ),

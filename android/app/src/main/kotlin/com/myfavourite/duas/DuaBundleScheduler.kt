@@ -44,29 +44,41 @@ object DuaBundleScheduler {
                 .edit().putString(id, json.toString()).apply()
         }
         val now = Calendar.getInstance()
+        val isCurrentMinute = now.get(Calendar.HOUR_OF_DAY) == hour &&
+                now.get(Calendar.MINUTE) == minute
         val next = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, hour)
-            set(Calendar.MINUTE, minute)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-            when (frequency) {
-                "weekly" -> {
-                    set(Calendar.DAY_OF_WEEK, if (weekday == 7) Calendar.SUNDAY else weekday + 1)
-                    if (!after(now) || afterFiring) add(Calendar.WEEK_OF_YEAR, 1)
+            if (isCurrentMinute && !afterFiring) {
+                timeInMillis = now.timeInMillis + 5_000
+            } else {
+                set(Calendar.HOUR_OF_DAY, hour)
+                set(Calendar.MINUTE, minute)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+                when (frequency) {
+                    "weekly" -> {
+                        set(Calendar.DAY_OF_WEEK, if (weekday == 7) Calendar.SUNDAY else weekday + 1)
+                        if (!after(now) || afterFiring) add(Calendar.WEEK_OF_YEAR, 1)
+                    }
+                    "monthly" -> {
+                        set(Calendar.DAY_OF_MONTH, dayOfMonth.coerceIn(1, 28))
+                        if (!after(now) || afterFiring) add(Calendar.MONTH, 1)
+                    }
+                    else -> if (!after(now) || afterFiring) add(Calendar.DAY_OF_YEAR, 1)
                 }
-                "monthly" -> {
-                    set(Calendar.DAY_OF_MONTH, dayOfMonth.coerceIn(1, 28))
-                    if (!after(now) || afterFiring) add(Calendar.MONTH, 1)
-                }
-                else -> if (!after(now) || afterFiring) add(Calendar.DAY_OF_YEAR, 1)
             }
         }
         val alarm = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val pending = pendingIntent(context, id, name, titles, audioPaths, repeats, hour, minute, frequency, weekday, dayOfMonth)
+        val showIntent = PendingIntent.getActivity(
+            context,
+            id.hashCode(),
+            context.packageManager.getLaunchIntentForPackage(context.packageName) ?: Intent(context, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 alarm.setAlarmClock(
-                    AlarmManager.AlarmClockInfo(next.timeInMillis, pending),
+                    AlarmManager.AlarmClockInfo(next.timeInMillis, showIntent),
                     pending
                 )
             } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || alarm.canScheduleExactAlarms()) {
