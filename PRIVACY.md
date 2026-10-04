@@ -22,14 +22,17 @@ This content is stored locally on your device. The app does not require an accou
 
 ## Device permissions
 
-The app may request:
+The app requests the following Android device permissions to function:
 
-- **Camera and photos/files:** to capture, select, crop, import, preview, save, and share supported content
-- **Microphone:** to record voice audio that you choose to attach to a Dua
-- **Notifications and alarms:** to show scheduled reminders and run requested Dua playback
-- **Media/audio access:** to select or play audio and other attachments
+- **Exact Alarms (`SCHEDULE_EXACT_ALARM`, `USE_EXACT_ALARM`):** to schedule exact time recitations for single Duas and Dua Bundles that trigger reliably without OS throttling.
+- **Foreground Service & Media Playback (`FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MEDIA_PLAYBACK`):** to play scheduled Dua voice recitations in the background when the app is minimized.
+- **Wake Lock (`WAKE_LOCK`):** to keep the device CPU active during voice recitation playback when the screen is turned off or locked.
+- **Boot Completion (`RECEIVE_BOOT_COMPLETED`):** to automatically restore and reschedule your Dua alarms after phone reboot or app update.
+- **Notifications & Vibration (`POST_NOTIFICATIONS`, `VIBRATE`, `USE_FULL_SCREEN_INTENT`):** to display scheduled Dua reminders, alert notifications, and full-screen alarm intents.
+- **Microphone (`RECORD_AUDIO`):** to record personal voice recitations that you choose to attach to a Dua.
+- **In-App Billing (`com.android.vending.BILLING`):** to process optional Google Play in-app purchases (such as Remove Ads).
 
-You can deny or revoke permissions in Android settings. Features that need a denied permission may not work.
+You can manage or revoke optional permissions in Android settings at any time.
 
 ## Sharing and external services
 

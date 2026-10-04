@@ -49,13 +49,17 @@
   <p>This content is stored locally on your device. The app does not require an account and does not upload your personal Dua collection to a developer-operated server.</p>
 
   <h2>Device permissions</h2>
+  <p>The app requests the following Android device permissions to function:</p>
   <ul>
-    <li><strong>Camera and photos/files:</strong> to capture, select, crop, import, preview, save, and share supported content</li>
-    <li><strong>Microphone:</strong> to record voice audio that you choose to attach to a Dua</li>
-    <li><strong>Notifications and alarms:</strong> to show scheduled reminders and run requested Dua playback</li>
-    <li><strong>Media/audio access:</strong> to select or play audio and other attachments</li>
+    <li><strong>Exact Alarms (<code>SCHEDULE_EXACT_ALARM</code>, <code>USE_EXACT_ALARM</code>):</strong> to schedule exact time recitations for single Duas and Dua Bundles that trigger reliably without OS throttling.</li>
+    <li><strong>Foreground Service &amp; Media Playback (<code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code>):</strong> to play scheduled Dua voice recitations in the background when the app is minimized.</li>
+    <li><strong>Wake Lock (<code>WAKE_LOCK</code>):</strong> to keep the device CPU active during voice recitation playback when the screen is turned off or locked.</li>
+    <li><strong>Boot Completion (<code>RECEIVE_BOOT_COMPLETED</code>):</strong> to automatically restore and reschedule your Dua alarms after phone reboot or app update.</li>
+    <li><strong>Notifications &amp; Vibration (<code>POST_NOTIFICATIONS</code>, <code>VIBRATE</code>, <code>USE_FULL_SCREEN_INTENT</code>):</strong> to display scheduled Dua reminders, alert notifications, and full-screen alarm intents.</li>
+    <li><strong>Microphone (<code>RECORD_AUDIO</code>):</strong> to record personal voice recitations that you choose to attach to a Dua.</li>
+    <li><strong>In-App Billing (<code>com.android.vending.BILLING</code>):</strong> to process optional Google Play in-app purchases (such as Remove Ads).</li>
   </ul>
-  <p>You can deny or revoke permissions in Android settings. Features that need a denied permission may not work.</p>
+  <p>You can manage or revoke optional permissions in Android settings at any time.</p>
 
   <h2>Sharing and external services</h2>
   <p>The app can receive supported content shared from other apps and can share content to apps that you select. When you open a website or YouTube link, content may be handled by an embedded web view, browser, YouTube, or another installed app. Those third parties process information under their own privacy policies.</p>

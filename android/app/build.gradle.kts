@@ -47,15 +47,24 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
-            // Flutter validates that release AABs include native symbols.
-            // SYMBOL_TABLE is sufficient for Play Console native crash symbolication.
-            ndk {
-                debugSymbolLevel = "SYMBOL_TABLE"
-            }
+            isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+    }
+
+    bundle {
+        language { enableSplit = false }
+        density { enableSplit = false }
+        abi { enableSplit = false }
+    }
+
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
         }
     }
 }
@@ -74,4 +83,8 @@ flutter {
     source = "../.."
 }
 
-
+tasks.configureEach {
+    if (name.contains("strip", ignoreCase = true) && name.contains("DebugSymbols", ignoreCase = true)) {
+        enabled = false
+    }
+}

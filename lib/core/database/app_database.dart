@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path/path.dart' as p;
@@ -36,7 +37,7 @@ part 'app_database.g.dart';
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_open());
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 6;
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) async => m.createAll(),
@@ -53,12 +54,90 @@ class AppDatabase extends _$AppDatabase {
         await m.addColumn(duas, duas.scheduleRepeats);
         await m.addColumn(duas, duas.scheduleMode);
       }
+      if (f < 6) {
+        await m.addColumn(duas, (duas as dynamic).imageBlob);
+        await m.addColumn(duaAttachments, (duaAttachments as dynamic).dataBlob);
+        await m.addColumn(recordings, (recordings as dynamic).audioBlob);
+        await m.addColumn(libraryItems, (libraryItems as dynamic).fileBlob);
+      }
     },
     beforeOpen: (_) async {
       await customStatement('PRAGMA foreign_keys = ON');
       await _seed();
+      await syncBinaryFilesToDevice();
     },
   );
+
+  /// Converts all binary BLOBs stored in database into physical files on device disk
+  /// if they do not exist, and updates local file paths.
+  Future<void> syncBinaryFilesToDevice() async {
+    try {
+      final docDir = await getApplicationDocumentsDirectory();
+      
+      // 1. Duas image blob -> device file
+      final allDuas = await select(duas).get();
+      for (final dua in allDuas) {
+        if (dua.imageBlob != null && (dua.imagePath == null || !File(dua.imagePath!).existsSync())) {
+          final dir = Directory(p.join(docDir.path, 'favorite_dua', 'images'));
+          if (!dir.existsSync()) await dir.create(recursive: true);
+          final filePath = p.join(dir.path, '${dua.id}_image.jpg');
+          final file = File(filePath);
+          await file.writeAsBytes(dua.imageBlob!);
+          await (update(duas)..where((t) => t.id.equals(dua.id))).write(
+            DuasCompanion(imagePath: Value(filePath)),
+          );
+        }
+      }
+
+      // 2. Dua attachments data blob -> device file
+      final allAttachments = await select(duaAttachments).get();
+      for (final att in allAttachments) {
+        if (att.dataBlob != null && (att.value.isEmpty || !File(att.value).existsSync())) {
+          final dir = Directory(p.join(docDir.path, 'favorite_dua', 'attachments'));
+          if (!dir.existsSync()) await dir.create(recursive: true);
+          final ext = att.mimeType?.contains('audio') == true ? 'm4a' : 'bin';
+          final filePath = p.join(dir.path, '${att.id}.$ext');
+          final file = File(filePath);
+          await file.writeAsBytes(att.dataBlob!);
+          await (update(duaAttachments)..where((t) => t.id.equals(att.id))).write(
+            DuaAttachmentsCompanion(value: Value(filePath)),
+          );
+        }
+      }
+
+      // 3. Recordings audio blob -> device file
+      final allRecordings = await select(recordings).get();
+      for (final rec in allRecordings) {
+        if (rec.audioBlob != null && (rec.audioPath.isEmpty || !File(rec.audioPath).existsSync())) {
+          final dir = Directory(p.join(docDir.path, 'favorite_dua', 'recordings'));
+          if (!dir.existsSync()) await dir.create(recursive: true);
+          final filePath = p.join(dir.path, '${rec.id}.m4a');
+          final file = File(filePath);
+          await file.writeAsBytes(rec.audioBlob!);
+          await (update(recordings)..where((t) => t.id.equals(rec.id))).write(
+            RecordingsCompanion(audioPath: Value(filePath)),
+          );
+        }
+      }
+
+      // 4. Library items file blob -> device file
+      final allLibrary = await select(libraryItems).get();
+      for (final item in allLibrary) {
+        if (item.fileBlob != null && (item.filePath == null || !File(item.filePath!).existsSync())) {
+          final dir = Directory(p.join(docDir.path, 'favorite_dua', 'library'));
+          if (!dir.existsSync()) await dir.create(recursive: true);
+          final filePath = p.join(dir.path, '${item.id}_file.bin');
+          final file = File(filePath);
+          await file.writeAsBytes(item.fileBlob!);
+          await (update(libraryItems)..where((t) => t.id.equals(item.id))).write(
+            LibraryItemsCompanion(filePath: Value(filePath)),
+          );
+        }
+      }
+    } catch (e, st) {
+      debugPrint('Error syncing binary files to device: $e\n$st');
+    }
+  }
   Future<void> _seed() async {
     final now = DateTime.now(), ids = <String, String>{};
     for (var i = 0; i < AppConstants.starterCategories.length; i++) {

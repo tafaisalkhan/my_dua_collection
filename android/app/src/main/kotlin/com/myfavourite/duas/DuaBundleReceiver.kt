@@ -11,10 +11,6 @@ import androidx.core.content.ContextCompat
 
 class DuaBundleReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action == Intent.ACTION_BOOT_COMPLETED || intent.action == Intent.ACTION_MY_PACKAGE_REPLACED) {
-            DuaBundleScheduler.restoreAll(context)
-            return
-        }
         val id = intent.getStringExtra("id") ?: return
         val name = intent.getStringExtra("name") ?: "Dua Bundle"
         val titles = intent.getStringArrayListExtra("titles") ?: arrayListOf()

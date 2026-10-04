@@ -202,6 +202,40 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
     if (mounted) setState(() {});
   }
 
+  Future<void> _addVoice() async {
+    final result = await FilePicker.pickFiles(type: FileType.audio);
+    final picked = result.isEmpty ? null : result.first;
+    if (picked?.path == null) return;
+    final source = File(picked!.path!);
+    final base = Directory(
+      p.join(
+        (await getApplicationDocumentsDirectory()).path,
+        'favorite_dua',
+        'duas',
+        widget.id,
+      ),
+    );
+    await base.create(recursive: true);
+    final stored = await source.copy(
+      p.join(base.path, 'voice_${const Uuid().v4()}${p.extension(source.path)}'),
+    );
+    final db = ref.read(appDatabaseProvider);
+    await db
+        .into(db.duaAttachments)
+        .insert(
+          DuaAttachmentsCompanion.insert(
+            id: const Uuid().v4(),
+            duaId: widget.id,
+            kind: 'audio',
+            title: picked.name,
+            value: stored.path,
+            mimeType: const Value('audio/mp4'),
+            createdAt: DateTime.now(),
+          ),
+        );
+    if (mounted) setState(() {});
+  }
+
   Future<void> _addDocument() async {
     final result = await FilePicker.pickFiles(type: FileType.any);
     final picked = result.isEmpty ? null : result.first;
@@ -410,6 +444,11 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
               spacing: 8,
               runSpacing: 8,
               children: [
+                OutlinedButton.icon(
+                  onPressed: _addVoice,
+                  icon: const Icon(Icons.mic),
+                  label: const Text('Add voice'),
+                ),
                 OutlinedButton.icon(
                   onPressed: _addLink,
                   icon: const Icon(Icons.add_link),

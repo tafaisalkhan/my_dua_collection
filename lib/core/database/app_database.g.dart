@@ -125,6 +125,17 @@ class $DuasTable extends Duas with TableInfo<$DuasTable, Dua> {
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _imageBlobMeta = const VerificationMeta(
+    'imageBlob',
+  );
+  @override
+  late final GeneratedColumn<Uint8List> imageBlob = GeneratedColumn<Uint8List>(
+    'image_blob',
+    aliasedName,
+    true,
+    type: DriftSqlType.blob,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _detectedLanguageMeta = const VerificationMeta(
     'detectedLanguage',
   );
@@ -261,6 +272,7 @@ class $DuasTable extends Duas with TableInfo<$DuasTable, Dua> {
     tagsText,
     primaryCategoryId,
     imagePath,
+    imageBlob,
     detectedLanguage,
     scheduleEnabled,
     scheduleHour,
@@ -363,6 +375,12 @@ class $DuasTable extends Duas with TableInfo<$DuasTable, Dua> {
       context.handle(
         _imagePathMeta,
         imagePath.isAcceptableOrUnknown(data['image_path']!, _imagePathMeta),
+      );
+    }
+    if (data.containsKey('image_blob')) {
+      context.handle(
+        _imageBlobMeta,
+        imageBlob.isAcceptableOrUnknown(data['image_blob']!, _imageBlobMeta),
       );
     }
     if (data.containsKey('detected_language')) {
@@ -500,6 +518,10 @@ class $DuasTable extends Duas with TableInfo<$DuasTable, Dua> {
         DriftSqlType.string,
         data['${effectivePrefix}image_path'],
       ),
+      imageBlob: attachedDatabase.typeMapping.read(
+        DriftSqlType.blob,
+        data['${effectivePrefix}image_blob'],
+      ),
       detectedLanguage: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}detected_language'],
@@ -561,6 +583,7 @@ class Dua extends DataClass implements Insertable<Dua> {
   final String tagsText;
   final String? primaryCategoryId;
   final String? imagePath;
+  final Uint8List? imageBlob;
   final String? detectedLanguage;
   final bool scheduleEnabled;
   final int? scheduleHour;
@@ -583,6 +606,7 @@ class Dua extends DataClass implements Insertable<Dua> {
     required this.tagsText,
     this.primaryCategoryId,
     this.imagePath,
+    this.imageBlob,
     this.detectedLanguage,
     required this.scheduleEnabled,
     this.scheduleHour,
@@ -621,6 +645,9 @@ class Dua extends DataClass implements Insertable<Dua> {
     }
     if (!nullToAbsent || imagePath != null) {
       map['image_path'] = Variable<String>(imagePath);
+    }
+    if (!nullToAbsent || imageBlob != null) {
+      map['image_blob'] = Variable<Uint8List>(imageBlob);
     }
     if (!nullToAbsent || detectedLanguage != null) {
       map['detected_language'] = Variable<String>(detectedLanguage);
@@ -670,6 +697,9 @@ class Dua extends DataClass implements Insertable<Dua> {
       imagePath: imagePath == null && nullToAbsent
           ? const Value.absent()
           : Value(imagePath),
+      imageBlob: imageBlob == null && nullToAbsent
+          ? const Value.absent()
+          : Value(imageBlob),
       detectedLanguage: detectedLanguage == null && nullToAbsent
           ? const Value.absent()
           : Value(detectedLanguage),
@@ -710,6 +740,7 @@ class Dua extends DataClass implements Insertable<Dua> {
         json['primaryCategoryId'],
       ),
       imagePath: serializer.fromJson<String?>(json['imagePath']),
+      imageBlob: serializer.fromJson<Uint8List?>(json['imageBlob']),
       detectedLanguage: serializer.fromJson<String?>(json['detectedLanguage']),
       scheduleEnabled: serializer.fromJson<bool>(json['scheduleEnabled']),
       scheduleHour: serializer.fromJson<int?>(json['scheduleHour']),
@@ -737,6 +768,7 @@ class Dua extends DataClass implements Insertable<Dua> {
       'tagsText': serializer.toJson<String>(tagsText),
       'primaryCategoryId': serializer.toJson<String?>(primaryCategoryId),
       'imagePath': serializer.toJson<String?>(imagePath),
+      'imageBlob': serializer.toJson<Uint8List?>(imageBlob),
       'detectedLanguage': serializer.toJson<String?>(detectedLanguage),
       'scheduleEnabled': serializer.toJson<bool>(scheduleEnabled),
       'scheduleHour': serializer.toJson<int?>(scheduleHour),
@@ -762,6 +794,7 @@ class Dua extends DataClass implements Insertable<Dua> {
     String? tagsText,
     Value<String?> primaryCategoryId = const Value.absent(),
     Value<String?> imagePath = const Value.absent(),
+    Value<Uint8List?> imageBlob = const Value.absent(),
     Value<String?> detectedLanguage = const Value.absent(),
     bool? scheduleEnabled,
     Value<int?> scheduleHour = const Value.absent(),
@@ -788,6 +821,7 @@ class Dua extends DataClass implements Insertable<Dua> {
         ? primaryCategoryId.value
         : this.primaryCategoryId,
     imagePath: imagePath.present ? imagePath.value : this.imagePath,
+    imageBlob: imageBlob.present ? imageBlob.value : this.imageBlob,
     detectedLanguage: detectedLanguage.present
         ? detectedLanguage.value
         : this.detectedLanguage,
@@ -824,6 +858,7 @@ class Dua extends DataClass implements Insertable<Dua> {
           ? data.primaryCategoryId.value
           : this.primaryCategoryId,
       imagePath: data.imagePath.present ? data.imagePath.value : this.imagePath,
+      imageBlob: data.imageBlob.present ? data.imageBlob.value : this.imageBlob,
       detectedLanguage: data.detectedLanguage.present
           ? data.detectedLanguage.value
           : this.detectedLanguage,
@@ -865,6 +900,7 @@ class Dua extends DataClass implements Insertable<Dua> {
           ..write('tagsText: $tagsText, ')
           ..write('primaryCategoryId: $primaryCategoryId, ')
           ..write('imagePath: $imagePath, ')
+          ..write('imageBlob: $imageBlob, ')
           ..write('detectedLanguage: $detectedLanguage, ')
           ..write('scheduleEnabled: $scheduleEnabled, ')
           ..write('scheduleHour: $scheduleHour, ')
@@ -892,6 +928,7 @@ class Dua extends DataClass implements Insertable<Dua> {
     tagsText,
     primaryCategoryId,
     imagePath,
+    $driftBlobEquality.hash(imageBlob),
     detectedLanguage,
     scheduleEnabled,
     scheduleHour,
@@ -918,6 +955,7 @@ class Dua extends DataClass implements Insertable<Dua> {
           other.tagsText == this.tagsText &&
           other.primaryCategoryId == this.primaryCategoryId &&
           other.imagePath == this.imagePath &&
+          $driftBlobEquality.equals(other.imageBlob, this.imageBlob) &&
           other.detectedLanguage == this.detectedLanguage &&
           other.scheduleEnabled == this.scheduleEnabled &&
           other.scheduleHour == this.scheduleHour &&
@@ -942,6 +980,7 @@ class DuasCompanion extends UpdateCompanion<Dua> {
   final Value<String> tagsText;
   final Value<String?> primaryCategoryId;
   final Value<String?> imagePath;
+  final Value<Uint8List?> imageBlob;
   final Value<String?> detectedLanguage;
   final Value<bool> scheduleEnabled;
   final Value<int?> scheduleHour;
@@ -965,6 +1004,7 @@ class DuasCompanion extends UpdateCompanion<Dua> {
     this.tagsText = const Value.absent(),
     this.primaryCategoryId = const Value.absent(),
     this.imagePath = const Value.absent(),
+    this.imageBlob = const Value.absent(),
     this.detectedLanguage = const Value.absent(),
     this.scheduleEnabled = const Value.absent(),
     this.scheduleHour = const Value.absent(),
@@ -989,6 +1029,7 @@ class DuasCompanion extends UpdateCompanion<Dua> {
     this.tagsText = const Value.absent(),
     this.primaryCategoryId = const Value.absent(),
     this.imagePath = const Value.absent(),
+    this.imageBlob = const Value.absent(),
     this.detectedLanguage = const Value.absent(),
     this.scheduleEnabled = const Value.absent(),
     this.scheduleHour = const Value.absent(),
@@ -1017,6 +1058,7 @@ class DuasCompanion extends UpdateCompanion<Dua> {
     Expression<String>? tagsText,
     Expression<String>? primaryCategoryId,
     Expression<String>? imagePath,
+    Expression<Uint8List>? imageBlob,
     Expression<String>? detectedLanguage,
     Expression<bool>? scheduleEnabled,
     Expression<int>? scheduleHour,
@@ -1041,6 +1083,7 @@ class DuasCompanion extends UpdateCompanion<Dua> {
       if (tagsText != null) 'tags_text': tagsText,
       if (primaryCategoryId != null) 'primary_category_id': primaryCategoryId,
       if (imagePath != null) 'image_path': imagePath,
+      if (imageBlob != null) 'image_blob': imageBlob,
       if (detectedLanguage != null) 'detected_language': detectedLanguage,
       if (scheduleEnabled != null) 'schedule_enabled': scheduleEnabled,
       if (scheduleHour != null) 'schedule_hour': scheduleHour,
@@ -1067,6 +1110,7 @@ class DuasCompanion extends UpdateCompanion<Dua> {
     Value<String>? tagsText,
     Value<String?>? primaryCategoryId,
     Value<String?>? imagePath,
+    Value<Uint8List?>? imageBlob,
     Value<String?>? detectedLanguage,
     Value<bool>? scheduleEnabled,
     Value<int?>? scheduleHour,
@@ -1091,6 +1135,7 @@ class DuasCompanion extends UpdateCompanion<Dua> {
       tagsText: tagsText ?? this.tagsText,
       primaryCategoryId: primaryCategoryId ?? this.primaryCategoryId,
       imagePath: imagePath ?? this.imagePath,
+      imageBlob: imageBlob ?? this.imageBlob,
       detectedLanguage: detectedLanguage ?? this.detectedLanguage,
       scheduleEnabled: scheduleEnabled ?? this.scheduleEnabled,
       scheduleHour: scheduleHour ?? this.scheduleHour,
@@ -1140,6 +1185,9 @@ class DuasCompanion extends UpdateCompanion<Dua> {
     }
     if (imagePath.present) {
       map['image_path'] = Variable<String>(imagePath.value);
+    }
+    if (imageBlob.present) {
+      map['image_blob'] = Variable<Uint8List>(imageBlob.value);
     }
     if (detectedLanguage.present) {
       map['detected_language'] = Variable<String>(detectedLanguage.value);
@@ -1191,6 +1239,7 @@ class DuasCompanion extends UpdateCompanion<Dua> {
           ..write('tagsText: $tagsText, ')
           ..write('primaryCategoryId: $primaryCategoryId, ')
           ..write('imagePath: $imagePath, ')
+          ..write('imageBlob: $imageBlob, ')
           ..write('detectedLanguage: $detectedLanguage, ')
           ..write('scheduleEnabled: $scheduleEnabled, ')
           ..write('scheduleHour: $scheduleHour, ')
@@ -2072,6 +2121,17 @@ class $RecordingsTable extends Recordings
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _audioBlobMeta = const VerificationMeta(
+    'audioBlob',
+  );
+  @override
+  late final GeneratedColumn<Uint8List> audioBlob = GeneratedColumn<Uint8List>(
+    'audio_blob',
+    aliasedName,
+    true,
+    type: DriftSqlType.blob,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _durationMsMeta = const VerificationMeta(
     'durationMs',
   );
@@ -2110,6 +2170,7 @@ class $RecordingsTable extends Recordings
     id,
     duaId,
     audioPath,
+    audioBlob,
     durationMs,
     createdAt,
     updatedAt,
@@ -2146,6 +2207,12 @@ class $RecordingsTable extends Recordings
       );
     } else if (isInserting) {
       context.missing(_audioPathMeta);
+    }
+    if (data.containsKey('audio_blob')) {
+      context.handle(
+        _audioBlobMeta,
+        audioBlob.isAcceptableOrUnknown(data['audio_blob']!, _audioBlobMeta),
+      );
     }
     if (data.containsKey('duration_ms')) {
       context.handle(
@@ -2192,6 +2259,10 @@ class $RecordingsTable extends Recordings
         DriftSqlType.string,
         data['${effectivePrefix}audio_path'],
       )!,
+      audioBlob: attachedDatabase.typeMapping.read(
+        DriftSqlType.blob,
+        data['${effectivePrefix}audio_blob'],
+      ),
       durationMs: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}duration_ms'],
@@ -2217,6 +2288,7 @@ class Recording extends DataClass implements Insertable<Recording> {
   final String id;
   final String duaId;
   final String audioPath;
+  final Uint8List? audioBlob;
   final int durationMs;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -2224,6 +2296,7 @@ class Recording extends DataClass implements Insertable<Recording> {
     required this.id,
     required this.duaId,
     required this.audioPath,
+    this.audioBlob,
     required this.durationMs,
     required this.createdAt,
     required this.updatedAt,
@@ -2234,6 +2307,9 @@ class Recording extends DataClass implements Insertable<Recording> {
     map['id'] = Variable<String>(id);
     map['dua_id'] = Variable<String>(duaId);
     map['audio_path'] = Variable<String>(audioPath);
+    if (!nullToAbsent || audioBlob != null) {
+      map['audio_blob'] = Variable<Uint8List>(audioBlob);
+    }
     map['duration_ms'] = Variable<int>(durationMs);
     map['created_at'] = Variable<DateTime>(createdAt);
     map['updated_at'] = Variable<DateTime>(updatedAt);
@@ -2245,6 +2321,9 @@ class Recording extends DataClass implements Insertable<Recording> {
       id: Value(id),
       duaId: Value(duaId),
       audioPath: Value(audioPath),
+      audioBlob: audioBlob == null && nullToAbsent
+          ? const Value.absent()
+          : Value(audioBlob),
       durationMs: Value(durationMs),
       createdAt: Value(createdAt),
       updatedAt: Value(updatedAt),
@@ -2260,6 +2339,7 @@ class Recording extends DataClass implements Insertable<Recording> {
       id: serializer.fromJson<String>(json['id']),
       duaId: serializer.fromJson<String>(json['duaId']),
       audioPath: serializer.fromJson<String>(json['audioPath']),
+      audioBlob: serializer.fromJson<Uint8List?>(json['audioBlob']),
       durationMs: serializer.fromJson<int>(json['durationMs']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
       updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
@@ -2272,6 +2352,7 @@ class Recording extends DataClass implements Insertable<Recording> {
       'id': serializer.toJson<String>(id),
       'duaId': serializer.toJson<String>(duaId),
       'audioPath': serializer.toJson<String>(audioPath),
+      'audioBlob': serializer.toJson<Uint8List?>(audioBlob),
       'durationMs': serializer.toJson<int>(durationMs),
       'createdAt': serializer.toJson<DateTime>(createdAt),
       'updatedAt': serializer.toJson<DateTime>(updatedAt),
@@ -2282,6 +2363,7 @@ class Recording extends DataClass implements Insertable<Recording> {
     String? id,
     String? duaId,
     String? audioPath,
+    Value<Uint8List?> audioBlob = const Value.absent(),
     int? durationMs,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -2289,6 +2371,7 @@ class Recording extends DataClass implements Insertable<Recording> {
     id: id ?? this.id,
     duaId: duaId ?? this.duaId,
     audioPath: audioPath ?? this.audioPath,
+    audioBlob: audioBlob.present ? audioBlob.value : this.audioBlob,
     durationMs: durationMs ?? this.durationMs,
     createdAt: createdAt ?? this.createdAt,
     updatedAt: updatedAt ?? this.updatedAt,
@@ -2298,6 +2381,7 @@ class Recording extends DataClass implements Insertable<Recording> {
       id: data.id.present ? data.id.value : this.id,
       duaId: data.duaId.present ? data.duaId.value : this.duaId,
       audioPath: data.audioPath.present ? data.audioPath.value : this.audioPath,
+      audioBlob: data.audioBlob.present ? data.audioBlob.value : this.audioBlob,
       durationMs: data.durationMs.present
           ? data.durationMs.value
           : this.durationMs,
@@ -2312,6 +2396,7 @@ class Recording extends DataClass implements Insertable<Recording> {
           ..write('id: $id, ')
           ..write('duaId: $duaId, ')
           ..write('audioPath: $audioPath, ')
+          ..write('audioBlob: $audioBlob, ')
           ..write('durationMs: $durationMs, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
@@ -2320,8 +2405,15 @@ class Recording extends DataClass implements Insertable<Recording> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, duaId, audioPath, durationMs, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+    id,
+    duaId,
+    audioPath,
+    $driftBlobEquality.hash(audioBlob),
+    durationMs,
+    createdAt,
+    updatedAt,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -2329,6 +2421,7 @@ class Recording extends DataClass implements Insertable<Recording> {
           other.id == this.id &&
           other.duaId == this.duaId &&
           other.audioPath == this.audioPath &&
+          $driftBlobEquality.equals(other.audioBlob, this.audioBlob) &&
           other.durationMs == this.durationMs &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt);
@@ -2338,6 +2431,7 @@ class RecordingsCompanion extends UpdateCompanion<Recording> {
   final Value<String> id;
   final Value<String> duaId;
   final Value<String> audioPath;
+  final Value<Uint8List?> audioBlob;
   final Value<int> durationMs;
   final Value<DateTime> createdAt;
   final Value<DateTime> updatedAt;
@@ -2346,6 +2440,7 @@ class RecordingsCompanion extends UpdateCompanion<Recording> {
     this.id = const Value.absent(),
     this.duaId = const Value.absent(),
     this.audioPath = const Value.absent(),
+    this.audioBlob = const Value.absent(),
     this.durationMs = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
@@ -2355,6 +2450,7 @@ class RecordingsCompanion extends UpdateCompanion<Recording> {
     required String id,
     required String duaId,
     required String audioPath,
+    this.audioBlob = const Value.absent(),
     required int durationMs,
     required DateTime createdAt,
     required DateTime updatedAt,
@@ -2369,6 +2465,7 @@ class RecordingsCompanion extends UpdateCompanion<Recording> {
     Expression<String>? id,
     Expression<String>? duaId,
     Expression<String>? audioPath,
+    Expression<Uint8List>? audioBlob,
     Expression<int>? durationMs,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? updatedAt,
@@ -2378,6 +2475,7 @@ class RecordingsCompanion extends UpdateCompanion<Recording> {
       if (id != null) 'id': id,
       if (duaId != null) 'dua_id': duaId,
       if (audioPath != null) 'audio_path': audioPath,
+      if (audioBlob != null) 'audio_blob': audioBlob,
       if (durationMs != null) 'duration_ms': durationMs,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
@@ -2389,6 +2487,7 @@ class RecordingsCompanion extends UpdateCompanion<Recording> {
     Value<String>? id,
     Value<String>? duaId,
     Value<String>? audioPath,
+    Value<Uint8List?>? audioBlob,
     Value<int>? durationMs,
     Value<DateTime>? createdAt,
     Value<DateTime>? updatedAt,
@@ -2398,6 +2497,7 @@ class RecordingsCompanion extends UpdateCompanion<Recording> {
       id: id ?? this.id,
       duaId: duaId ?? this.duaId,
       audioPath: audioPath ?? this.audioPath,
+      audioBlob: audioBlob ?? this.audioBlob,
       durationMs: durationMs ?? this.durationMs,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
@@ -2416,6 +2516,9 @@ class RecordingsCompanion extends UpdateCompanion<Recording> {
     }
     if (audioPath.present) {
       map['audio_path'] = Variable<String>(audioPath.value);
+    }
+    if (audioBlob.present) {
+      map['audio_blob'] = Variable<Uint8List>(audioBlob.value);
     }
     if (durationMs.present) {
       map['duration_ms'] = Variable<int>(durationMs.value);
@@ -2438,6 +2541,7 @@ class RecordingsCompanion extends UpdateCompanion<Recording> {
           ..write('id: $id, ')
           ..write('duaId: $duaId, ')
           ..write('audioPath: $audioPath, ')
+          ..write('audioBlob: $audioBlob, ')
           ..write('durationMs: $durationMs, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
@@ -2925,6 +3029,17 @@ class $LibraryItemsTable extends LibraryItems
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _fileBlobMeta = const VerificationMeta(
+    'fileBlob',
+  );
+  @override
+  late final GeneratedColumn<Uint8List> fileBlob = GeneratedColumn<Uint8List>(
+    'file_blob',
+    aliasedName,
+    true,
+    type: DriftSqlType.blob,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _mimeTypeMeta = const VerificationMeta(
     'mimeType',
   );
@@ -2996,6 +3111,7 @@ class $LibraryItemsTable extends LibraryItems
     title,
     kind,
     filePath,
+    fileBlob,
     mimeType,
     textContent,
     ocrText,
@@ -3040,6 +3156,12 @@ class $LibraryItemsTable extends LibraryItems
       context.handle(
         _filePathMeta,
         filePath.isAcceptableOrUnknown(data['file_path']!, _filePathMeta),
+      );
+    }
+    if (data.containsKey('file_blob')) {
+      context.handle(
+        _fileBlobMeta,
+        fileBlob.isAcceptableOrUnknown(data['file_blob']!, _fileBlobMeta),
       );
     }
     if (data.containsKey('mime_type')) {
@@ -3110,6 +3232,10 @@ class $LibraryItemsTable extends LibraryItems
         DriftSqlType.string,
         data['${effectivePrefix}file_path'],
       ),
+      fileBlob: attachedDatabase.typeMapping.read(
+        DriftSqlType.blob,
+        data['${effectivePrefix}file_blob'],
+      ),
       mimeType: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}mime_type'],
@@ -3148,6 +3274,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
   final String title;
   final String kind;
   final String? filePath;
+  final Uint8List? fileBlob;
   final String? mimeType;
   final String? textContent;
   final String? ocrText;
@@ -3159,6 +3286,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
     required this.title,
     required this.kind,
     this.filePath,
+    this.fileBlob,
     this.mimeType,
     this.textContent,
     this.ocrText,
@@ -3174,6 +3302,9 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
     map['kind'] = Variable<String>(kind);
     if (!nullToAbsent || filePath != null) {
       map['file_path'] = Variable<String>(filePath);
+    }
+    if (!nullToAbsent || fileBlob != null) {
+      map['file_blob'] = Variable<Uint8List>(fileBlob);
     }
     if (!nullToAbsent || mimeType != null) {
       map['mime_type'] = Variable<String>(mimeType);
@@ -3198,6 +3329,9 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
       filePath: filePath == null && nullToAbsent
           ? const Value.absent()
           : Value(filePath),
+      fileBlob: fileBlob == null && nullToAbsent
+          ? const Value.absent()
+          : Value(fileBlob),
       mimeType: mimeType == null && nullToAbsent
           ? const Value.absent()
           : Value(mimeType),
@@ -3223,6 +3357,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
       title: serializer.fromJson<String>(json['title']),
       kind: serializer.fromJson<String>(json['kind']),
       filePath: serializer.fromJson<String?>(json['filePath']),
+      fileBlob: serializer.fromJson<Uint8List?>(json['fileBlob']),
       mimeType: serializer.fromJson<String?>(json['mimeType']),
       textContent: serializer.fromJson<String?>(json['textContent']),
       ocrText: serializer.fromJson<String?>(json['ocrText']),
@@ -3239,6 +3374,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
       'title': serializer.toJson<String>(title),
       'kind': serializer.toJson<String>(kind),
       'filePath': serializer.toJson<String?>(filePath),
+      'fileBlob': serializer.toJson<Uint8List?>(fileBlob),
       'mimeType': serializer.toJson<String?>(mimeType),
       'textContent': serializer.toJson<String?>(textContent),
       'ocrText': serializer.toJson<String?>(ocrText),
@@ -3253,6 +3389,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
     String? title,
     String? kind,
     Value<String?> filePath = const Value.absent(),
+    Value<Uint8List?> fileBlob = const Value.absent(),
     Value<String?> mimeType = const Value.absent(),
     Value<String?> textContent = const Value.absent(),
     Value<String?> ocrText = const Value.absent(),
@@ -3264,6 +3401,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
     title: title ?? this.title,
     kind: kind ?? this.kind,
     filePath: filePath.present ? filePath.value : this.filePath,
+    fileBlob: fileBlob.present ? fileBlob.value : this.fileBlob,
     mimeType: mimeType.present ? mimeType.value : this.mimeType,
     textContent: textContent.present ? textContent.value : this.textContent,
     ocrText: ocrText.present ? ocrText.value : this.ocrText,
@@ -3277,6 +3415,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
       title: data.title.present ? data.title.value : this.title,
       kind: data.kind.present ? data.kind.value : this.kind,
       filePath: data.filePath.present ? data.filePath.value : this.filePath,
+      fileBlob: data.fileBlob.present ? data.fileBlob.value : this.fileBlob,
       mimeType: data.mimeType.present ? data.mimeType.value : this.mimeType,
       textContent: data.textContent.present
           ? data.textContent.value
@@ -3295,6 +3434,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
           ..write('title: $title, ')
           ..write('kind: $kind, ')
           ..write('filePath: $filePath, ')
+          ..write('fileBlob: $fileBlob, ')
           ..write('mimeType: $mimeType, ')
           ..write('textContent: $textContent, ')
           ..write('ocrText: $ocrText, ')
@@ -3311,6 +3451,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
     title,
     kind,
     filePath,
+    $driftBlobEquality.hash(fileBlob),
     mimeType,
     textContent,
     ocrText,
@@ -3326,6 +3467,7 @@ class LibraryItem extends DataClass implements Insertable<LibraryItem> {
           other.title == this.title &&
           other.kind == this.kind &&
           other.filePath == this.filePath &&
+          $driftBlobEquality.equals(other.fileBlob, this.fileBlob) &&
           other.mimeType == this.mimeType &&
           other.textContent == this.textContent &&
           other.ocrText == this.ocrText &&
@@ -3339,6 +3481,7 @@ class LibraryItemsCompanion extends UpdateCompanion<LibraryItem> {
   final Value<String> title;
   final Value<String> kind;
   final Value<String?> filePath;
+  final Value<Uint8List?> fileBlob;
   final Value<String?> mimeType;
   final Value<String?> textContent;
   final Value<String?> ocrText;
@@ -3351,6 +3494,7 @@ class LibraryItemsCompanion extends UpdateCompanion<LibraryItem> {
     this.title = const Value.absent(),
     this.kind = const Value.absent(),
     this.filePath = const Value.absent(),
+    this.fileBlob = const Value.absent(),
     this.mimeType = const Value.absent(),
     this.textContent = const Value.absent(),
     this.ocrText = const Value.absent(),
@@ -3364,6 +3508,7 @@ class LibraryItemsCompanion extends UpdateCompanion<LibraryItem> {
     required String title,
     required String kind,
     this.filePath = const Value.absent(),
+    this.fileBlob = const Value.absent(),
     this.mimeType = const Value.absent(),
     this.textContent = const Value.absent(),
     this.ocrText = const Value.absent(),
@@ -3381,6 +3526,7 @@ class LibraryItemsCompanion extends UpdateCompanion<LibraryItem> {
     Expression<String>? title,
     Expression<String>? kind,
     Expression<String>? filePath,
+    Expression<Uint8List>? fileBlob,
     Expression<String>? mimeType,
     Expression<String>? textContent,
     Expression<String>? ocrText,
@@ -3394,6 +3540,7 @@ class LibraryItemsCompanion extends UpdateCompanion<LibraryItem> {
       if (title != null) 'title': title,
       if (kind != null) 'kind': kind,
       if (filePath != null) 'file_path': filePath,
+      if (fileBlob != null) 'file_blob': fileBlob,
       if (mimeType != null) 'mime_type': mimeType,
       if (textContent != null) 'text_content': textContent,
       if (ocrText != null) 'ocr_text': ocrText,
@@ -3409,6 +3556,7 @@ class LibraryItemsCompanion extends UpdateCompanion<LibraryItem> {
     Value<String>? title,
     Value<String>? kind,
     Value<String?>? filePath,
+    Value<Uint8List?>? fileBlob,
     Value<String?>? mimeType,
     Value<String?>? textContent,
     Value<String?>? ocrText,
@@ -3422,6 +3570,7 @@ class LibraryItemsCompanion extends UpdateCompanion<LibraryItem> {
       title: title ?? this.title,
       kind: kind ?? this.kind,
       filePath: filePath ?? this.filePath,
+      fileBlob: fileBlob ?? this.fileBlob,
       mimeType: mimeType ?? this.mimeType,
       textContent: textContent ?? this.textContent,
       ocrText: ocrText ?? this.ocrText,
@@ -3446,6 +3595,9 @@ class LibraryItemsCompanion extends UpdateCompanion<LibraryItem> {
     }
     if (filePath.present) {
       map['file_path'] = Variable<String>(filePath.value);
+    }
+    if (fileBlob.present) {
+      map['file_blob'] = Variable<Uint8List>(fileBlob.value);
     }
     if (mimeType.present) {
       map['mime_type'] = Variable<String>(mimeType.value);
@@ -3478,6 +3630,7 @@ class LibraryItemsCompanion extends UpdateCompanion<LibraryItem> {
           ..write('title: $title, ')
           ..write('kind: $kind, ')
           ..write('filePath: $filePath, ')
+          ..write('fileBlob: $fileBlob, ')
           ..write('mimeType: $mimeType, ')
           ..write('textContent: $textContent, ')
           ..write('ocrText: $ocrText, ')
@@ -3544,6 +3697,17 @@ class $DuaAttachmentsTable extends DuaAttachments
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _dataBlobMeta = const VerificationMeta(
+    'dataBlob',
+  );
+  @override
+  late final GeneratedColumn<Uint8List> dataBlob = GeneratedColumn<Uint8List>(
+    'data_blob',
+    aliasedName,
+    true,
+    type: DriftSqlType.blob,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _mimeTypeMeta = const VerificationMeta(
     'mimeType',
   );
@@ -3584,6 +3748,7 @@ class $DuaAttachmentsTable extends DuaAttachments
     kind,
     title,
     value,
+    dataBlob,
     mimeType,
     durationMs,
     createdAt,
@@ -3637,6 +3802,12 @@ class $DuaAttachmentsTable extends DuaAttachments
     } else if (isInserting) {
       context.missing(_valueMeta);
     }
+    if (data.containsKey('data_blob')) {
+      context.handle(
+        _dataBlobMeta,
+        dataBlob.isAcceptableOrUnknown(data['data_blob']!, _dataBlobMeta),
+      );
+    }
     if (data.containsKey('mime_type')) {
       context.handle(
         _mimeTypeMeta,
@@ -3686,6 +3857,10 @@ class $DuaAttachmentsTable extends DuaAttachments
         DriftSqlType.string,
         data['${effectivePrefix}value'],
       )!,
+      dataBlob: attachedDatabase.typeMapping.read(
+        DriftSqlType.blob,
+        data['${effectivePrefix}data_blob'],
+      ),
       mimeType: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}mime_type'],
@@ -3713,6 +3888,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
   final String kind;
   final String title;
   final String value;
+  final Uint8List? dataBlob;
   final String? mimeType;
   final int? durationMs;
   final DateTime createdAt;
@@ -3722,6 +3898,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
     required this.kind,
     required this.title,
     required this.value,
+    this.dataBlob,
     this.mimeType,
     this.durationMs,
     required this.createdAt,
@@ -3734,6 +3911,9 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
     map['kind'] = Variable<String>(kind);
     map['title'] = Variable<String>(title);
     map['value'] = Variable<String>(value);
+    if (!nullToAbsent || dataBlob != null) {
+      map['data_blob'] = Variable<Uint8List>(dataBlob);
+    }
     if (!nullToAbsent || mimeType != null) {
       map['mime_type'] = Variable<String>(mimeType);
     }
@@ -3751,6 +3931,9 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
       kind: Value(kind),
       title: Value(title),
       value: Value(value),
+      dataBlob: dataBlob == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dataBlob),
       mimeType: mimeType == null && nullToAbsent
           ? const Value.absent()
           : Value(mimeType),
@@ -3772,6 +3955,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
       kind: serializer.fromJson<String>(json['kind']),
       title: serializer.fromJson<String>(json['title']),
       value: serializer.fromJson<String>(json['value']),
+      dataBlob: serializer.fromJson<Uint8List?>(json['dataBlob']),
       mimeType: serializer.fromJson<String?>(json['mimeType']),
       durationMs: serializer.fromJson<int?>(json['durationMs']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
@@ -3786,6 +3970,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
       'kind': serializer.toJson<String>(kind),
       'title': serializer.toJson<String>(title),
       'value': serializer.toJson<String>(value),
+      'dataBlob': serializer.toJson<Uint8List?>(dataBlob),
       'mimeType': serializer.toJson<String?>(mimeType),
       'durationMs': serializer.toJson<int?>(durationMs),
       'createdAt': serializer.toJson<DateTime>(createdAt),
@@ -3798,6 +3983,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
     String? kind,
     String? title,
     String? value,
+    Value<Uint8List?> dataBlob = const Value.absent(),
     Value<String?> mimeType = const Value.absent(),
     Value<int?> durationMs = const Value.absent(),
     DateTime? createdAt,
@@ -3807,6 +3993,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
     kind: kind ?? this.kind,
     title: title ?? this.title,
     value: value ?? this.value,
+    dataBlob: dataBlob.present ? dataBlob.value : this.dataBlob,
     mimeType: mimeType.present ? mimeType.value : this.mimeType,
     durationMs: durationMs.present ? durationMs.value : this.durationMs,
     createdAt: createdAt ?? this.createdAt,
@@ -3818,6 +4005,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
       kind: data.kind.present ? data.kind.value : this.kind,
       title: data.title.present ? data.title.value : this.title,
       value: data.value.present ? data.value.value : this.value,
+      dataBlob: data.dataBlob.present ? data.dataBlob.value : this.dataBlob,
       mimeType: data.mimeType.present ? data.mimeType.value : this.mimeType,
       durationMs: data.durationMs.present
           ? data.durationMs.value
@@ -3834,6 +4022,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
           ..write('kind: $kind, ')
           ..write('title: $title, ')
           ..write('value: $value, ')
+          ..write('dataBlob: $dataBlob, ')
           ..write('mimeType: $mimeType, ')
           ..write('durationMs: $durationMs, ')
           ..write('createdAt: $createdAt')
@@ -3848,6 +4037,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
     kind,
     title,
     value,
+    $driftBlobEquality.hash(dataBlob),
     mimeType,
     durationMs,
     createdAt,
@@ -3861,6 +4051,7 @@ class DuaAttachment extends DataClass implements Insertable<DuaAttachment> {
           other.kind == this.kind &&
           other.title == this.title &&
           other.value == this.value &&
+          $driftBlobEquality.equals(other.dataBlob, this.dataBlob) &&
           other.mimeType == this.mimeType &&
           other.durationMs == this.durationMs &&
           other.createdAt == this.createdAt);
@@ -3872,6 +4063,7 @@ class DuaAttachmentsCompanion extends UpdateCompanion<DuaAttachment> {
   final Value<String> kind;
   final Value<String> title;
   final Value<String> value;
+  final Value<Uint8List?> dataBlob;
   final Value<String?> mimeType;
   final Value<int?> durationMs;
   final Value<DateTime> createdAt;
@@ -3882,6 +4074,7 @@ class DuaAttachmentsCompanion extends UpdateCompanion<DuaAttachment> {
     this.kind = const Value.absent(),
     this.title = const Value.absent(),
     this.value = const Value.absent(),
+    this.dataBlob = const Value.absent(),
     this.mimeType = const Value.absent(),
     this.durationMs = const Value.absent(),
     this.createdAt = const Value.absent(),
@@ -3893,6 +4086,7 @@ class DuaAttachmentsCompanion extends UpdateCompanion<DuaAttachment> {
     required String kind,
     required String title,
     required String value,
+    this.dataBlob = const Value.absent(),
     this.mimeType = const Value.absent(),
     this.durationMs = const Value.absent(),
     required DateTime createdAt,
@@ -3909,6 +4103,7 @@ class DuaAttachmentsCompanion extends UpdateCompanion<DuaAttachment> {
     Expression<String>? kind,
     Expression<String>? title,
     Expression<String>? value,
+    Expression<Uint8List>? dataBlob,
     Expression<String>? mimeType,
     Expression<int>? durationMs,
     Expression<DateTime>? createdAt,
@@ -3920,6 +4115,7 @@ class DuaAttachmentsCompanion extends UpdateCompanion<DuaAttachment> {
       if (kind != null) 'kind': kind,
       if (title != null) 'title': title,
       if (value != null) 'value': value,
+      if (dataBlob != null) 'data_blob': dataBlob,
       if (mimeType != null) 'mime_type': mimeType,
       if (durationMs != null) 'duration_ms': durationMs,
       if (createdAt != null) 'created_at': createdAt,
@@ -3933,6 +4129,7 @@ class DuaAttachmentsCompanion extends UpdateCompanion<DuaAttachment> {
     Value<String>? kind,
     Value<String>? title,
     Value<String>? value,
+    Value<Uint8List?>? dataBlob,
     Value<String?>? mimeType,
     Value<int?>? durationMs,
     Value<DateTime>? createdAt,
@@ -3944,6 +4141,7 @@ class DuaAttachmentsCompanion extends UpdateCompanion<DuaAttachment> {
       kind: kind ?? this.kind,
       title: title ?? this.title,
       value: value ?? this.value,
+      dataBlob: dataBlob ?? this.dataBlob,
       mimeType: mimeType ?? this.mimeType,
       durationMs: durationMs ?? this.durationMs,
       createdAt: createdAt ?? this.createdAt,
@@ -3969,6 +4167,9 @@ class DuaAttachmentsCompanion extends UpdateCompanion<DuaAttachment> {
     if (value.present) {
       map['value'] = Variable<String>(value.value);
     }
+    if (dataBlob.present) {
+      map['data_blob'] = Variable<Uint8List>(dataBlob.value);
+    }
     if (mimeType.present) {
       map['mime_type'] = Variable<String>(mimeType.value);
     }
@@ -3992,6 +4193,7 @@ class DuaAttachmentsCompanion extends UpdateCompanion<DuaAttachment> {
           ..write('kind: $kind, ')
           ..write('title: $title, ')
           ..write('value: $value, ')
+          ..write('dataBlob: $dataBlob, ')
           ..write('mimeType: $mimeType, ')
           ..write('durationMs: $durationMs, ')
           ..write('createdAt: $createdAt, ')
@@ -4079,6 +4281,7 @@ typedef $$DuasTableCreateCompanionBuilder =
       Value<String> tagsText,
       Value<String?> primaryCategoryId,
       Value<String?> imagePath,
+      Value<Uint8List?> imageBlob,
       Value<String?> detectedLanguage,
       Value<bool> scheduleEnabled,
       Value<int?> scheduleHour,
@@ -4104,6 +4307,7 @@ typedef $$DuasTableUpdateCompanionBuilder =
       Value<String> tagsText,
       Value<String?> primaryCategoryId,
       Value<String?> imagePath,
+      Value<Uint8List?> imageBlob,
       Value<String?> detectedLanguage,
       Value<bool> scheduleEnabled,
       Value<int?> scheduleHour,
@@ -4255,6 +4459,11 @@ class $$DuasTableFilterComposer extends Composer<_$AppDatabase, $DuasTable> {
 
   ColumnFilters<String> get imagePath => $composableBuilder(
     column: $table.imagePath,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<Uint8List> get imageBlob => $composableBuilder(
+    column: $table.imageBlob,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -4472,6 +4681,11 @@ class $$DuasTableOrderingComposer extends Composer<_$AppDatabase, $DuasTable> {
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<Uint8List> get imageBlob => $composableBuilder(
+    column: $table.imageBlob,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get detectedLanguage => $composableBuilder(
     column: $table.detectedLanguage,
     builder: (column) => ColumnOrderings(column),
@@ -4572,6 +4786,9 @@ class $$DuasTableAnnotationComposer
 
   GeneratedColumn<String> get imagePath =>
       $composableBuilder(column: $table.imagePath, builder: (column) => column);
+
+  GeneratedColumn<Uint8List> get imageBlob =>
+      $composableBuilder(column: $table.imageBlob, builder: (column) => column);
 
   GeneratedColumn<String> get detectedLanguage => $composableBuilder(
     column: $table.detectedLanguage,
@@ -4762,6 +4979,7 @@ class $$DuasTableTableManager
                 Value<String> tagsText = const Value.absent(),
                 Value<String?> primaryCategoryId = const Value.absent(),
                 Value<String?> imagePath = const Value.absent(),
+                Value<Uint8List?> imageBlob = const Value.absent(),
                 Value<String?> detectedLanguage = const Value.absent(),
                 Value<bool> scheduleEnabled = const Value.absent(),
                 Value<int?> scheduleHour = const Value.absent(),
@@ -4785,6 +5003,7 @@ class $$DuasTableTableManager
                 tagsText: tagsText,
                 primaryCategoryId: primaryCategoryId,
                 imagePath: imagePath,
+                imageBlob: imageBlob,
                 detectedLanguage: detectedLanguage,
                 scheduleEnabled: scheduleEnabled,
                 scheduleHour: scheduleHour,
@@ -4810,6 +5029,7 @@ class $$DuasTableTableManager
                 Value<String> tagsText = const Value.absent(),
                 Value<String?> primaryCategoryId = const Value.absent(),
                 Value<String?> imagePath = const Value.absent(),
+                Value<Uint8List?> imageBlob = const Value.absent(),
                 Value<String?> detectedLanguage = const Value.absent(),
                 Value<bool> scheduleEnabled = const Value.absent(),
                 Value<int?> scheduleHour = const Value.absent(),
@@ -4833,6 +5053,7 @@ class $$DuasTableTableManager
                 tagsText: tagsText,
                 primaryCategoryId: primaryCategoryId,
                 imagePath: imagePath,
+                imageBlob: imageBlob,
                 detectedLanguage: detectedLanguage,
                 scheduleEnabled: scheduleEnabled,
                 scheduleHour: scheduleHour,
@@ -5772,6 +5993,7 @@ typedef $$RecordingsTableCreateCompanionBuilder =
       required String id,
       required String duaId,
       required String audioPath,
+      Value<Uint8List?> audioBlob,
       required int durationMs,
       required DateTime createdAt,
       required DateTime updatedAt,
@@ -5782,6 +6004,7 @@ typedef $$RecordingsTableUpdateCompanionBuilder =
       Value<String> id,
       Value<String> duaId,
       Value<String> audioPath,
+      Value<Uint8List?> audioBlob,
       Value<int> durationMs,
       Value<DateTime> createdAt,
       Value<DateTime> updatedAt,
@@ -5826,6 +6049,11 @@ class $$RecordingsTableFilterComposer
 
   ColumnFilters<String> get audioPath => $composableBuilder(
     column: $table.audioPath,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<Uint8List> get audioBlob => $composableBuilder(
+    column: $table.audioBlob,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -5887,6 +6115,11 @@ class $$RecordingsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<Uint8List> get audioBlob => $composableBuilder(
+    column: $table.audioBlob,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<int> get durationMs => $composableBuilder(
     column: $table.durationMs,
     builder: (column) => ColumnOrderings(column),
@@ -5940,6 +6173,9 @@ class $$RecordingsTableAnnotationComposer
 
   GeneratedColumn<String> get audioPath =>
       $composableBuilder(column: $table.audioPath, builder: (column) => column);
+
+  GeneratedColumn<Uint8List> get audioBlob =>
+      $composableBuilder(column: $table.audioBlob, builder: (column) => column);
 
   GeneratedColumn<int> get durationMs => $composableBuilder(
     column: $table.durationMs,
@@ -6007,6 +6243,7 @@ class $$RecordingsTableTableManager
                 Value<String> id = const Value.absent(),
                 Value<String> duaId = const Value.absent(),
                 Value<String> audioPath = const Value.absent(),
+                Value<Uint8List?> audioBlob = const Value.absent(),
                 Value<int> durationMs = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
                 Value<DateTime> updatedAt = const Value.absent(),
@@ -6015,6 +6252,7 @@ class $$RecordingsTableTableManager
                 id: id,
                 duaId: duaId,
                 audioPath: audioPath,
+                audioBlob: audioBlob,
                 durationMs: durationMs,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
@@ -6025,6 +6263,7 @@ class $$RecordingsTableTableManager
                 required String id,
                 required String duaId,
                 required String audioPath,
+                Value<Uint8List?> audioBlob = const Value.absent(),
                 required int durationMs,
                 required DateTime createdAt,
                 required DateTime updatedAt,
@@ -6033,6 +6272,7 @@ class $$RecordingsTableTableManager
                 id: id,
                 duaId: duaId,
                 audioPath: audioPath,
+                audioBlob: audioBlob,
                 durationMs: durationMs,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
@@ -6453,6 +6693,7 @@ typedef $$LibraryItemsTableCreateCompanionBuilder =
       required String title,
       required String kind,
       Value<String?> filePath,
+      Value<Uint8List?> fileBlob,
       Value<String?> mimeType,
       Value<String?> textContent,
       Value<String?> ocrText,
@@ -6467,6 +6708,7 @@ typedef $$LibraryItemsTableUpdateCompanionBuilder =
       Value<String> title,
       Value<String> kind,
       Value<String?> filePath,
+      Value<Uint8List?> fileBlob,
       Value<String?> mimeType,
       Value<String?> textContent,
       Value<String?> ocrText,
@@ -6502,6 +6744,11 @@ class $$LibraryItemsTableFilterComposer
 
   ColumnFilters<String> get filePath => $composableBuilder(
     column: $table.filePath,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<Uint8List> get fileBlob => $composableBuilder(
+    column: $table.fileBlob,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -6565,6 +6812,11 @@ class $$LibraryItemsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<Uint8List> get fileBlob => $composableBuilder(
+    column: $table.fileBlob,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get mimeType => $composableBuilder(
     column: $table.mimeType,
     builder: (column) => ColumnOrderings(column),
@@ -6616,6 +6868,9 @@ class $$LibraryItemsTableAnnotationComposer
 
   GeneratedColumn<String> get filePath =>
       $composableBuilder(column: $table.filePath, builder: (column) => column);
+
+  GeneratedColumn<Uint8List> get fileBlob =>
+      $composableBuilder(column: $table.fileBlob, builder: (column) => column);
 
   GeneratedColumn<String> get mimeType =>
       $composableBuilder(column: $table.mimeType, builder: (column) => column);
@@ -6673,6 +6928,7 @@ class $$LibraryItemsTableTableManager
                 Value<String> title = const Value.absent(),
                 Value<String> kind = const Value.absent(),
                 Value<String?> filePath = const Value.absent(),
+                Value<Uint8List?> fileBlob = const Value.absent(),
                 Value<String?> mimeType = const Value.absent(),
                 Value<String?> textContent = const Value.absent(),
                 Value<String?> ocrText = const Value.absent(),
@@ -6685,6 +6941,7 @@ class $$LibraryItemsTableTableManager
                 title: title,
                 kind: kind,
                 filePath: filePath,
+                fileBlob: fileBlob,
                 mimeType: mimeType,
                 textContent: textContent,
                 ocrText: ocrText,
@@ -6699,6 +6956,7 @@ class $$LibraryItemsTableTableManager
                 required String title,
                 required String kind,
                 Value<String?> filePath = const Value.absent(),
+                Value<Uint8List?> fileBlob = const Value.absent(),
                 Value<String?> mimeType = const Value.absent(),
                 Value<String?> textContent = const Value.absent(),
                 Value<String?> ocrText = const Value.absent(),
@@ -6711,6 +6969,7 @@ class $$LibraryItemsTableTableManager
                 title: title,
                 kind: kind,
                 filePath: filePath,
+                fileBlob: fileBlob,
                 mimeType: mimeType,
                 textContent: textContent,
                 ocrText: ocrText,
@@ -6760,6 +7019,7 @@ typedef $$DuaAttachmentsTableCreateCompanionBuilder =
       required String kind,
       required String title,
       required String value,
+      Value<Uint8List?> dataBlob,
       Value<String?> mimeType,
       Value<int?> durationMs,
       required DateTime createdAt,
@@ -6772,6 +7032,7 @@ typedef $$DuaAttachmentsTableUpdateCompanionBuilder =
       Value<String> kind,
       Value<String> title,
       Value<String> value,
+      Value<Uint8List?> dataBlob,
       Value<String?> mimeType,
       Value<int?> durationMs,
       Value<DateTime> createdAt,
@@ -6830,6 +7091,11 @@ class $$DuaAttachmentsTableFilterComposer
 
   ColumnFilters<String> get value => $composableBuilder(
     column: $table.value,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<Uint8List> get dataBlob => $composableBuilder(
+    column: $table.dataBlob,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -6901,6 +7167,11 @@ class $$DuaAttachmentsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<Uint8List> get dataBlob => $composableBuilder(
+    column: $table.dataBlob,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get mimeType => $composableBuilder(
     column: $table.mimeType,
     builder: (column) => ColumnOrderings(column),
@@ -6960,6 +7231,9 @@ class $$DuaAttachmentsTableAnnotationComposer
 
   GeneratedColumn<String> get value =>
       $composableBuilder(column: $table.value, builder: (column) => column);
+
+  GeneratedColumn<Uint8List> get dataBlob =>
+      $composableBuilder(column: $table.dataBlob, builder: (column) => column);
 
   GeneratedColumn<String> get mimeType =>
       $composableBuilder(column: $table.mimeType, builder: (column) => column);
@@ -7031,6 +7305,7 @@ class $$DuaAttachmentsTableTableManager
                 Value<String> kind = const Value.absent(),
                 Value<String> title = const Value.absent(),
                 Value<String> value = const Value.absent(),
+                Value<Uint8List?> dataBlob = const Value.absent(),
                 Value<String?> mimeType = const Value.absent(),
                 Value<int?> durationMs = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
@@ -7041,6 +7316,7 @@ class $$DuaAttachmentsTableTableManager
                 kind: kind,
                 title: title,
                 value: value,
+                dataBlob: dataBlob,
                 mimeType: mimeType,
                 durationMs: durationMs,
                 createdAt: createdAt,
@@ -7053,6 +7329,7 @@ class $$DuaAttachmentsTableTableManager
                 required String kind,
                 required String title,
                 required String value,
+                Value<Uint8List?> dataBlob = const Value.absent(),
                 Value<String?> mimeType = const Value.absent(),
                 Value<int?> durationMs = const Value.absent(),
                 required DateTime createdAt,
@@ -7063,6 +7340,7 @@ class $$DuaAttachmentsTableTableManager
                 kind: kind,
                 title: title,
                 value: value,
+                dataBlob: dataBlob,
                 mimeType: mimeType,
                 durationMs: durationMs,
                 createdAt: createdAt,

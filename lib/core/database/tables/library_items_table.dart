@@ -5,6 +5,7 @@ class LibraryItems extends Table {
   TextColumn get title => text()();
   TextColumn get kind => text()();
   TextColumn get filePath => text().nullable()();
+  BlobColumn get fileBlob => blob().nullable()();
   TextColumn get mimeType => text().nullable()();
   TextColumn get textContent => text().nullable()();
   TextColumn get ocrText => text().nullable()();

@@ -11,10 +11,6 @@ import androidx.core.content.ContextCompat
 
 class DuaAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action == Intent.ACTION_BOOT_COMPLETED || intent.action == Intent.ACTION_MY_PACKAGE_REPLACED) {
-            DuaAlarmScheduler.restoreAll(context)
-            return
-        }
         val id = intent.getStringExtra("id") ?: return
         val title = intent.getStringExtra("title") ?: "Scheduled Dua"
         val audioPath = intent.getStringExtra("audioPath")?.takeIf { it.isNotEmpty() }

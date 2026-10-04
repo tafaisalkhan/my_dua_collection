@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -113,6 +114,14 @@ class RemoveAdsPurchaseController extends Notifier<RemoveAdsPurchaseState> {
           : null,
       clearMessage: product != null,
     );
+
+    if (!entitled) {
+      try {
+        await _billing.restorePurchases();
+      } catch (e) {
+        debugPrint('Silent restore error on startup: $e');
+      }
+    }
   }
 
   Future<void> buy() async {
@@ -177,8 +186,10 @@ class RemoveAdsPurchaseController extends Notifier<RemoveAdsPurchaseState> {
             message: 'Purchase canceled.',
           );
       }
-      if (purchase.pendingCompletePurchase) {
+      try {
         await _billing.completePurchase(purchase);
+      } catch (e) {
+        debugPrint('Complete purchase error: $e');
       }
     }
   }

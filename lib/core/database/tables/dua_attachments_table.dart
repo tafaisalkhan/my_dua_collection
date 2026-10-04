@@ -8,6 +8,7 @@ class DuaAttachments extends Table {
   TextColumn get kind => text()();
   TextColumn get title => text()();
   TextColumn get value => text()();
+  BlobColumn get dataBlob => blob().nullable()();
   TextColumn get mimeType => text().nullable()();
   IntColumn get durationMs => integer().nullable()();
   DateTimeColumn get createdAt => dateTime()();

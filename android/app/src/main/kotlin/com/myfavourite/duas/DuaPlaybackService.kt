@@ -16,6 +16,17 @@ class DuaPlaybackService : Service() {
     private var player: MediaPlayer? = null
     private var playlist = listOf<String>()
     private var index = 0
+    private var wakeLock: PowerManager.WakeLock? = null
+
+    override fun onCreate() {
+        super.onCreate()
+        try {
+            val powerManager = getSystemService(POWER_SERVICE) as PowerManager
+            wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "FavoriteDua:PlaybackWakeLock").apply {
+                acquire(15 * 60 * 1000L) // Safe 15-minute maximum timeout
+            }
+        } catch (_: Exception) {}
+    }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val title = intent?.getStringExtra("title") ?: "Scheduled Dua"
@@ -72,6 +83,16 @@ class DuaPlaybackService : Service() {
         )
     }
 
-    override fun onDestroy() { player?.release(); player = null; super.onDestroy() }
+    override fun onDestroy() {
+        player?.release()
+        player = null
+        try {
+            if (wakeLock?.isHeld == true) {
+                wakeLock?.release()
+            }
+        } catch (_: Exception) {}
+        super.onDestroy()
+    }
+
     override fun onBind(intent: Intent?): IBinder? = null
 }

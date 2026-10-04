@@ -332,6 +332,130 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       final category = await (db.select(
         db.categories,
       )..where((row) => row.name.equals(_category))).getSingleOrNull();
+
+      final base = Directory(
+        p.join(
+          (await getApplicationDocumentsDirectory()).path,
+          'favorite_dua',
+          'duas',
+          id,
+        ),
+      );
+      await base.create(recursive: true);
+
+      // Handle audio attachment sync
+      final existingAudioAttachment = await (db.select(db.duaAttachments)
+            ..where((row) => row.duaId.equals(id))
+            ..where((row) => row.kind.equals('audio')))
+          .getSingleOrNull();
+
+      String? finalAudioPath;
+
+      if (_audioPath == null) {
+        if (existingAudioAttachment != null) {
+          final oldFile = File(existingAudioAttachment.value);
+          if (await oldFile.exists() && oldFile.path.contains('favorite_dua')) {
+            await oldFile.delete();
+          }
+          await (db.delete(db.duaAttachments)
+                ..where((row) => row.id.equals(existingAudioAttachment.id)))
+              .go();
+        }
+      } else {
+        if (existingAudioAttachment != null &&
+            existingAudioAttachment.value == _audioPath) {
+          finalAudioPath = _audioPath;
+        } else {
+          final sourceAudio = File(_audioPath!);
+          if (await sourceAudio.exists()) {
+            final targetPath = p.join(
+              base.path,
+              'voice_${const Uuid().v4()}${p.extension(sourceAudio.path)}',
+            );
+            final savedAudioFile = await sourceAudio.copy(targetPath);
+            finalAudioPath = savedAudioFile.path;
+
+            if (existingAudioAttachment != null) {
+              final oldFile = File(existingAudioAttachment.value);
+              if (await oldFile.exists() && oldFile.path.contains('favorite_dua')) {
+                await oldFile.delete();
+              }
+              await (db.delete(db.duaAttachments)
+                    ..where((row) => row.id.equals(existingAudioAttachment.id)))
+                  .go();
+            }
+
+            await db.into(db.duaAttachments).insert(
+                  DuaAttachmentsCompanion.insert(
+                    id: const Uuid().v4(),
+                    duaId: id,
+                    kind: 'audio',
+                    title: 'Dua voice',
+                    value: finalAudioPath,
+                    mimeType: const Value('audio/mp4'),
+                    createdAt: DateTime.now(),
+                  ),
+                );
+          }
+        }
+      }
+
+      // Handle extra attachments sync
+      final existingAttachments = await (db.select(db.duaAttachments)
+            ..where((row) => row.duaId.equals(id)))
+          .get();
+
+      final existingExtrasInDb = existingAttachments
+          .where((a) => !['audio', 'image'].contains(a.kind))
+          .toList();
+
+      for (final oldExtra in existingExtrasInDb) {
+        final matchesInExtras = _extras.any(
+          (e) => e.value == oldExtra.value && e.kind == oldExtra.kind,
+        );
+        if (!matchesInExtras) {
+          if (!['link', 'youtube'].contains(oldExtra.kind)) {
+            final oldFile = File(oldExtra.value);
+            if (await oldFile.exists() && oldFile.path.contains('favorite_dua')) {
+              await oldFile.delete();
+            }
+          }
+          await (db.delete(db.duaAttachments)
+                ..where((row) => row.id.equals(oldExtra.id)))
+              .go();
+        }
+      }
+
+      for (final extra in _extras) {
+        final alreadyInDb = existingExtrasInDb.any(
+          (e) => e.value == extra.value && e.kind == extra.kind,
+        );
+        if (!alreadyInDb) {
+          var storedValue = extra.value;
+          if (!['link', 'youtube'].contains(extra.kind)) {
+            final source = File(extra.value);
+            if (await source.exists()) {
+              storedValue = (await source.copy(
+                p.join(
+                  base.path,
+                  '${const Uuid().v4()}${p.extension(source.path)}',
+                ),
+              )).path;
+            }
+          }
+          await db.into(db.duaAttachments).insert(
+                DuaAttachmentsCompanion.insert(
+                  id: const Uuid().v4(),
+                  duaId: id,
+                  kind: extra.kind,
+                  title: extra.title,
+                  value: storedValue,
+                  createdAt: DateTime.now(),
+                ),
+              );
+        }
+      }
+
       await (db.update(db.duas)..where((row) => row.id.equals(id))).write(
         DuasCompanion(
           title: Value(_title.text.trim()),
@@ -349,6 +473,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
           updatedAt: Value(DateTime.now()),
         ),
       );
+
       await DuaAudioScheduleService.cancel(id);
       if (_scheduleEnabled) {
         if (['notification', 'both'].contains(_scheduleMode)) {
@@ -357,7 +482,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
         await DuaAudioScheduleService.schedule(
           id: id,
           title: _title.text.trim(),
-          audioPath: _audioPath,
+          audioPath: finalAudioPath,
           hour: _time.hour,
           minute: _time.minute,
           repeats: _repeats,
@@ -385,6 +510,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
     if (_scheduleEnabled &&
         ['play', 'both'].contains(_scheduleMode) &&
         _audioPath == null) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Attach a voice for Play or Both mode.')),
       );
@@ -557,7 +683,9 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
   Widget build(BuildContext context) {
     final imagePath = _imagePath;
     return Scaffold(
-      appBar: AppBar(title: const Text('Save Cropped Dua')),
+      appBar: AppBar(
+        title: Text(widget.isEditing ? 'Edit Dua' : 'Save Cropped Dua'),
+      ),
       body: Form(
         key: _formKey,
         child: ListView(

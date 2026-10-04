@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import org.json.JSONArray
 import org.json.JSONObject
@@ -29,6 +30,7 @@ object DuaBundleScheduler {
     ) {
         if (persist) {
             val json = JSONObject()
+                .put("id", id)
                 .put("name", name)
                 .put("titles", JSONArray(titles))
                 .put("audioPaths", JSONArray(audioPaths))
@@ -61,9 +63,18 @@ object DuaBundleScheduler {
         }
         val alarm = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val pending = pendingIntent(context, id, name, titles, audioPaths, repeats, hour, minute, frequency, weekday, dayOfMonth)
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || alarm.canScheduleExactAlarms()) {
-            alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next.timeInMillis, pending)
-        } else {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                alarm.setAlarmClock(
+                    AlarmManager.AlarmClockInfo(next.timeInMillis, pending),
+                    pending
+                )
+            } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || alarm.canScheduleExactAlarms()) {
+                alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next.timeInMillis, pending)
+            } else {
+                alarm.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next.timeInMillis, pending)
+            }
+        } catch (_: SecurityException) {
             alarm.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next.timeInMillis, pending)
         }
     }
@@ -96,6 +107,7 @@ object DuaBundleScheduler {
     ): PendingIntent {
         val intent = Intent(context, DuaBundleReceiver::class.java).apply {
             action = "com.myfavourite.duas.PLAY_BUNDLE"
+            data = Uri.parse("dua://bundle/$id")
             putExtra("id", id); putExtra("name", name)
             putStringArrayListExtra("titles", titles)
             putStringArrayListExtra("audioPaths", audioPaths)

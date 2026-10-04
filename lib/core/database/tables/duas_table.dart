@@ -12,6 +12,7 @@ class Duas extends Table {
   TextColumn get tagsText => text().withDefault(const Constant(''))();
   TextColumn get primaryCategoryId => text().nullable()();
   TextColumn get imagePath => text().nullable()();
+  BlobColumn get imageBlob => blob().nullable()();
   TextColumn get detectedLanguage => text().nullable()();
   BoolColumn get scheduleEnabled =>
       boolean().withDefault(const Constant(false))();

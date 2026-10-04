@@ -6,6 +6,7 @@ class Recordings extends Table {
   TextColumn get duaId =>
       text().references(Duas, #id, onDelete: KeyAction.cascade)();
   TextColumn get audioPath => text()();
+  BlobColumn get audioBlob => blob().nullable()();
   IntColumn get durationMs => integer()();
   DateTimeColumn get createdAt => dateTime()();
   DateTimeColumn get updatedAt => dateTime()();

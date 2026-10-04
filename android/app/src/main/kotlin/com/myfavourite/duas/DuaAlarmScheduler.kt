@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import java.util.Calendar
 
@@ -51,7 +52,12 @@ object DuaAlarmScheduler {
             context, id, title, audioPath, hour, minute, repeats, mode, category, duaText
         )
         try {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || alarm.canScheduleExactAlarms()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                alarm.setAlarmClock(
+                    AlarmManager.AlarmClockInfo(next.timeInMillis, pending),
+                    pending
+                )
+            } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || alarm.canScheduleExactAlarms()) {
                 alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next.timeInMillis, pending)
             } else {
                 alarm.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next.timeInMillis, pending)
@@ -101,6 +107,7 @@ object DuaAlarmScheduler {
     ): PendingIntent {
         val intent = Intent(context, DuaAlarmReceiver::class.java).apply {
             action = "com.myfavourite.duas.PLAY_DUA"
+            data = Uri.parse("dua://alarm/$id")
             putExtra("id", id)
             putExtra("title", title)
             putExtra("audioPath", audioPath)
