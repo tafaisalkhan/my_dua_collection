@@ -219,6 +219,7 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
     final stored = await source.copy(
       p.join(base.path, 'voice_${const Uuid().v4()}${p.extension(source.path)}'),
     );
+    final storedBytes = await stored.readAsBytes();
     final db = ref.read(appDatabaseProvider);
     await db
         .into(db.duaAttachments)
@@ -229,6 +230,7 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
             kind: 'audio',
             title: picked.name,
             value: stored.path,
+            dataBlob: Value(storedBytes),
             mimeType: const Value('audio/mp4'),
             createdAt: DateTime.now(),
           ),
@@ -253,6 +255,7 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
     final stored = await source.copy(
       p.join(base.path, '${const Uuid().v4()}${p.extension(source.path)}'),
     );
+    final docBytes = await stored.readAsBytes();
     final db = ref.read(appDatabaseProvider);
     await db
         .into(db.duaAttachments)
@@ -263,6 +266,7 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
             kind: 'document',
             title: picked.name,
             value: stored.path,
+            dataBlob: Value(docBytes),
             createdAt: DateTime.now(),
           ),
         );

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:drift/drift.dart' show OrderingTerm, Value;
 import 'package:file_picker/file_picker.dart';
@@ -385,6 +386,11 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                   .go();
             }
 
+            Uint8List? audioBytes;
+            final audioFile = File(finalAudioPath);
+            if (await audioFile.exists()) {
+              audioBytes = await audioFile.readAsBytes();
+            }
             await db.into(db.duaAttachments).insert(
                   DuaAttachmentsCompanion.insert(
                     id: const Uuid().v4(),
@@ -392,6 +398,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                     kind: 'audio',
                     title: 'Dua voice',
                     value: finalAudioPath,
+                    dataBlob: Value(audioBytes),
                     mimeType: const Value('audio/mp4'),
                     createdAt: DateTime.now(),
                   ),
@@ -443,6 +450,11 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
               )).path;
             }
           }
+          Uint8List? extraBytes;
+          if (!['link', 'youtube'].contains(extra.kind)) {
+            final f = File(storedValue);
+            if (await f.exists()) extraBytes = await f.readAsBytes();
+          }
           await db.into(db.duaAttachments).insert(
                 DuaAttachmentsCompanion.insert(
                   id: const Uuid().v4(),
@@ -450,6 +462,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                   kind: extra.kind,
                   title: extra.title,
                   value: storedValue,
+                  dataBlob: Value(extraBytes),
                   createdAt: DateTime.now(),
                 ),
               );
@@ -557,7 +570,11 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       final category = await (db.select(
         db.categories,
       )..where((row) => row.name.equals(_category))).getSingleOrNull();
-      await db
+        Uint8List? imageBytes;
+        if (savedImage != null && await File(savedImage).exists()) {
+          imageBytes = await File(savedImage).readAsBytes();
+        }
+        await db
           .into(db.duas)
           .insert(
             DuasCompanion.insert(
@@ -569,6 +586,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
               tagsText: Value(_tags.text.trim()),
               notes: Value(_nullableText(_notes)),
               imagePath: Value(savedImage),
+              imageBlob: Value(imageBytes),
               primaryCategoryId: Value(category?.id),
               scheduleEnabled: Value(_scheduleEnabled),
               scheduleHour: Value(_scheduleEnabled ? _time.hour : null),
@@ -580,6 +598,10 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
             ),
           );
       if (savedAudio != null) {
+        Uint8List? audioBytes;
+        if (await File(savedAudio).exists()) {
+          audioBytes = await File(savedAudio).readAsBytes();
+        }
         await db
             .into(db.duaAttachments)
             .insert(
@@ -589,6 +611,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                 kind: 'audio',
                 title: 'Dua voice',
                 value: savedAudio,
+                dataBlob: Value(audioBytes),
                 mimeType: const Value('audio/mp4'),
                 createdAt: now,
               ),
@@ -604,6 +627,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                 kind: 'image',
                 title: 'Cropped Dua image',
                 value: savedImage,
+                dataBlob: Value(imageBytes),
                 mimeType: const Value('image/png'),
                 createdAt: now,
               ),
@@ -620,6 +644,11 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
             ),
           )).path;
         }
+        Uint8List? extraBytes;
+        if (!['link', 'youtube'].contains(attachment.kind)) {
+          final f = File(storedValue);
+          if (await f.exists()) extraBytes = await f.readAsBytes();
+        }
         await db
             .into(db.duaAttachments)
             .insert(
@@ -629,6 +658,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                 kind: attachment.kind,
                 title: attachment.title,
                 value: storedValue,
+                dataBlob: Value(extraBytes),
                 createdAt: now,
               ),
             );
