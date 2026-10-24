@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:drift/drift.dart' show Value;
 import 'package:file_picker/file_picker.dart';
@@ -10,8 +11,10 @@ import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import '../../../../core/audio/audio_playback_coordinator.dart';
 import '../../../../core/database/app_database.dart';
 import '../../../../core/theme/dua_palette.dart';
+import '../../data/services/default_dua_voice_service.dart';
 import '../../data/services/dua_audio_schedule_service.dart';
 import '../widgets/dua_text_view.dart';
 
@@ -25,8 +28,21 @@ class DuaDetailScreen extends ConsumerStatefulWidget {
 class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
   final player = AudioPlayer();
   String? playing;
+  bool generatingDefaultVoice = false;
+  StreamSubscription<PlayerState>? _playerStateSubscription;
+  @override
+  void initState() {
+    super.initState();
+    AudioPlaybackCoordinator.instance.register(player);
+    _playerStateSubscription = player.playerStateStream.listen((_) {
+      if (mounted) setState(() {});
+    });
+  }
+
   @override
   void dispose() {
+    AudioPlaybackCoordinator.instance.unregister(player);
+    _playerStateSubscription?.cancel();
     player.dispose();
     super.dispose();
   }
@@ -126,6 +142,7 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
       if (playing == a.id && player.playing) {
         await player.pause();
       } else {
+        await AudioPlaybackCoordinator.instance.stopOthers(player);
         await player.setFilePath(a.value);
         playing = a.id;
         await player.play();
@@ -134,6 +151,45 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
       return;
     }
     await OpenFilex.open(a.value);
+  }
+
+  Future<void> _playDefaultVoice(Dua dua) async {
+    final voiceService = DefaultDuaVoiceService(ref.read(appDatabaseProvider));
+    final id = voiceService.attachmentId(dua.id);
+    if (playing == id && player.playing) {
+      await player.pause();
+      if (mounted) setState(() {});
+      return;
+    }
+
+    setState(() => generatingDefaultVoice = true);
+    try {
+      final voice = await voiceService
+          .getOrCreate(dua)
+          .timeout(
+            const Duration(seconds: 25),
+            onTimeout: () async {
+              await voiceService.cancel();
+              throw TimeoutException(
+                'The device voice engine did not respond. Check that an Arabic '
+                'offline voice is installed, then try again.',
+              );
+            },
+          );
+      await AudioPlaybackCoordinator.instance.stopOthers(player);
+      await player.setFilePath(voice.value);
+      playing = voice.id;
+      if (mounted) setState(() {});
+      player.play();
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not create voice: $error')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => generatingDefaultVoice = false);
+    }
   }
 
   Future<void> _addLink() async {
@@ -217,7 +273,10 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
     );
     await base.create(recursive: true);
     final stored = await source.copy(
-      p.join(base.path, 'voice_${const Uuid().v4()}${p.extension(source.path)}'),
+      p.join(
+        base.path,
+        'voice_${const Uuid().v4()}${p.extension(source.path)}',
+      ),
     );
     final storedBytes = await stored.readAsBytes();
     final db = ref.read(appDatabaseProvider);
@@ -372,11 +431,15 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
                   constraints: const BoxConstraints(maxHeight: 420),
                   width: double.infinity,
                   color: Colors.black12,
-                  child: Image.file(
-                    File(
-                      files.firstWhere((item) => item.kind == 'image').value,
+                  child: InteractiveViewer(
+                    minScale: 0.8,
+                    maxScale: 5.0,
+                    child: Image.file(
+                      File(
+                        files.firstWhere((item) => item.kind == 'image').value,
+                      ),
+                      fit: BoxFit.contain,
                     ),
-                    fit: BoxFit.contain,
                   ),
                 ),
               ),
@@ -392,6 +455,33 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
                   ),
                 ),
               ),
+            if (dua.originalText.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              FilledButton.icon(
+                onPressed: generatingDefaultVoice
+                    ? null
+                    : () => _playDefaultVoice(dua),
+                icon: generatingDefaultVoice
+                    ? const SizedBox.square(
+                        dimension: 18,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : Icon(
+                        playing ==
+                                    DefaultDuaVoiceService(
+                                      ref.read(appDatabaseProvider),
+                                    ).attachmentId(dua.id) &&
+                                player.playing
+                            ? Icons.pause
+                            : Icons.volume_up,
+                      ),
+                label: Text(
+                  generatingDefaultVoice
+                      ? 'Creating voice on this device…'
+                      : 'Play default voice',
+                ),
+              ),
+            ],
             if (dua.translation?.trim().isNotEmpty == true) ...[
               const SizedBox(height: 16),
               Text(

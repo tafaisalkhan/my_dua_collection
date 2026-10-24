@@ -149,15 +149,6 @@ class HomeScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 20),
           SearchField(onTap: () => context.go('/library')),
-          const SizedBox(height: 12),
-          OutlinedButton.icon(
-            onPressed: () => context.push('/dua-bundle'),
-            icon: const Icon(Icons.playlist_add),
-            label: const Text('CREATE DUA BUNDLE'),
-            style: OutlinedButton.styleFrom(
-              minimumSize: const Size.fromHeight(50),
-            ),
-          ),
           const SizedBox(height: 24),
           Row(
             children: [

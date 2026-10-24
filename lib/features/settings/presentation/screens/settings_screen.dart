@@ -22,22 +22,37 @@ class SettingsScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
+          Text(
+            'Dua Bundles',
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 8),
           Card(
+            elevation: 2,
             child: ListTile(
-              leading: const Icon(Icons.playlist_play),
-              title: const Text('Dua Bundle Scheduler'),
+              leading: const CircleAvatar(
+                backgroundColor: Colors.indigo,
+                child: Icon(Icons.playlist_add, color: Colors.white),
+              ),
+              title: const Text(
+                'Dua Bundle Setup',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               subtitle: const Text(
-                'Combine Duas with individual repeats and daily, weekly, or monthly timing',
+                'Create and schedule groups of Duas to play automatically',
               ),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => context.push('/dua-bundle'),
             ),
           ),
+          const SizedBox(height: 24),
           Text(
             'Backup & Restore Database',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Card(
@@ -65,7 +80,9 @@ class SettingsScreen extends ConsumerWidget {
                           child: Wrap(
                             children: [
                               ListTile(
-                                leading: const Icon(Icons.folder_special_outlined),
+                                leading: const Icon(
+                                  Icons.folder_special_outlined,
+                                ),
                                 title: const Text('Save to Downloads Folder'),
                                 subtitle: const Text(
                                   'Saves directly into /storage/emulated/0/Download/',
@@ -98,19 +115,26 @@ class SettingsScreen extends ConsumerWidget {
 
                       final backupService = ref.read(backupServiceProvider);
                       if (option == 'download') {
-                        final file = await backupService.saveBackupToDownloads();
+                        final file = await backupService
+                            .saveBackupToDownloads();
                         if (context.mounted) {
                           if (file != null) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('Backup saved to Downloads: ${file.path}'),
+                                content: Text(
+                                  'Backup saved to Downloads: ${file.path}',
+                                ),
                                 backgroundColor: Colors.green,
                                 duration: const Duration(seconds: 4),
                               ),
                             );
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Could not save to Downloads folder.')),
+                              const SnackBar(
+                                content: Text(
+                                  'Could not save to Downloads folder.',
+                                ),
+                              ),
                             );
                           }
                         }
@@ -122,7 +146,9 @@ class SettingsScreen extends ConsumerWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text('Backup failed: $e'),
-                            backgroundColor: Theme.of(context).colorScheme.error,
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.error,
                           ),
                         );
                       }
@@ -176,7 +202,8 @@ class SettingsScreen extends ConsumerWidget {
                         );
                       }
                       final backupService = ref.read(backupServiceProvider);
-                      final success = await backupService.restoreBackupFromFile();
+                      final success = await backupService
+                          .restoreBackupFromFile();
                       if (context.mounted) {
                         if (success) {
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -195,7 +222,9 @@ class SettingsScreen extends ConsumerWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text('Restore failed: $e'),
-                            backgroundColor: Theme.of(context).colorScheme.error,
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.error,
                           ),
                         );
                       }

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:open_filex/open_filex.dart';
 
+import '../../../../core/audio/audio_playback_coordinator.dart';
 import '../../../../core/database/app_database.dart' as database;
 import '../../../../core/theme/dua_palette.dart';
 import '../../domain/entities/dua.dart';
@@ -30,10 +32,15 @@ class _DuaCardState extends ConsumerState<DuaCard> {
   final _audio = AudioPlayer();
   late Future<List<database.DuaAttachment>> _attachments;
   String? _playingPath;
+  StreamSubscription<PlayerState>? _playerStateSubscription;
 
   @override
   void initState() {
     super.initState();
+    AudioPlaybackCoordinator.instance.register(_audio);
+    _playerStateSubscription = _audio.playerStateStream.listen((_) {
+      if (mounted) setState(() {});
+    });
     _attachments = _loadAttachments();
   }
 
@@ -60,6 +67,7 @@ class _DuaCardState extends ConsumerState<DuaCard> {
         if (_playingPath == attachment.value && _audio.playing) {
           await _audio.pause();
         } else {
+          await AudioPlaybackCoordinator.instance.stopOthers(_audio);
           await _audio.setFilePath(attachment.value);
           _playingPath = attachment.value;
           await _audio.play();
@@ -120,6 +128,8 @@ class _DuaCardState extends ConsumerState<DuaCard> {
 
   @override
   void dispose() {
+    AudioPlaybackCoordinator.instance.unregister(_audio);
+    _playerStateSubscription?.cancel();
     _audio.dispose();
     super.dispose();
   }
@@ -181,10 +191,12 @@ class _DuaCardState extends ConsumerState<DuaCard> {
                     ],
                     if (widget.dua.originalText.isNotEmpty) ...[
                       const SizedBox(height: 12),
-                      DuaTextView(
-                        widget.dua.originalText,
-                        languageCode: widget.dua.detectedLanguage,
-                        color: Colors.black87,
+                      IgnorePointer(
+                        child: DuaTextView(
+                          widget.dua.originalText,
+                          languageCode: widget.dua.detectedLanguage,
+                          color: Colors.black87,
+                        ),
                       ),
                     ],
                     if (attachments.isNotEmpty) ...[

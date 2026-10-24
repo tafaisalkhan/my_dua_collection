@@ -13,6 +13,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../../core/audio/audio_playback_coordinator.dart';
 import '../../../../core/database/app_database.dart';
 import '../../data/services/dua_audio_schedule_service.dart';
 import '../../data/services/dua_json_service.dart';
@@ -56,6 +57,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
   final _notes = TextEditingController();
   final _recorder = AudioRecorder();
   final _player = AudioPlayer();
+  final _imageTransformController = TransformationController();
   final _extras = <_ExtraAttachment>[];
   Timer? _timer;
   String? _audioPath;
@@ -74,6 +76,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
   @override
   void initState() {
     super.initState();
+    AudioPlaybackCoordinator.instance.register(_player);
     _imagePath = widget.croppedPath;
     _title.text = 'My Dua';
     _duaText.text = widget.initialText ?? '';
@@ -233,6 +236,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
     if (_player.playing) {
       await _player.pause();
     } else {
+      await AudioPlaybackCoordinator.instance.stopOthers(_player);
       await _player.setFilePath(path);
       await _player.play();
     }
@@ -345,10 +349,11 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       await base.create(recursive: true);
 
       // Handle audio attachment sync
-      final existingAudioAttachment = await (db.select(db.duaAttachments)
-            ..where((row) => row.duaId.equals(id))
-            ..where((row) => row.kind.equals('audio')))
-          .getSingleOrNull();
+      final existingAudioAttachment =
+          await (db.select(db.duaAttachments)
+                ..where((row) => row.duaId.equals(id))
+                ..where((row) => row.kind.equals('audio')))
+              .getSingleOrNull();
 
       String? finalAudioPath;
 
@@ -358,9 +363,9 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
           if (await oldFile.exists() && oldFile.path.contains('favorite_dua')) {
             await oldFile.delete();
           }
-          await (db.delete(db.duaAttachments)
-                ..where((row) => row.id.equals(existingAudioAttachment.id)))
-              .go();
+          await (db.delete(
+            db.duaAttachments,
+          )..where((row) => row.id.equals(existingAudioAttachment.id))).go();
         }
       } else {
         if (existingAudioAttachment != null &&
@@ -378,7 +383,8 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
 
             if (existingAudioAttachment != null) {
               final oldFile = File(existingAudioAttachment.value);
-              if (await oldFile.exists() && oldFile.path.contains('favorite_dua')) {
+              if (await oldFile.exists() &&
+                  oldFile.path.contains('favorite_dua')) {
                 await oldFile.delete();
               }
               await (db.delete(db.duaAttachments)
@@ -391,7 +397,9 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
             if (await audioFile.exists()) {
               audioBytes = await audioFile.readAsBytes();
             }
-            await db.into(db.duaAttachments).insert(
+            await db
+                .into(db.duaAttachments)
+                .insert(
                   DuaAttachmentsCompanion.insert(
                     id: const Uuid().v4(),
                     duaId: id,
@@ -408,9 +416,9 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       }
 
       // Handle extra attachments sync
-      final existingAttachments = await (db.select(db.duaAttachments)
-            ..where((row) => row.duaId.equals(id)))
-          .get();
+      final existingAttachments = await (db.select(
+        db.duaAttachments,
+      )..where((row) => row.duaId.equals(id))).get();
 
       final existingExtrasInDb = existingAttachments
           .where((a) => !['audio', 'image'].contains(a.kind))
@@ -423,13 +431,14 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
         if (!matchesInExtras) {
           if (!['link', 'youtube'].contains(oldExtra.kind)) {
             final oldFile = File(oldExtra.value);
-            if (await oldFile.exists() && oldFile.path.contains('favorite_dua')) {
+            if (await oldFile.exists() &&
+                oldFile.path.contains('favorite_dua')) {
               await oldFile.delete();
             }
           }
-          await (db.delete(db.duaAttachments)
-                ..where((row) => row.id.equals(oldExtra.id)))
-              .go();
+          await (db.delete(
+            db.duaAttachments,
+          )..where((row) => row.id.equals(oldExtra.id))).go();
         }
       }
 
@@ -455,7 +464,9 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
             final f = File(storedValue);
             if (await f.exists()) extraBytes = await f.readAsBytes();
           }
-          await db.into(db.duaAttachments).insert(
+          await db
+              .into(db.duaAttachments)
+              .insert(
                 DuaAttachmentsCompanion.insert(
                   id: const Uuid().v4(),
                   duaId: id,
@@ -570,11 +581,11 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       final category = await (db.select(
         db.categories,
       )..where((row) => row.name.equals(_category))).getSingleOrNull();
-        Uint8List? imageBytes;
-        if (savedImage != null && await File(savedImage).exists()) {
-          imageBytes = await File(savedImage).readAsBytes();
-        }
-        await db
+      Uint8List? imageBytes;
+      if (savedImage != null && await File(savedImage).exists()) {
+        imageBytes = await File(savedImage).readAsBytes();
+      }
+      await db
           .into(db.duas)
           .insert(
             DuasCompanion.insert(
@@ -709,6 +720,7 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
 
   @override
   void dispose() {
+    AudioPlaybackCoordinator.instance.unregister(_player);
     _timer?.cancel();
     unawaited(_recorder.dispose());
     unawaited(_player.dispose());
@@ -718,7 +730,77 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
     _reference.dispose();
     _tags.dispose();
     _notes.dispose();
+    _imageTransformController.dispose();
     super.dispose();
+  }
+
+  void _zoomImageIn() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    final matrix = _imageTransformController.value.clone();
+    matrix.scaleByDouble(1.25, 1.25, 1.0, 1.0);
+    _imageTransformController.value = matrix;
+  }
+
+  void _zoomImageOut() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    final matrix = _imageTransformController.value.clone();
+    matrix.scaleByDouble(0.8, 0.8, 1.0, 1.0);
+    _imageTransformController.value = matrix;
+  }
+
+  void _resetImageZoom() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    _imageTransformController.value = Matrix4.identity();
+  }
+
+  void _openFullScreenImage(String path) {
+    FocusManager.instance.primaryFocus?.unfocus();
+    showDialog(
+      context: context,
+      builder: (ctx) => Dialog.fullscreen(
+        backgroundColor: Colors.black,
+        child: Stack(
+          children: [
+            Center(
+              child: InteractiveViewer(
+                minScale: 0.5,
+                maxScale: 8.0,
+                child: Image.file(File(path), fit: BoxFit.contain),
+              ),
+            ),
+            Positioned(
+              top: 40,
+              right: 16,
+              child: CircleAvatar(
+                backgroundColor: Colors.black54,
+                child: IconButton(
+                  icon: const Icon(Icons.close, color: Colors.white),
+                  onPressed: () => Navigator.pop(ctx),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 30,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Text(
+                    'Pinch to zoom in / out',
+                    style: TextStyle(color: Colors.white, fontSize: 13),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -731,16 +813,113 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       body: Form(
         key: _formKey,
         child: ListView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
           children: [
             if (imagePath != null)
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Image.file(
-                  File(imagePath),
-                  height: 260,
-                  fit: BoxFit.contain,
-                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
+              Container(
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Colors.black.withValues(alpha: 0.05),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.5),
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Stack(
+                    children: [
+                      // Interactive Zoomable Image with tap-to-unfocus
+                      GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTapDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+                        child: Container(
+                          height: 280,
+                          width: double.infinity,
+                          color: Colors.black12,
+                          child: InteractiveViewer(
+                            transformationController: _imageTransformController,
+                            minScale: 0.8,
+                            maxScale: 6.0,
+                            clipBehavior: Clip.none,
+                            child: Image.file(
+                              File(imagePath),
+                              fit: BoxFit.contain,
+                              errorBuilder: (_, _, _) => const Center(
+                                child: Text('Image could not be loaded'),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // Floating Zoom & Fullscreen Toolbar
+                      Positioned(
+                        top: 8,
+                        right: 8,
+                        child: Container(
+                          padding: const EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.65),
+                            borderRadius: BorderRadius.circular(24),
+                            border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.remove, color: Colors.white, size: 18),
+                                padding: const EdgeInsets.all(6),
+                                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                tooltip: 'Zoom Out',
+                                onPressed: _zoomImageOut,
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.refresh, color: Colors.white, size: 18),
+                                padding: const EdgeInsets.all(6),
+                                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                tooltip: 'Reset Zoom',
+                                onPressed: _resetImageZoom,
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.add, color: Colors.white, size: 18),
+                                padding: const EdgeInsets.all(6),
+                                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                tooltip: 'Zoom In',
+                                onPressed: _zoomImageIn,
+                              ),
+                              const SizedBox(width: 4),
+                              IconButton(
+                                icon: const Icon(Icons.fullscreen, color: Colors.white, size: 20),
+                                padding: const EdgeInsets.all(6),
+                                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                tooltip: 'Fullscreen View',
+                                onPressed: () => _openFullScreenImage(imagePath),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      // Bottom label
+                      Positioned(
+                        bottom: 8,
+                        left: 12,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.6),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Text(
+                            'Pinch or use +/- to zoom',
+                            style: TextStyle(color: Colors.white, fontSize: 11),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             const SizedBox(height: 16),

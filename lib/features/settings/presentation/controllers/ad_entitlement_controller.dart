@@ -151,6 +151,13 @@ class RemoveAdsPurchaseController extends Notifier<RemoveAdsPurchaseState> {
     state = state.copyWith(purchasePending: true, clearMessage: true);
     try {
       await _billing.restorePurchases();
+      await Future<void>.delayed(const Duration(seconds: 2));
+      if (!state.entitled && state.purchasePending) {
+        state = state.copyWith(
+          purchasePending: false,
+          message: 'No active Google Play purchase found for this Google account.',
+        );
+      }
     } catch (error) {
       state = state.copyWith(
         purchasePending: false,

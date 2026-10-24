@@ -25,22 +25,35 @@ class ImagePreviewScreen extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(22),
                 child: ok
-                    ? Image.file(
-                        f!,
-                        width: double.infinity,
-                        fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => const Center(
-                          child: Text('Image could not be displayed.'),
+                    ? InteractiveViewer(
+                        clipBehavior: Clip.none,
+                        minScale: 0.8,
+                        maxScale: 5.0,
+                        child: Image.file(
+                          f!,
+                          width: double.infinity,
+                          fit: BoxFit.contain,
+                          errorBuilder: (_, __, ___) => const Center(
+                            child: Text('Image could not be displayed.'),
+                          ),
                         ),
                       )
                     : const Center(child: Text('No image selected.')),
               ),
             ),
-            const SizedBox(height: 16),
-            Text(
-              source == 'camera'
-                  ? 'Photo captured successfully'
-                  : 'Image selected successfully',
+            const SizedBox(height: 12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.zoom_in, size: 16, color: Colors.teal),
+                const SizedBox(width: 4),
+                Text(
+                  source == 'camera'
+                      ? 'Photo captured (Pinch to zoom)'
+                      : 'Image selected (Pinch to zoom)',
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                ),
+              ],
             ),
             const SizedBox(height: 16),
             Row(

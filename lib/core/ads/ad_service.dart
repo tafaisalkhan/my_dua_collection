@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../audio/audio_playback_coordinator.dart';
+
 class AdService {
   AdService._();
   static final instance = AdService._();
@@ -49,7 +51,7 @@ class AdService {
     _showInterstitial();
   }
 
-  void _showInterstitial() {
+  void _showInterstitial() async {
     if (!_adsEnabled || _showing) return;
     final ad = _interstitial;
     if (ad == null) {
@@ -59,6 +61,7 @@ class AdService {
     _interstitial = null;
     _showing = true;
     _firstInterstitialShown = true;
+    await AudioPlaybackCoordinator.instance.stopAll();
     ad.fullScreenContentCallback = FullScreenContentCallback(
       onAdDismissedFullScreenContent: (ad) {
         ad.dispose();

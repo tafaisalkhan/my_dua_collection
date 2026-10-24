@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:video_player/video_player.dart';
+import '../../../../core/audio/audio_playback_coordinator.dart';
 import '../controllers/media_library_controller.dart';
 
 class MediaDetailScreen extends ConsumerStatefulWidget {
@@ -19,7 +20,14 @@ class _MediaDetailState extends ConsumerState<MediaDetailScreen> {
   final audio = AudioPlayer();
   String? initializedPath;
   @override
+  void initState() {
+    super.initState();
+    AudioPlaybackCoordinator.instance.register(audio);
+  }
+
+  @override
   void dispose() {
+    AudioPlaybackCoordinator.instance.unregister(audio);
     video?.dispose();
     audio.dispose();
     super.dispose();
@@ -83,10 +91,18 @@ class _MediaDetailState extends ConsumerState<MediaDetailScreen> {
               padding: const EdgeInsets.all(16),
               children: [
                 if (item.kind == 'image' && item.filePath != null)
-                  Image.file(
-                    File(item.filePath!),
-                    height: 300,
-                    fit: BoxFit.contain,
+                  SizedBox(
+                    height: 350,
+                    child: InteractiveViewer(
+                      clipBehavior: Clip.none,
+                      minScale: 0.8,
+                      maxScale: 5.0,
+                      child: Image.file(
+                        File(item.filePath!),
+                        height: 350,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
                 if (item.kind == 'video' &&
                     video?.value.isInitialized == true) ...[
@@ -109,8 +125,16 @@ class _MediaDetailState extends ConsumerState<MediaDetailScreen> {
                   StreamBuilder<PlayerState>(
                     stream: audio.playerStateStream,
                     builder: (_, s) => FilledButton.icon(
-                      onPressed: () =>
-                          audio.playing ? audio.pause() : audio.play(),
+                      onPressed: () async {
+                        if (audio.playing) {
+                          await audio.pause();
+                        } else {
+                          await AudioPlaybackCoordinator.instance.stopOthers(
+                            audio,
+                          );
+                          await audio.play();
+                        }
+                      },
                       icon: Icon(
                         audio.playing ? Icons.pause : Icons.play_arrow,
                       ),

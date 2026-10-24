@@ -72,11 +72,12 @@ class AppDatabase extends _$AppDatabase {
   Future<void> syncBinaryFilesToDevice() async {
     try {
       final docDir = await getApplicationDocumentsDirectory();
-      
+
       // 1. Duas image blob -> device file
       final allDuas = await select(duas).get();
       for (final dua in allDuas) {
-        if (dua.imageBlob != null && (dua.imagePath == null || !File(dua.imagePath!).existsSync())) {
+        if (dua.imageBlob != null &&
+            (dua.imagePath == null || !File(dua.imagePath!).existsSync())) {
           final dir = Directory(p.join(docDir.path, 'favorite_dua', 'images'));
           if (!dir.existsSync()) await dir.create(recursive: true);
           final filePath = p.join(dir.path, '${dua.id}_image.jpg');
@@ -91,24 +92,34 @@ class AppDatabase extends _$AppDatabase {
       // 2. Dua attachments data blob -> device file
       final allAttachments = await select(duaAttachments).get();
       for (final att in allAttachments) {
-        if (att.dataBlob != null && (att.value.isEmpty || !File(att.value).existsSync())) {
-          final dir = Directory(p.join(docDir.path, 'favorite_dua', 'attachments'));
+        if (att.dataBlob != null &&
+            (att.value.isEmpty || !File(att.value).existsSync())) {
+          final dir = Directory(
+            p.join(docDir.path, 'favorite_dua', 'attachments'),
+          );
           if (!dir.existsSync()) await dir.create(recursive: true);
-          final ext = att.mimeType?.contains('audio') == true ? 'm4a' : 'bin';
+          final ext = switch (att.mimeType) {
+            'audio/wav' => 'wav',
+            'audio/x-caf' => 'caf',
+            final mime when mime?.contains('audio') == true => 'm4a',
+            _ => 'bin',
+          };
           final filePath = p.join(dir.path, '${att.id}.$ext');
           final file = File(filePath);
           await file.writeAsBytes(att.dataBlob!);
-          await (update(duaAttachments)..where((t) => t.id.equals(att.id))).write(
-            DuaAttachmentsCompanion(value: Value(filePath)),
-          );
+          await (update(duaAttachments)..where((t) => t.id.equals(att.id)))
+              .write(DuaAttachmentsCompanion(value: Value(filePath)));
         }
       }
 
       // 3. Recordings audio blob -> device file
       final allRecordings = await select(recordings).get();
       for (final rec in allRecordings) {
-        if (rec.audioBlob != null && (rec.audioPath.isEmpty || !File(rec.audioPath).existsSync())) {
-          final dir = Directory(p.join(docDir.path, 'favorite_dua', 'recordings'));
+        if (rec.audioBlob != null &&
+            (rec.audioPath.isEmpty || !File(rec.audioPath).existsSync())) {
+          final dir = Directory(
+            p.join(docDir.path, 'favorite_dua', 'recordings'),
+          );
           if (!dir.existsSync()) await dir.create(recursive: true);
           final filePath = p.join(dir.path, '${rec.id}.m4a');
           final file = File(filePath);
@@ -122,21 +133,22 @@ class AppDatabase extends _$AppDatabase {
       // 4. Library items file blob -> device file
       final allLibrary = await select(libraryItems).get();
       for (final item in allLibrary) {
-        if (item.fileBlob != null && (item.filePath == null || !File(item.filePath!).existsSync())) {
+        if (item.fileBlob != null &&
+            (item.filePath == null || !File(item.filePath!).existsSync())) {
           final dir = Directory(p.join(docDir.path, 'favorite_dua', 'library'));
           if (!dir.existsSync()) await dir.create(recursive: true);
           final filePath = p.join(dir.path, '${item.id}_file.bin');
           final file = File(filePath);
           await file.writeAsBytes(item.fileBlob!);
-          await (update(libraryItems)..where((t) => t.id.equals(item.id))).write(
-            LibraryItemsCompanion(filePath: Value(filePath)),
-          );
+          await (update(libraryItems)..where((t) => t.id.equals(item.id)))
+              .write(LibraryItemsCompanion(filePath: Value(filePath)));
         }
       }
     } catch (e, st) {
       debugPrint('Error syncing binary files to device: $e\n$st');
     }
   }
+
   Future<void> _seed() async {
     final now = DateTime.now(), ids = <String, String>{};
     for (var i = 0; i < AppConstants.starterCategories.length; i++) {

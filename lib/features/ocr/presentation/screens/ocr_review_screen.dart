@@ -39,11 +39,19 @@ class _State extends ConsumerState<OcrReviewScreen> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(22),
-            child: Image.file(
-              File(widget.imagePath),
-              height: 190,
-              width: double.infinity,
-              fit: BoxFit.contain,
+            child: SizedBox(
+              height: 220,
+              child: InteractiveViewer(
+                clipBehavior: Clip.none,
+                minScale: 0.8,
+                maxScale: 5.0,
+                child: Image.file(
+                  File(widget.imagePath),
+                  height: 220,
+                  width: double.infinity,
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 20),
