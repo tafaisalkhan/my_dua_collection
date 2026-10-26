@@ -13,7 +13,7 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import '../../../../core/audio/audio_playback_coordinator.dart';
 import '../../../../core/database/app_database.dart';
-import '../../../../core/theme/dua_palette.dart';
+import '../../../attachments/presentation/widgets/inline_youtube_player.dart';
 import '../../data/services/default_dua_voice_service.dart';
 import '../../data/services/dua_audio_schedule_service.dart';
 import '../widgets/dua_text_view.dart';
@@ -368,17 +368,16 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
   ) => FutureBuilder<(Dua?, List<DuaAttachment>, String?)>(
     future: _load(),
     builder: (context, s) {
-      if (!s.hasData)
+      if (!s.hasData) {
         return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      }
       final dua = s.data!.$1, files = s.data!.$2, categoryName = s.data!.$3;
-      if (dua == null)
+      if (dua == null) {
         return const Scaffold(body: Center(child: Text('Dua not found')));
-      final duaColor = DuaPalette.forCategory(categoryName ?? dua.id);
+      }
+      final colors = Theme.of(context).colorScheme;
       return Scaffold(
-        backgroundColor: duaColor,
         appBar: AppBar(
-          backgroundColor: duaColor,
-          foregroundColor: Colors.black87,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             tooltip: 'Back to Home',
@@ -422,7 +421,7 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
           ],
         ),
         body: ListView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 32),
           children: [
             if (files.any((item) => item.kind == 'image')) ...[
               ClipRRect(
@@ -430,7 +429,7 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
                 child: Container(
                   constraints: const BoxConstraints(maxHeight: 420),
                   width: double.infinity,
-                  color: Colors.black12,
+                  color: colors.surface,
                   child: InteractiveViewer(
                     minScale: 0.8,
                     maxScale: 5.0,
@@ -445,13 +444,49 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
               ),
               const SizedBox(height: 16),
             ],
-            if (dua.originalText.isNotEmpty)
+            if (dua.originalText.isNotEmpty ||
+                dua.translation?.trim().isNotEmpty == true)
               Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: DuaTextView(
-                    dua.originalText,
-                    languageCode: dua.detectedLanguage,
+                  padding: const EdgeInsets.fromLTRB(22, 28, 22, 28),
+                  child: Column(
+                    children: [
+                      if (categoryName != null)
+                        Text(
+                          categoryName.toUpperCase(),
+                          style: TextStyle(
+                            color: colors.primary,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 11,
+                            letterSpacing: 2,
+                          ),
+                        ),
+                      if (dua.originalText.isNotEmpty) ...[
+                        const SizedBox(height: 24),
+                        DuaTextView(
+                          dua.originalText,
+                          languageCode: dua.detectedLanguage,
+                          color: colors.onSurface,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                      if (dua.translation?.trim().isNotEmpty == true) ...[
+                        const SizedBox(height: 24),
+                        Divider(color: colors.primary.withValues(alpha: .35)),
+                        const SizedBox(height: 18),
+                        SelectableText(
+                          dua.translation!,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyLarge?.copyWith(height: 1.55),
+                        ),
+                      ],
+                      if (dua.reference?.trim().isNotEmpty == true) ...[
+                        const SizedBox(height: 20),
+                        Chip(label: Text(dua.reference!)),
+                      ],
+                    ],
                   ),
                 ),
               ),
@@ -479,26 +514,6 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
                   generatingDefaultVoice
                       ? 'Creating voice on this device…'
                       : 'Play default voice',
-                ),
-              ),
-            ],
-            if (dua.translation?.trim().isNotEmpty == true) ...[
-              const SizedBox(height: 16),
-              Text(
-                'Translation',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: SelectableText(
-                    dua.translation!,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
                 ),
               ),
             ],
@@ -542,7 +557,7 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
               'Attachments',
               style: Theme.of(
                 context,
-              ).textTheme.titleLarge?.copyWith(color: Colors.black87),
+              ).textTheme.titleLarge?.copyWith(fontFamily: 'serif'),
             ),
             const SizedBox(height: 8),
             Wrap(
@@ -567,12 +582,40 @@ class _DuaDetailState extends ConsumerState<DuaDetailScreen> {
               ],
             ),
             const SizedBox(height: 8),
-            if (files.isEmpty)
-              const Text(
-                'No attachments',
-                style: TextStyle(color: Colors.black87),
+            if (files.isEmpty) const Text('No attachments'),
+            for (final a in files.where((item) => item.kind == 'youtube'))
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(Icons.smart_display),
+                          const SizedBox(width: 8),
+                          Expanded(child: Text(a.title)),
+                          IconButton(
+                            tooltip: 'Share video link',
+                            icon: const Icon(Icons.share_outlined),
+                            onPressed: () => SharePlus.instance.share(
+                              ShareParams(text: a.value),
+                            ),
+                          ),
+                          IconButton(
+                            tooltip: 'Delete video',
+                            icon: const Icon(Icons.delete_outline),
+                            onPressed: () => _deleteAttachment(a),
+                          ),
+                        ],
+                      ),
+                      InlineYoutubePlayer(key: ValueKey(a.id), url: a.value),
+                    ],
+                  ),
+                ),
               ),
-            for (final a in files.where((item) => item.kind != 'image'))
+            for (final a in files.where(
+              (item) => item.kind != 'image' && item.kind != 'youtube',
+            ))
               Card(
                 child: ListTile(
                   leading: Icon(

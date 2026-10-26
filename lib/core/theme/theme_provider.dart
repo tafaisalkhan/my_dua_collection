@@ -14,7 +14,7 @@ class ThemeModeController extends Notifier<ThemeMode> {
   @override
   ThemeMode build() {
     unawaited(_load());
-    return ThemeMode.system;
+    return ThemeMode.dark;
   }
 
   Future<void> _load() async {

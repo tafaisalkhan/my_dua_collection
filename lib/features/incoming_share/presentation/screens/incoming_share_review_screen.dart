@@ -27,10 +27,13 @@ class IncomingShareReviewScreen extends ConsumerWidget {
       return;
     }
     if (item.isText) {
-      final hasLink = RegExp(r'https?://[^\\s]+').hasMatch(item.path);
+      final hasLink = RegExp(r'https?://[^\s]+').hasMatch(item.path);
       final parameter = hasLink ? 'sharedLink' : 'ocrText';
       context.push(
-        '/add/manual?' + parameter + '=' + Uri.encodeComponent(item.path),
+        Uri(
+          path: '/add/manual',
+          queryParameters: {parameter: item.path},
+        ).toString(),
       );
       return;
     }
@@ -39,7 +42,6 @@ class IncomingShareReviewScreen extends ConsumerWidget {
       context.push('/add/manual?libraryItemId=$id');
   }
 
-  // ignore: unused_element
   Future<void> _addTextToExisting(
     BuildContext context,
     WidgetRef ref,
@@ -212,13 +214,19 @@ class IncomingShareReviewScreen extends ConsumerWidget {
                             : Icons.picture_as_pdf_outlined,
                       ),
                     ),
-                    title: Text(item.path.split(RegExp(r'[/\\]')).last),
+                    title: Text(
+                      item.path.split(RegExp(r'[/\\]')).last,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                     subtitle: Text(
                       item.isImage
                           ? 'Image • crop before creating Dua'
                           : item.isText
                           ? item.path
                           : 'PDF • attach to new Dua',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     isThreeLine: true,
                     trailing: PopupMenuButton<String>(
@@ -227,6 +235,20 @@ class IncomingShareReviewScreen extends ConsumerWidget {
                           _create(context, ref, item);
                         } else if (value == 'attach') {
                           _attachToExisting(context, ref, item);
+                        } else if (value == 'dua_text') {
+                          _addTextToExisting(
+                            context,
+                            ref,
+                            item,
+                            asTranslation: false,
+                          );
+                        } else if (value == 'translation') {
+                          _addTextToExisting(
+                            context,
+                            ref,
+                            item,
+                            asTranslation: true,
+                          );
                         } else {
                           _remove(ref, item);
                         }

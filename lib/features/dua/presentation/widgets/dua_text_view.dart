@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_typography.dart';
 
 class DuaTextView extends StatelessWidget {
-  const DuaTextView(this.text, {super.key, this.languageCode, this.color});
+  const DuaTextView(
+    this.text, {
+    super.key,
+    this.languageCode,
+    this.color,
+    this.textAlign,
+  });
   final String text;
   final String? languageCode;
   final Color? color;
+  final TextAlign? textAlign;
   bool get _rtl =>
       languageCode == 'ar' ||
       languageCode == 'ur' ||
@@ -15,7 +22,7 @@ class DuaTextView extends StatelessWidget {
     textDirection: _rtl ? TextDirection.rtl : TextDirection.ltr,
     child: SelectableText(
       text,
-      textAlign: _rtl ? TextAlign.right : TextAlign.left,
+      textAlign: textAlign ?? (_rtl ? TextAlign.right : TextAlign.left),
       style: _rtl
           ? AppTypography.arabic.copyWith(color: color)
           : Theme.of(context).textTheme.bodyLarge?.copyWith(color: color),

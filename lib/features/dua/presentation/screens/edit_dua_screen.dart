@@ -86,9 +86,12 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       final link = match?.group(0);
       if (link != null) {
         final uri = Uri.tryParse(link);
+        final host = uri?.host.toLowerCase() ?? '';
         final youtube =
-            uri?.host.contains('youtube.com') == true ||
-            uri?.host.contains('youtu.be') == true;
+            host == 'youtube.com' ||
+            host.endsWith('.youtube.com') ||
+            host == 'youtu.be' ||
+            host.endsWith('.youtu.be');
         _extras.add(
           _ExtraAttachment(
             youtube ? 'youtube' : 'link',
@@ -311,14 +314,18 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
       }
       return;
     }
+    final host = uri.host.toLowerCase();
     final youtube =
-        uri.host.contains('youtube.com') || uri.host.contains('youtu.be');
+        host == 'youtube.com' ||
+        host.endsWith('.youtube.com') ||
+        host == 'youtu.be' ||
+        host.endsWith('.youtu.be');
     setState(
       () => _extras.add(
         _ExtraAttachment(
           youtube ? 'youtube' : 'link',
           youtube ? 'YouTube video' : uri.host,
-          value!,
+          normalized,
         ),
       ),
     );
@@ -785,7 +792,10 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
               right: 0,
               child: Center(
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.black54,
                     borderRadius: BorderRadius.circular(20),
@@ -823,7 +833,9 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                   borderRadius: BorderRadius.circular(16),
                   color: Colors.black.withValues(alpha: 0.05),
                   border: Border.all(
-                    color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.5),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.outlineVariant.withValues(alpha: 0.5),
                   ),
                 ),
                 child: ClipRRect(
@@ -833,7 +845,8 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                       // Interactive Zoomable Image with tap-to-unfocus
                       GestureDetector(
                         behavior: HitTestBehavior.opaque,
-                        onTapDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+                        onTapDown: (_) =>
+                            FocusManager.instance.primaryFocus?.unfocus(),
                         child: Container(
                           height: 280,
                           width: double.infinity,
@@ -863,39 +876,70 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                           decoration: BoxDecoration(
                             color: Colors.black.withValues(alpha: 0.65),
                             borderRadius: BorderRadius.circular(24),
-                            border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+                            border: Border.all(
+                              color: Colors.white.withValues(alpha: 0.2),
+                            ),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: const Icon(Icons.remove, color: Colors.white, size: 18),
+                                icon: const Icon(
+                                  Icons.remove,
+                                  color: Colors.white,
+                                  size: 18,
+                                ),
                                 padding: const EdgeInsets.all(6),
-                                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                constraints: const BoxConstraints(
+                                  minWidth: 32,
+                                  minHeight: 32,
+                                ),
                                 tooltip: 'Zoom Out',
                                 onPressed: _zoomImageOut,
                               ),
                               IconButton(
-                                icon: const Icon(Icons.refresh, color: Colors.white, size: 18),
+                                icon: const Icon(
+                                  Icons.refresh,
+                                  color: Colors.white,
+                                  size: 18,
+                                ),
                                 padding: const EdgeInsets.all(6),
-                                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                constraints: const BoxConstraints(
+                                  minWidth: 32,
+                                  minHeight: 32,
+                                ),
                                 tooltip: 'Reset Zoom',
                                 onPressed: _resetImageZoom,
                               ),
                               IconButton(
-                                icon: const Icon(Icons.add, color: Colors.white, size: 18),
+                                icon: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 18,
+                                ),
                                 padding: const EdgeInsets.all(6),
-                                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                constraints: const BoxConstraints(
+                                  minWidth: 32,
+                                  minHeight: 32,
+                                ),
                                 tooltip: 'Zoom In',
                                 onPressed: _zoomImageIn,
                               ),
                               const SizedBox(width: 4),
                               IconButton(
-                                icon: const Icon(Icons.fullscreen, color: Colors.white, size: 20),
+                                icon: const Icon(
+                                  Icons.fullscreen,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
                                 padding: const EdgeInsets.all(6),
-                                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                constraints: const BoxConstraints(
+                                  minWidth: 32,
+                                  minHeight: 32,
+                                ),
                                 tooltip: 'Fullscreen View',
-                                onPressed: () => _openFullScreenImage(imagePath),
+                                onPressed: () =>
+                                    _openFullScreenImage(imagePath),
                               ),
                             ],
                           ),
@@ -907,7 +951,10 @@ class _EditDuaScreenState extends ConsumerState<EditDuaScreen> {
                         bottom: 8,
                         left: 12,
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.black.withValues(alpha: 0.6),
                             borderRadius: BorderRadius.circular(8),

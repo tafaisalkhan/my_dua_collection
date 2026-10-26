@@ -25,14 +25,17 @@ class _State extends ConsumerState<IncomingShareListener> {
     } catch (e) {
       debugPrint('Incoming share getMediaStream error: $e');
     }
-    ReceiveSharingIntent.instance.getInitialMedia().then((v) async {
-      if (v.isNotEmpty) {
-        await _receive(v);
-        await ReceiveSharingIntent.instance.reset();
-      }
-    }).catchError((Object error) {
-      debugPrint('Error getting initial media: $error');
-    });
+    ReceiveSharingIntent.instance
+        .getInitialMedia()
+        .then((v) async {
+          if (v.isNotEmpty) {
+            await _receive(v);
+            await ReceiveSharingIntent.instance.reset();
+          }
+        })
+        .catchError((Object error) {
+          debugPrint('Error getting initial media: $error');
+        });
   }
 
   Future<void> _receive(List<SharedMediaFile> items) async {
@@ -44,7 +47,7 @@ class _State extends ConsumerState<IncomingShareListener> {
           item.type == SharedMediaType.image ||
           mime.startsWith('image/') ||
           RegExp(
-            r'\\.(jpg|jpeg|png|webp|gif|bmp|heic|heif)$',
+            r'\.(jpg|jpeg|png|webp|gif|bmp|heic|heif)$',
           ).hasMatch(lowerPath);
       final pdf = mime == 'application/pdf' || lowerPath.endsWith('.pdf');
       final text = item.type == SharedMediaType.text || mime == 'text/plain';
@@ -59,9 +62,15 @@ class _State extends ConsumerState<IncomingShareListener> {
         );
     }
     if (accepted.isEmpty) return;
+    final queued = ref.read(incomingShareQueueProvider);
+    final seenPaths = queued.map((entry) => entry.path).toSet();
+    final newItems = accepted
+        .where((entry) => seenPaths.add(entry.path))
+        .toList();
+    if (newItems.isEmpty) return;
     ref.read(incomingShareQueueProvider.notifier).state = [
-      ...ref.read(incomingShareQueueProvider),
-      ...accepted,
+      ...queued,
+      ...newItems,
     ];
     if (mounted) {
       WidgetsBinding.instance.addPostFrameCallback((_) {

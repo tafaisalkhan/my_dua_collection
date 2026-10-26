@@ -6,6 +6,7 @@ import '../../features/attachments/presentation/screens/document_preview_screen.
 import '../../features/attachments/presentation/screens/embedded_web_screen.dart';
 import '../../features/crop/presentation/screens/image_crop_screen.dart';
 import '../../features/dua/presentation/screens/add_dua_screen.dart';
+import '../../features/dua/presentation/screens/all_duas_screen.dart';
 import '../../features/dua/presentation/screens/dua_detail_screen.dart';
 import '../../features/dua/presentation/screens/edit_dua_screen.dart';
 import '../../features/favorites/presentation/screens/favorites_screen.dart';
@@ -62,6 +63,7 @@ final appRouterProvider = Provider<GoRouter>(
         ],
       ),
       GoRoute(path: '/dua-bundle', builder: (c, s) => const DuaBundleScreen()),
+      GoRoute(path: '/duas', builder: (c, s) => const AllDuasScreen()),
       GoRoute(
         path: '/library/item/:id',
         builder: (c, s) => MediaDetailScreen(id: s.pathParameters['id']!),

@@ -30,11 +30,13 @@ class SettingsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 8),
           Card(
-            elevation: 2,
             child: ListTile(
-              leading: const CircleAvatar(
-                backgroundColor: Colors.indigo,
-                child: Icon(Icons.playlist_add, color: Colors.white),
+              leading: CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                child: Icon(
+                  Icons.playlist_add,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
               ),
               title: const Text(
                 'Dua Bundle Setup',
@@ -56,13 +58,17 @@ class SettingsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 8),
           Card(
-            elevation: 2,
             child: Column(
               children: [
                 ListTile(
-                  leading: const CircleAvatar(
-                    backgroundColor: Colors.teal,
-                    child: Icon(Icons.download, color: Colors.white),
+                  leading: CircleAvatar(
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.primaryContainer,
+                    child: Icon(
+                      Icons.download,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
                   ),
                   title: const Text(
                     'Download Backup to Downloads',
@@ -157,9 +163,14 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 const Divider(height: 1),
                 ListTile(
-                  leading: const CircleAvatar(
-                    backgroundColor: Colors.deepOrange,
-                    child: Icon(Icons.restore, color: Colors.white),
+                  leading: CircleAvatar(
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.primaryContainer,
+                    child: Icon(
+                      Icons.restore,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
                   ),
                   title: const Text(
                     'Restore Database & Files',

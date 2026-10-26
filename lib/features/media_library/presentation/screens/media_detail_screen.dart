@@ -148,7 +148,21 @@ class _MediaDetailState extends ConsumerState<MediaDetailScreen> {
                     icon: const Icon(Icons.open_in_new),
                     label: const Text('Open document'),
                   ),
-                if (item.textContent != null) SelectableText(item.textContent!),
+                if ((item.textContent?.isNotEmpty ?? false) ||
+                    (item.ocrText?.isNotEmpty ?? false))
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(18),
+                      child: SelectableText(
+                        item.textContent?.isNotEmpty == true
+                            ? item.textContent!
+                            : item.ocrText!,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyLarge?.copyWith(height: 1.6),
+                      ),
+                    ),
+                  ),
                 const SizedBox(height: 20),
                 TextFormField(
                   initialValue: item.tags,

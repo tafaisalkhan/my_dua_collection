@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../core/theme/dua_palette.dart';
 import '../../../../shared/widgets/app_error.dart';
 import '../../../../shared/widgets/app_loading.dart';
 import '../../../../shared/widgets/empty_state.dart';
@@ -46,7 +45,6 @@ class CategoryDuasScreen extends ConsumerWidget {
                 itemBuilder: (c, i) => DuaCard(
                   key: ValueKey(x[i].id),
                   dua: x[i],
-                  color: DuaPalette.forCategory(name),
                   onTap: () => c.push('/dua/' + x[i].id),
                 ),
               ),

@@ -9,7 +9,6 @@ import 'package:open_filex/open_filex.dart';
 
 import '../../../../core/audio/audio_playback_coordinator.dart';
 import '../../../../core/database/app_database.dart' as database;
-import '../../../../core/theme/dua_palette.dart';
 import '../../domain/entities/dua.dart';
 import 'dua_text_view.dart';
 
@@ -143,9 +142,13 @@ class _DuaCardState extends ConsumerState<DuaCard> {
           final images = attachments
               .where((item) => item.kind == 'image')
               .toList();
-          final duaColor = widget.color ?? DuaPalette.forKey(widget.dua.id);
+          final colors = Theme.of(context).colorScheme;
           return Card(
-            color: duaColor,
+            color: colors.surface,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(22),
+              side: BorderSide(color: colors.primary.withValues(alpha: .25)),
+            ),
             clipBehavior: Clip.antiAlias,
             child: InkWell(
               onTap: widget.onTap,
@@ -162,16 +165,16 @@ class _DuaCardState extends ConsumerState<DuaCard> {
                             style: Theme.of(context).textTheme.titleMedium
                                 ?.copyWith(
                                   fontWeight: FontWeight.w800,
-                                  color: Colors.black87,
+                                  color: colors.onSurface,
                                 ),
                           ),
                         ),
                         IconButton(
                           tooltip: 'Open Dua details',
                           onPressed: widget.onTap,
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.chevron_right,
-                            color: Colors.black87,
+                            color: colors.primary,
                           ),
                         ),
                       ],
@@ -195,7 +198,7 @@ class _DuaCardState extends ConsumerState<DuaCard> {
                         child: DuaTextView(
                           widget.dua.originalText,
                           languageCode: widget.dua.detectedLanguage,
-                          color: Colors.black87,
+                          color: colors.onSurface,
                         ),
                       ),
                     ],

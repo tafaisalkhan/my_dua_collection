@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/database/app_database.dart';
 import '../../../media_library/presentation/controllers/media_library_controller.dart';
 
 class LibraryScreen extends ConsumerWidget {
@@ -92,19 +93,10 @@ class LibraryScreen extends ConsumerWidget {
                           'text' => Icons.notes_outlined,
                           _ => Icons.insert_drive_file_outlined,
                         };
-                        return Card(
-                          child: ListTile(
-                            leading: CircleAvatar(child: Icon(icon)),
-                            title: Text(item.title),
-                            subtitle: Text(
-                              item.tags.isEmpty
-                                  ? item.kind
-                                  : '${item.kind} • ${item.tags}',
-                            ),
-                            trailing: const Icon(Icons.chevron_right),
-                            onTap: () =>
-                                context.push('/library/item/${item.id}'),
-                          ),
+                        return _LibraryItemCard(
+                          key: ValueKey(item.id),
+                          item: item,
+                          icon: icon,
                         );
                       },
                     ),
@@ -116,6 +108,86 @@ class LibraryScreen extends ConsumerWidget {
         onPressed: () => ref.read(mediaRepositoryProvider).pickFiles(),
         icon: const Icon(Icons.add),
         label: const Text('Import'),
+      ),
+    );
+  }
+}
+
+class _LibraryItemCard extends StatefulWidget {
+  const _LibraryItemCard({super.key, required this.item, required this.icon});
+  final LibraryItem item;
+  final IconData icon;
+
+  @override
+  State<_LibraryItemCard> createState() => _LibraryItemCardState();
+}
+
+class _LibraryItemCardState extends State<_LibraryItemCard> {
+  bool _expanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final item = widget.item;
+    final content = item.textContent?.trim().isNotEmpty == true
+        ? item.textContent!.trim()
+        : item.ocrText?.trim();
+    final colors = Theme.of(context).colorScheme;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            InkWell(
+              borderRadius: BorderRadius.circular(12),
+              onTap: () => context.push('/library/item/${item.id}'),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: colors.primary.withValues(alpha: .15),
+                    child: Icon(widget.icon, color: colors.primary),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.title,
+                          softWrap: true,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          item.tags.isEmpty
+                              ? item.kind
+                              : '${item.kind} • ${item.tags}',
+                          softWrap: true,
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(Icons.chevron_right),
+                ],
+              ),
+            ),
+            if (content != null && content.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              SelectableText(
+                content,
+                maxLines: _expanded ? null : 3,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+              TextButton(
+                onPressed: () => setState(() => _expanded = !_expanded),
+                child: Text(_expanded ? 'Show less' : 'Show full text'),
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }
