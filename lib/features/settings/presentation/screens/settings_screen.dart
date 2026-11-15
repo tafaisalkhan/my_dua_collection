@@ -247,7 +247,7 @@ class SettingsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 24),
           Text(
-            'Daily reminder',
+            'Daily reading reminders',
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
@@ -266,8 +266,10 @@ class SettingsScreen extends ConsumerWidget {
                 children: [
                   SwitchListTile(
                     secondary: const Icon(Icons.notifications_active_outlined),
-                    title: const Text('Daily Dua reminder'),
-                    subtitle: const Text('Receive one reminder every day'),
+                    title: const Text('Remind me to read a Dua'),
+                    subtitle: const Text(
+                      'Reminders stop for today when you mark it done',
+                    ),
                     value: settings.enabled,
                     onChanged: (value) async {
                       final allowed = await ref
@@ -284,32 +286,58 @@ class SettingsScreen extends ConsumerWidget {
                       }
                     },
                   ),
-                  ListTile(
-                    enabled: settings.enabled,
-                    leading: const Icon(Icons.schedule),
-                    title: const Text('Reminder time'),
-                    subtitle: Text(
-                      TimeOfDay(
-                        hour: settings.hour,
-                        minute: settings.minute,
-                      ).format(context),
+                  for (final time in settings.minutesOfDay)
+                    ListTile(
+                      leading: const Icon(Icons.schedule),
+                      title: Text(
+                        TimeOfDay(
+                          hour: time ~/ 60,
+                          minute: time % 60,
+                        ).format(context),
+                      ),
+                      subtitle: const Text('Tap to change time'),
+                      onTap: () async {
+                        final picked = await showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay(
+                            hour: time ~/ 60,
+                            minute: time % 60,
+                          ),
+                        );
+                        if (picked != null) {
+                          await ref
+                              .read(reminderControllerProvider.notifier)
+                              .updateTime(time, picked.hour, picked.minute);
+                        }
+                      },
+                      trailing: IconButton(
+                        tooltip: 'Remove reminder',
+                        icon: const Icon(Icons.delete_outline),
+                        onPressed: () => ref
+                            .read(reminderControllerProvider.notifier)
+                            .removeTime(time),
+                      ),
                     ),
-                    trailing: const Icon(Icons.chevron_right),
-                    onTap: settings.enabled
-                        ? () async {
+                  TextButton.icon(
+                    onPressed: settings.minutesOfDay.length >= 5
+                        ? null
+                        : () async {
                             final picked = await showTimePicker(
                               context: context,
-                              initialTime: TimeOfDay(
-                                hour: settings.hour,
-                                minute: settings.minute,
-                              ),
+                              initialTime: const TimeOfDay(hour: 23, minute: 0),
                             );
-                            if (picked != null)
+                            if (picked != null) {
                               await ref
                                   .read(reminderControllerProvider.notifier)
-                                  .setTime(picked.hour, picked.minute);
-                          }
-                        : null,
+                                  .addTime(picked.hour, picked.minute);
+                            }
+                          },
+                    icon: const Icon(Icons.add_alarm),
+                    label: const Text('Add reminder time'),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(16, 0, 16, 12),
+                    child: Text('Choose up to five times each day.'),
                   ),
                 ],
               ),

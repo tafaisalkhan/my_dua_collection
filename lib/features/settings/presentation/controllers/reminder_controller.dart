@@ -1,24 +1,15 @@
-// ignore_for_file: curly_braces_in_flow_control_structures
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../../../core/notifications/local_notification_service.dart';
 import '../../../../core/notifications/notification_service.dart';
+import '../../../recitation/data/daily_recitation_log.dart';
 
 class ReminderSettings {
-  const ReminderSettings({
-    required this.enabled,
-    required this.hour,
-    required this.minute,
-  });
+  const ReminderSettings({required this.enabled, required this.minutesOfDay});
+
   final bool enabled;
-  final int hour;
-  final int minute;
-  ReminderSettings copyWith({bool? enabled, int? hour, int? minute}) =>
-      ReminderSettings(
-        enabled: enabled ?? this.enabled,
-        hour: hour ?? this.hour,
-        minute: minute ?? this.minute,
-      );
+  final List<int> minutesOfDay;
 }
 
 final notificationServiceProvider = Provider<NotificationService>(
@@ -31,16 +22,49 @@ final reminderControllerProvider =
 
 class ReminderController extends AsyncNotifier<ReminderSettings> {
   static const _enabledKey = 'daily_reminder_enabled';
+  static const _timesKey = 'daily_reminder_times';
   static const _hourKey = 'daily_reminder_hour';
   static const _minuteKey = 'daily_reminder_minute';
 
   @override
   Future<ReminderSettings> build() async {
     final prefs = await SharedPreferences.getInstance();
-    return ReminderSettings(
+    final stored = prefs.getStringList(_timesKey);
+    final legacy =
+        (prefs.getInt(_hourKey) ?? 23) * 60 + (prefs.getInt(_minuteKey) ?? 0);
+    final times = stored == null
+        ? <int>[legacy]
+        : (stored
+              .map(int.tryParse)
+              .whereType<int>()
+              .where((t) => t >= 0 && t < 1440)
+              .toSet()
+              .toList()
+            ..sort());
+    final result = ReminderSettings(
       enabled: prefs.getBool(_enabledKey) ?? false,
-      hour: prefs.getInt(_hourKey) ?? 8,
-      minute: prefs.getInt(_minuteKey) ?? 0,
+      minutesOfDay: times,
+    );
+    if (result.enabled) {
+      await ref.read(notificationServiceProvider).cancelDaily();
+      await _schedule(result);
+    }
+    return result;
+  }
+
+  Future<void> _schedule(ReminderSettings settings) async {
+    final service = ref.read(notificationServiceProvider);
+    if (!settings.enabled) {
+      await service.cancelRecitationReminders();
+      return;
+    }
+    final log = await ref.read(dailyRecitationProvider.future);
+    await service.scheduleRecitationReminders(
+      minutesOfDay: settings.minutesOfDay,
+      completedDays: log.answers.entries
+          .where((entry) => entry.value)
+          .map((entry) => entry.key)
+          .toSet(),
     );
   }
 
@@ -48,28 +72,51 @@ class ReminderController extends AsyncNotifier<ReminderSettings> {
     final current = state.value ?? await future;
     final service = ref.read(notificationServiceProvider);
     if (enabled && !await service.requestPermission()) return false;
-    final next = current.copyWith(enabled: enabled);
+    final next = ReminderSettings(
+      enabled: enabled,
+      minutesOfDay: current.minutesOfDay,
+    );
+    await (await SharedPreferences.getInstance()).setBool(_enabledKey, enabled);
+    await service.cancelDaily();
+    await _schedule(next);
     state = AsyncData(next);
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_enabledKey, enabled);
-    if (enabled) {
-      await service.scheduleDaily(hour: next.hour, minute: next.minute);
-    } else {
-      await service.cancelDaily();
-    }
     return true;
   }
 
-  Future<void> setTime(int hour, int minute) async {
+  Future<void> addTime(int hour, int minute) async {
     final current = state.value ?? await future;
-    final next = current.copyWith(hour: hour, minute: minute);
+    final times = {...current.minutesOfDay, hour * 60 + minute}.toList()
+      ..sort();
+    if (times.length > 5) throw StateError('Add up to five reminder times.');
+    await _saveTimes(current, times);
+  }
+
+  Future<void> updateTime(int oldTime, int hour, int minute) async {
+    final current = state.value ?? await future;
+    final times = {...current.minutesOfDay}
+      ..remove(oldTime)
+      ..add(hour * 60 + minute);
+    await _saveTimes(current, times.toList()..sort());
+  }
+
+  Future<void> removeTime(int time) async {
+    final current = state.value ?? await future;
+    final times = [...current.minutesOfDay]..remove(time);
+    await _saveTimes(current, times);
+  }
+
+  Future<void> refresh() async => _schedule(state.value ?? await future);
+
+  Future<void> _saveTimes(ReminderSettings current, List<int> times) async {
+    final next = ReminderSettings(
+      enabled: current.enabled,
+      minutesOfDay: times,
+    );
+    await (await SharedPreferences.getInstance()).setStringList(
+      _timesKey,
+      times.map((t) => '$t').toList(),
+    );
+    await _schedule(next);
     state = AsyncData(next);
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(_hourKey, hour);
-    await prefs.setInt(_minuteKey, minute);
-    if (next.enabled)
-      await ref
-          .read(notificationServiceProvider)
-          .scheduleDaily(hour: hour, minute: minute);
   }
 }

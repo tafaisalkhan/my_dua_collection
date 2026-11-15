@@ -17,6 +17,7 @@ import '../../features/media_library/presentation/screens/media_detail_screen.da
 import '../../features/ocr/presentation/screens/image_preview_screen.dart';
 import '../../features/ocr/presentation/screens/ocr_review_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
+import '../../features/recitation/presentation/daily_recitation_report_screen.dart';
 import '../../shared/widgets/app_scaffold.dart';
 
 final appRouterProvider = Provider<GoRouter>(
@@ -63,6 +64,10 @@ final appRouterProvider = Provider<GoRouter>(
         ],
       ),
       GoRoute(path: '/dua-bundle', builder: (c, s) => const DuaBundleScreen()),
+      GoRoute(
+        path: '/recitation-report',
+        builder: (c, s) => const DailyRecitationReportScreen(),
+      ),
       GoRoute(path: '/duas', builder: (c, s) => const AllDuasScreen()),
       GoRoute(
         path: '/library/item/:id',

@@ -9,8 +9,8 @@ class AdService {
   AdService._();
   static final instance = AdService._();
 
-  static const androidInterstitial = 'ca-app-pub-1852108665659812/5379864859';
-  static const androidBanner = 'ca-app-pub-1852108665659812/5571436549';
+  static const androidInterstitial = String.fromEnvironment('ADMOB_INTERSTITIAL_ID', defaultValue: 'ca-app-pub-3940256099942544/1033173712');
+  static const androidBanner = String.fromEnvironment('ADMOB_BANNER_ID', defaultValue: 'ca-app-pub-3940256099942544/6300978111');
   static const removeAdsProductId = 'remove_ads';
 
   final _random = Random();

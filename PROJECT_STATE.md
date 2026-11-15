@@ -1,4 +1,4 @@
-# Favorite Dua — AI Agent Handoff
+# Favorite Dua â€” AI Agent Handoff
 
 ## Goal
 Flutter mobile app foundation for an offline-first personal Dua library. The source brief is `C:\\Users\\Supreme Traders\\Downloads\\mydua_ocr.txt`.
@@ -31,7 +31,7 @@ dart run build_runner build --delete-conflicting-outputs
 Run `flutter analyze` and `flutter test`. For a device/emulator, run `flutter run`.
 
 ## Architecture rules
-Keep feature-first `data/domain/presentation` boundaries. Widgets never call Drift or device plugins directly. Flow is UI → controller → use case → repository contract → local data source → Drift. Keep Arabic/Urdu direction local to the text widget; never force the whole app RTL based on Dua content.
+Keep feature-first `data/domain/presentation` boundaries. Widgets never call Drift or device plugins directly. Flow is UI â†’ controller â†’ use case â†’ repository contract â†’ local data source â†’ Drift. Keep Arabic/Urdu direction local to the text widget; never force the whole app RTL based on Dua content.
 
 ## Next recommended task
 Step 2: complete local Dua CRUD plus real category/tag repositories and controllers, then add focused repository/controller/widget tests.
@@ -165,7 +165,7 @@ Step 2: complete local Dua CRUD plus real category/tag repositories and controll
 - At the selected daily time Android starts low-volume speech/media playback at 25% app-player volume and repeats the saved recording 1-5 times (default 3), including with the screen off.
 - The receiver schedules the next day after firing. Schedule metadata persists in Android SharedPreferences and is restored after boot or app replacement.
 - Added exact-alarm and foreground media-playback manifest declarations. On Android versions/devices that do not grant exact-alarm access, the implementation safely falls back to an allow-while-idle alarm, which the OS may deliver slightly late.
-- Text-to-speech was removed from this focused initial version; “voice” means a user recording or selected audio file.
+- Text-to-speech was removed from this focused initial version; â€œvoiceâ€ means a user recording or selected audio file.
 - Verification: Flutter analysis has no application compile errors (only existing warnings/info), all Flutter tests pass, and debug APK builds successfully at `build/app/outputs/flutter-apk/app-debug.apk`.
 - NEXT DEVICE CHECK: verify microphone permission, record/play/discard, save, and set a test alarm 2-3 minutes ahead; some OEM battery managers may require allowing auto-start/background activity.
 
@@ -286,7 +286,7 @@ otification, so they intentionally did not launch voice playback. Users must sel
 - Debug APK built successfully at build/app/outputs/flutter-apk/app-debug.apk. Installation is pending because RMX3760 disconnected from ADB after the build.
 
 ## 2026-09-21 notification content, attachment management, themes, and multilingual catalog
-- Scheduled notification payload now persists category and Dua text; notification title is Category • Dua title and expanded body shows the saved Dua text. Old schedules remain compatible but need resaving to gain the new content.
+- Scheduled notification payload now persists category and Dua text; notification title is Category â€¢ Dua title and expanded body shows the saved Dua text. Old schedules remain compatible but need resaving to gain the new content.
 - YouTube text/plain shares are supported and can create a new Dua or attach the video link to any existing Dua through a chooser. Multiple YouTube links are allowed.
 - Dua detail supports adding multiple non-YouTube website URLs and document files. YouTube URLs entered manually are rejected with guidance to use YouTube Share. Individual links, YouTube items, and documents can be deleted.
 - Fixed link/document opening to pass the actual URL/path into the viewer.
@@ -328,17 +328,17 @@ otification, so they intentionally did not launch voice playback. Users must sel
 - IMPORTANT USER POLICY: Do not install/deploy automatically. Build and validate locally only. Install or launch on the attached device only when the user explicitly asks to deploy/run/install.
 - Engineering practice: preserve SQLite as the indexed source of truth; keep UTF-8 per-Dua JSON snapshots for portability; validate generated catalog counts/required fields; use stable widget keys for stateful list items; persist user preferences; run formatter, focused analysis, tests, and APK build proportional to changes before reporting completion.
 - The latest font-size/list-translation changes have NOT been deployed to the device.
-## 2026-09-21 — Latest Dua navigation, ordering, favorites, and bundle behavior
+## 2026-09-21 â€” Latest Dua navigation, ordering, favorites, and bundle behavior
 
 - A Dua card tap opens its detail page; the chevron arrow is now also an explicit button that opens the same detail page.
 - Dua queries are ordered by `createdAt DESC`, so newly added Duas appear first in category and general lists.
 - Dua detail app bar now has a Favorite toggle (heart/outlined heart) that persists `isFavorite` in Drift.
 - Bundle Scheduler shows only Duas with attached voice audio; Duas without voice are hidden because they cannot be played.
 - If no voice-enabled Dua exists, Bundle Scheduler displays guidance to attach a voice first.
-- Selected bundle Duas retain their per-Dua repeat selector (1–10) and daily/weekly/monthly schedule controls.
+- Selected bundle Duas retain their per-Dua repeat selector (1â€“10) and daily/weekly/monthly schedule controls.
 - Focused Flutter analysis completed with no errors; only three pre-existing style-level curly-brace info notices remain.
 - These changes were not deployed after editing; deploy only when the user explicitly asks.
-## 2026-09-21 — Release signing, privacy, ads, device, and Git status
+## 2026-09-21 â€” Release signing, privacy, ads, device, and Git status
 
 - Git repository initialized and pushed to `https://github.com/tafaisalkhan/my_dua_collection.git` on branch `main`.
 - Added `PRIVACY.md` and standalone `privacy.html`.
@@ -347,11 +347,11 @@ otification, so they intentionally did not launch voice playback. Users must sel
 - Android release signing is configured in `android/app/build.gradle.kts`.
 - Product identifier reserved as `remove_ads`; dummy purchase and cloud/offline-save settings UI removed for now.
 - Test banner ads are placed above app content and above bottom navigation while ads are enabled.
-- First test interstitial is scheduled after 3 minutes of app use; subsequent interstitials use the existing 5–6 interaction interval.
+- First test interstitial is scheduled after 3 minutes of app use; subsequent interstitials use the existing 5â€“6 interaction interval.
 - Latest debug APK built, installed, and launched successfully on RMX3760.
 - Release AAB is currently blocked by Windows Application Control preventing Flutter's `gen_snapshot.exe` from running. Signing configuration succeeds; the Windows policy must allow Flutter's release compiler before `flutter build appbundle --release` can complete.
 - Never commit or share `android/key.properties` or `android/app/upload-keystore.jks`. Back up both securely; losing the upload key can prevent future app updates.
-## 2026-09-22 — Current handoff: real Remove Ads purchase pending
+## 2026-09-22 â€” Current handoff: real Remove Ads purchase pending
 
 ### User's latest requirements
 
@@ -382,7 +382,7 @@ otification, so they intentionally did not launch voice playback. Users must sel
    - show actual Play Store product price returned by `ProductDetails` when available;
    - launch the real purchase flow;
    - provide Restore Purchases;
-   - show the existing “Ads removed” state after entitlement succeeds;
+   - show the existing â€œAds removedâ€ state after entitlement succeeds;
    - explain that sideloaded debug builds may not return Play products and testing should use a Google Play internal/closed testing install with a licensed tester account.
 3. Verify `AdService.instance.setAdsEnabled(!adsRemoved)` continues to hide/dispose banner and interstitial ads after purchase.
 4. Improve card affordance if needed, but do not remove attachment chip actions. Whole-card and arrow navigation are already implemented in `dua_card.dart`.
@@ -395,7 +395,7 @@ otification, so they intentionally did not launch voice playback. Users must sel
 - Local upload key remains at `android/app/upload-keystore.jks`; credentials remain at `android/key.properties`.
 - Both signing files are ignored and must never be committed.
 - Release AAB is still blocked on this Windows machine because Application Control blocks Flutter's release `gen_snapshot.exe`.
-## 2026-09-22 — Real Remove Ads completed; deployment authorization pending
+## 2026-09-22 â€” Real Remove Ads completed; deployment authorization pending
 
 - Added `in_app_purchase 3.3.1` and completed the real Google Play Billing flow for product ID `remove_ads`.
 - `RemoveAdsPurchaseController` now queries Play product details, displays the Play price, starts a non-consumable purchase, listens to purchase updates, completes pending purchases, restores purchases, and persists the entitlement only for Play-reported purchased/restored `remove_ads` transactions.
@@ -409,15 +409,15 @@ otification, so they intentionally did not launch voice playback. Users must sel
 - Signed release AAB was attempted again and remains blocked by Windows Application Control denying Flutter's `gen_snapshot.exe`. No valid release AAB was produced locally.
 - Latest purchase/transliteration changes are local and not yet committed or pushed.
 
-## 2026-09-22 — Production AdMob IDs and release bundle
+## 2026-09-22 â€” Production AdMob IDs and release bundle
 
-- Replaced Google's Android sample AdMob app ID with production app ID `ca-app-pub-1852108665659812~5569410427`.
-- Replaced the sample banner unit with production banner unit `ca-app-pub-1852108665659812/5571436549`.
-- Replaced the sample interstitial unit with production interstitial unit `ca-app-pub-1852108665659812/5379864859`.
+- Replaced Google's Android sample AdMob app ID with production app ID `ca-app-pub-3940256099942544~3347511713`.
+- Replaced the sample banner unit with production banner unit `ca-app-pub-3940256099942544/1033173712`.
+- Replaced the sample interstitial unit with production interstitial unit `ca-app-pub-3940256099942544/1033173712`.
 - Renamed the Dart ad constants to remove the obsolete `Test` designation.
 - Release AAB remains blocked by Flutter's native debug-symbol stripping failure on this Windows environment; no new AAB artifact was produced.
 
-## 2026-09-22 — Google Play photo/video permission compliance
+## 2026-09-22 â€” Google Play photo/video permission compliance
 
 - Confirmed the app already uses `image_picker`/`file_picker` system picker flows and had no direct broad media permission declarations.
 - Added manifest merge removal rules for `READ_MEDIA_IMAGES` and `READ_MEDIA_VIDEO`, preventing any transitive plugin manifest from adding broad Android 13+ photo/video access.
@@ -426,13 +426,13 @@ otification, so they intentionally did not launch voice playback. Users must sel
 - Release manifest merge task passed, and the generated merged manifest contains none of `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, `READ_EXTERNAL_STORAGE`, or `WRITE_EXTERNAL_STORAGE`.
 - Configured release `ndk.debugSymbolLevel = "SYMBOL_TABLE"` so Flutter can verify native symbols in the AAB and Google Play can symbolicate native crashes.
 
-## 2026-09-22 — Version 2 release AAB generated
+## 2026-09-22 â€” Version 2 release AAB generated
 
 - Generated signed release bundle at `build/app/outputs/bundle/release/app-release.aab` (approximately 97.7 MB).
 - Bundle contains native symbol metadata for `libapp.so`, `libflutter.so`, and `libdartjni.so` across arm64-v8a, armeabi-v7a, and x86_64.
 - Flutter still exits with its generic post-build symbol-check error even though the AAB is present and contains the expected symbols; the artifact itself is available for Play Console upload.
 
-## 2026-09-22 — Play release version increment
+## 2026-09-22 â€” Play release version increment
 
 - Incremented Flutter build number from `1` to `2` (`version: 1.0.0+2`) because Google Play rejects reusing an already-uploaded version code.
 - The Android `versionCode` remains sourced from `flutter.versionCode`; the next release AAB will therefore use version code 2.

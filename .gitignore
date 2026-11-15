@@ -50,3 +50,25 @@ app.*.map.json
 **/*.p12
 .dart_cli/
 /android/build/
+
+# === Security & Exclusion Rules (no assets, json, keystores, or secrets) ===
+assets/
+**/assets/
+*.json
+**/*.json
+*.keystore
+*.jks
+*.key
+*.p12
+*.pem
+key.properties
+**/key.properties
+keystore_credentials*
+admob_secrets.gd
+admob_secrets.gd.uid
+admob_secrets.cfg
+admob_secrets.json
+.godot/
+build/
+*.aab
+*.apk

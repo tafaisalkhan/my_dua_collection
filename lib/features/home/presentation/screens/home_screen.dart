@@ -16,6 +16,8 @@ import '../../../categories/presentation/controllers/category_controller.dart';
 import '../../../dua/domain/entities/dua.dart';
 import '../../../dua/presentation/controllers/dua_controller.dart';
 import '../../../settings/presentation/controllers/ad_entitlement_controller.dart';
+import '../../../settings/presentation/controllers/reminder_controller.dart';
+import '../../../recitation/data/daily_recitation_log.dart';
 import '../widgets/category_card.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -25,13 +27,23 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen>
+    with WidgetsBindingObserver {
   Timer? _nextDayTimer;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _scheduleNextDay();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      setState(() {});
+      unawaited(ref.read(reminderControllerProvider.notifier).refresh());
+    }
   }
 
   void _scheduleNextDay() {
@@ -40,6 +52,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     _nextDayTimer = Timer(nextDay.difference(now), () {
       if (!mounted) return;
       setState(() {});
+      unawaited(ref.read(reminderControllerProvider.notifier).refresh());
       _scheduleNextDay();
     });
   }
@@ -47,6 +60,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void dispose() {
     _nextDayTimer?.cancel();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -153,6 +167,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final categories = ref.watch(categoriesProvider);
     final duas = ref.watch(duasProvider);
     final adsRemoved = ref.watch(adsRemovedProvider);
+    final recitation = ref.watch(dailyRecitationProvider);
+    ref.watch(reminderControllerProvider);
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       body: SafeArea(
@@ -200,6 +216,45 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ],
             ),
             const SizedBox(height: 28),
+            Card(
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: const Icon(Icons.calendar_month_outlined),
+                    title: const Text('Daily Dua calendar'),
+                    subtitle: Text(
+                      recitation.value?.answerFor(DateTime.now()) == true
+                          ? 'Today is done'
+                          : 'Read a Dua, then mark today as read',
+                    ),
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => context.push('/recitation-report'),
+                  ),
+                  if (recitation.value?.answerFor(DateTime.now()) != true)
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: FilledButton.icon(
+                          onPressed: recitation.isLoading
+                              ? null
+                              : () async {
+                                  await ref
+                                      .read(dailyRecitationProvider.notifier)
+                                      .record(DateTime.now(), true);
+                                  await ref
+                                      .read(reminderControllerProvider.notifier)
+                                      .refresh();
+                                },
+                          icon: const Icon(Icons.check),
+                          label: const Text('Mark today as read'),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
             duas.when(
               loading: () => const Center(child: CircularProgressIndicator()),
               error: (error, _) => _HomeMessage(
@@ -500,7 +555,11 @@ class _FeaturedDuaCardState extends ConsumerState<_FeaturedDuaCard> {
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                     textDirection: TextDirection.rtl,
-                    style: TextStyle(color: cardInk, fontSize: 22, height: 1.55),
+                    style: TextStyle(
+                      color: cardInk,
+                      fontSize: 22,
+                      height: 1.55,
+                    ),
                   ),
                 ],
                 if (dua.translation?.trim().isNotEmpty ?? false) ...[
