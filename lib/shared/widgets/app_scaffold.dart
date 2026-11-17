@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/ads/ad_service.dart';
+import '../../features/settings/presentation/controllers/ad_entitlement_controller.dart';
 import 'ad_banner.dart';
 
-class AppScaffold extends StatelessWidget {
+class AppScaffold extends ConsumerWidget {
   const AppScaffold({super.key, required this.navigationShell});
   final StatefulNavigationShell navigationShell;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context, WidgetRef ref) => Scaffold(
     body: Column(
       children: [
         const AppBannerAd(),
@@ -21,10 +24,24 @@ class AppScaffold extends StatelessWidget {
         const AppBannerAd(),
         NavigationBar(
           selectedIndex: navigationShell.currentIndex,
-          onDestinationSelected: (index) => navigationShell.goBranch(
-            index,
-            initialLocation: index == navigationShell.currentIndex,
-          ),
+          onDestinationSelected: (index) {
+            final switchingToHome =
+                index == 0 && navigationShell.currentIndex != 0;
+            navigationShell.goBranch(
+              index,
+              initialLocation: index == navigationShell.currentIndex,
+            );
+            if (switchingToHome) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (context.mounted) {
+                  AdService.instance.showNoAdsPopupIfNeeded(
+                    context,
+                    isAdFreePurchased: ref.read(adsRemovedProvider),
+                  );
+                }
+              });
+            }
+          },
           destinations: const [
             NavigationDestination(
               icon: Icon(Icons.home_outlined),

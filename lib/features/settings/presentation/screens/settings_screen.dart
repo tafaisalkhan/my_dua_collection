@@ -7,6 +7,8 @@ import '../../../../core/theme/font_scale_provider.dart';
 import '../controllers/reminder_controller.dart';
 import '../controllers/ad_entitlement_controller.dart';
 import '../../../../core/services/backup_service.dart';
+import '../../../../core/services/support_service.dart';
+import '../../../../shared/widgets/no_ads_popup.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -456,6 +458,70 @@ class SettingsScreen extends ConsumerWidget {
                         ),
                     ],
                   ),
+          ),
+          const SizedBox(height: 12),
+          Card(
+            child: Column(
+              children: [
+                ListTile(
+                  leading: Icon(Icons.star_rounded, color: Colors.amber.shade700),
+                  title: const Text('Rate App'),
+                  subtitle: const Text('Leave a 5-star review on Google Play'),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => NoAdsPopup.show(
+                    context,
+                    step: 0,
+                    isAdFreePurchased: removeAds.entitled,
+                  ),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: const Icon(Icons.share_rounded),
+                  title: const Text('Share With Friends'),
+                  subtitle: const Text('Share Favorite Dua on Google Play'),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => SupportService.instance.shareApp(),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: Icon(Icons.coffee_rounded, color: Colors.brown.shade600),
+                  title: const Text('Buy Developer a Coffee'),
+                  subtitle: Text(
+                    'Support ongoing updates (${SupportService.instance.coffeePrice})',
+                  ),
+                  trailing: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.brown.shade600,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      SupportService.instance.coffeePrice,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                  onTap: () async {
+                    final started = await SupportService.instance.buyCoffee();
+                    if (!started && context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'Store is unavailable right now. Please try again later.',
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),

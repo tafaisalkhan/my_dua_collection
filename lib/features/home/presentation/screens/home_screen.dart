@@ -11,6 +11,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../../../core/audio/audio_playback_coordinator.dart';
 import '../../../../core/database/app_database.dart' as database;
+import '../../../../core/services/support_service.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../categories/presentation/controllers/category_controller.dart';
 import '../../../dua/domain/entities/dua.dart';
@@ -36,6 +37,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _scheduleNextDay();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        SupportService.instance.checkForAppUpdate(context);
+      }
+    });
   }
 
   @override

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -19,6 +20,11 @@ class _AppBannerAdState extends ConsumerState<AppBannerAd> {
   @override
   void initState() {
     super.initState();
+    if (kIsWeb ||
+        AdService.instance.isAdFreeToday ||
+        !AdService.isValidAdUnitId(AdService.androidBanner)) {
+      return;
+    }
     _ad = BannerAd(
       adUnitId: AdService.androidBanner,
       size: AdSize.banner,
@@ -28,6 +34,7 @@ class _AppBannerAdState extends ConsumerState<AppBannerAd> {
           if (mounted) setState(() => _loaded = true);
         },
         onAdFailedToLoad: (ad, _) {
+          AdService.instance.markNoFillTodayAndNotify();
           ad.dispose();
           _ad = null;
         },
@@ -43,19 +50,25 @@ class _AppBannerAdState extends ConsumerState<AppBannerAd> {
 
   @override
   Widget build(BuildContext context) {
-    if (!ref.watch(shouldShowAdsProvider) || !_loaded || _ad == null) {
-      return const SizedBox.shrink();
-    }
-    return SizedBox(
-      width: double.infinity,
-      height: _ad!.size.height.toDouble(),
-      child: Center(
-        child: SizedBox(
-          width: _ad!.size.width.toDouble(),
+    final shouldShow = ref.watch(shouldShowAdsProvider);
+    return ValueListenableBuilder<bool>(
+      valueListenable: AdService.instance.isStreakAdFreeNotifier,
+      builder: (context, isStreakAdFree, _) {
+        if (!shouldShow || isStreakAdFree || !_loaded || _ad == null) {
+          return const SizedBox.shrink();
+        }
+        return SizedBox(
+          width: double.infinity,
           height: _ad!.size.height.toDouble(),
-          child: AdWidget(ad: _ad!),
-        ),
-      ),
+          child: Center(
+            child: SizedBox(
+              width: _ad!.size.width.toDouble(),
+              height: _ad!.size.height.toDouble(),
+              child: AdWidget(ad: _ad!),
+            ),
+          ),
+        );
+      },
     );
   }
 }
