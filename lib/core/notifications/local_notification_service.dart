@@ -4,6 +4,7 @@ import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
+import '../ads/ad_service.dart';
 import 'notification_service.dart';
 
 class LocalNotificationService implements NotificationService {
@@ -75,10 +76,15 @@ class LocalNotificationService implements NotificationService {
       minute,
     );
     if (!next.isAfter(now)) next = next.add(const Duration(days: 1));
+    final prefs = await SharedPreferences.getInstance();
+    final isRemoveAds = prefs.getBool('remove_ads_entitlement') ?? false;
+    final suffix = AdService.instance.streakNotificationSuffix(
+      isRemoveAdsPurchased: isRemoveAds,
+    );
     await _plugin.zonedSchedule(
       id: reminderId,
       title: 'Time for your daily Dua',
-      body: 'Take a quiet moment to read and reflect on a favorite Dua.',
+      body: 'Take a quiet moment to read and reflect on a favorite Dua.$suffix',
       scheduledDate: next,
       notificationDetails: const NotificationDetails(
         android: AndroidNotificationDetails(
