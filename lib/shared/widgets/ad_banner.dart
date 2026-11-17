@@ -31,6 +31,7 @@ class _AppBannerAdState extends ConsumerState<AppBannerAd> {
       request: const AdRequest(),
       listener: BannerAdListener(
         onAdLoaded: (_) {
+          AdService.instance.markAdLoadedForStreak();
           if (mounted) setState(() => _loaded = true);
         },
         onAdFailedToLoad: (ad, _) {

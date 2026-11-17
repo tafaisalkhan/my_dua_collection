@@ -30,6 +30,9 @@ class AdService {
   bool _adsEnabled = true;
   bool _firstInterstitialShown = false;
   bool _isAdFreeToday = false;
+  bool _streakRecordedToday = false;
+  String _lastOpenDate = '';
+  bool _isRemoveAdsPurchased = false;
   bool _noFillThisLaunch = false;
   bool _popupShownThisLaunch = false;
   int _streakDays = 0;
@@ -56,22 +59,33 @@ class AdService {
     final prefs = await SharedPreferences.getInstance();
     final now = DateTime.now();
     final today = _dateKey(now);
-    final yesterday = _dateKey(now.subtract(const Duration(days: 1)));
-    final tomorrow = _dateKey(now.add(const Duration(days: 1)));
 
-    final lastDate = prefs.getString(_prefLastOpenDate);
+    _lastOpenDate = prefs.getString(_prefLastOpenDate) ?? '';
     _adFreeDate = prefs.getString(_prefAdFreeDate) ?? '';
     _streakDays = prefs.getInt(_prefStreakDays) ?? 0;
+    _isRemoveAdsPurchased = prefs.getBool('remove_ads_entitlement') ?? false;
+    _streakRecordedToday = _lastOpenDate == today;
+    _isAdFreeToday = !_isRemoveAdsPurchased && _adFreeDate == today;
+    isStreakAdFreeNotifier.value = _isAdFreeToday;
+  }
 
-    if (lastDate == today) {
-      _isAdFreeToday = _adFreeDate == today;
-      isStreakAdFreeNotifier.value = _isAdFreeToday;
+  /// Advances the 3-day streak only when an ad actually loads (ads running & not remove_ads).
+  Future<void> markAdLoadedForStreak() async {
+    if (_isRemoveAdsPurchased || _isAdFreeToday || _streakRecordedToday) {
       return;
     }
+    _streakRecordedToday = true;
 
-    final int streak = (lastDate == yesterday) ? _streakDays + 1 : 1;
+    final prefs = await SharedPreferences.getInstance();
+    final now = DateTime.now();
+    final today = _dateKey(now);
+    final yesterday = _dateKey(now.subtract(const Duration(days: 1)));
+
+    if (_lastOpenDate == today) return;
+    final int streak = (_lastOpenDate == yesterday) ? _streakDays + 1 : 1;
 
     if (streak >= 3) {
+      final tomorrow = _dateKey(now.add(const Duration(days: 1)));
       _adFreeDate = tomorrow;
       _streakDays = 0;
       await prefs.setString(_prefAdFreeDate, tomorrow);
@@ -80,9 +94,8 @@ class AdService {
       _streakDays = streak;
       await prefs.setInt(_prefStreakDays, streak);
     }
-    _isAdFreeToday = _adFreeDate == today;
+    _lastOpenDate = today;
     await prefs.setString(_prefLastOpenDate, today);
-    isStreakAdFreeNotifier.value = _isAdFreeToday;
   }
 
   String streakNotificationSuffix({required bool isRemoveAdsPurchased}) {
@@ -130,7 +143,7 @@ class AdService {
     await NoAdsPopup.show(
       context,
       step: step,
-      isStreakReward: _isAdFreeToday && !isAdFreePurchased,
+      isStreakReward: _isAdFreeToday && !isAdFreePurchased && !_noFillThisLaunch,
       isAdFreePurchased: isAdFreePurchased,
       isNoFill: _noFillThisLaunch,
     );
@@ -208,6 +221,7 @@ class AdService {
           _loading = false;
           if (_adsEnabled && !_isAdFreeToday) {
             _interstitial = ad;
+            markAdLoadedForStreak();
           } else {
             ad.dispose();
           }
