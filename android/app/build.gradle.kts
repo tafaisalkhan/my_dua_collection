@@ -101,9 +101,3 @@ kotlin {
 flutter {
     source = "../.."
 }
-
-tasks.configureEach {
-    if (name.contains("strip", ignoreCase = true) && name.contains("DebugSymbols", ignoreCase = true)) {
-        enabled = false
-    }
-}

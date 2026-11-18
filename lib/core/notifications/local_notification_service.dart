@@ -19,7 +19,7 @@ class LocalNotificationService implements NotificationService {
   Future<void> initialize() async {
     if (_initialized) return;
     const settings = InitializationSettings(
-      android: AndroidInitializationSettings('ic_launcher'),
+      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
       iOS: DarwinInitializationSettings(
         requestAlertPermission: false,
         requestBadgePermission: false,
